@@ -8,6 +8,8 @@ namespace EleccionsM2
         {
             InitializeComponent();
         }
+        //crearContexto:
+        EleccionsMContext Contexto1 = new EleccionsMContext();
         Municipi varMunicipi = new Municipi();
         //TODO:Butons and textBox:________________________________________________________________________________
         private void btnCarregarDades_Click(object sender, EventArgs e)
@@ -20,6 +22,10 @@ namespace EleccionsM2
         {
             panelNomMunicipi.Show();
             varMunicipi = crearMunicipi();
+            //comprobando lo del ID si se modifica o no...
+            Contexto1.SaveChanges(); //me sale un error aqui
+            long numero = varMunicipi.ID;
+            MessageBox.Show(numero.ToString());
         }
         //salto de texto nomMunicipi hasta NumRegidors textbox.
         private void textBoxNomMunicipi_KeyDown(object sender, KeyEventArgs e)
@@ -40,6 +46,7 @@ namespace EleccionsM2
                 textBoxNomPartit.Focus();
                 posarNumRegidorsMunicipi();
                 //nadasoloparaversifuncionanlasfuncs para entrar datos nombre y numregidores al objetoxd:
+                //TODO:COMPROBAR.DATOS.MUNICIPIOsolucionar.No pone nada en la lista porque no existe ningun objeto en la dbset con datos...
                 foreach(Municipi municipi in Contexto1.Municipis)
                 {
                     MunicipisBox.Items.Add(municipi.ImprimirDatosMunicipio());
@@ -64,7 +71,6 @@ namespace EleccionsM2
         }
 
         //TODO:Functions:________________________________________________________________________________________
-        EleccionsMContext Contexto1 = new EleccionsMContext();
        
         public void carregarMunicipis() //button CarregarDades
         {
