@@ -4,6 +4,7 @@ using EleccionsM2;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EleccionsM2.Migrations
 {
     [DbContext(typeof(EleccionsMContext))]
-    partial class EleccionsMContextModelSnapshot : ModelSnapshot
+    [Migration("20230705091807_otrocambio3")]
+    partial class otrocambio3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -41,7 +44,7 @@ namespace EleccionsM2.Migrations
 
                     b.HasIndex("PartitMunicipiID");
 
-                    b.ToTable("Candidats");
+                    b.ToTable("Candidat");
                 });
 
             modelBuilder.Entity("EleccionsM2.Models.Municipi", b =>
@@ -72,7 +75,7 @@ namespace EleccionsM2.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("ID"));
 
-                    b.Property<long?>("MunicipiID")
+                    b.Property<long>("municipiID")
                         .HasColumnType("bigint");
 
                     b.Property<string>("nomPartit")
@@ -81,7 +84,7 @@ namespace EleccionsM2.Migrations
 
                     b.HasKey("ID");
 
-                    b.HasIndex("MunicipiID");
+                    b.HasIndex("municipiID");
 
                     b.ToTable("PartitsPolitics");
                 });
@@ -165,9 +168,13 @@ namespace EleccionsM2.Migrations
 
             modelBuilder.Entity("EleccionsM2.Models.PartitMunicipi", b =>
                 {
-                    b.HasOne("EleccionsM2.Models.Municipi", null)
+                    b.HasOne("EleccionsM2.Models.Municipi", "municipi")
                         .WithMany("llistaPartits")
-                        .HasForeignKey("MunicipiID");
+                        .HasForeignKey("municipiID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("municipi");
                 });
 
             modelBuilder.Entity("EleccionsM2.Models.TaulaElectoral", b =>

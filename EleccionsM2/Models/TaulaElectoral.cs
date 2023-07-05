@@ -14,12 +14,12 @@ namespace EleccionsM2.Models
         public ResultatsTaula resultatsTaula { get; set; }
 
         public TaulaElectoral() { }
-        public TaulaElectoral(string nomTaula, int censTaula, ResultatsTaula resultatsTaula)
-        {
-            this.nomTaula = nomTaula;
-            this.censTaula = censTaula;
-            this.resultatsTaula = resultatsTaula;
-        }
+        //public TaulaElectoral(string nomTaula, int censTaula, ResultatsTaula resultatsTaula)
+        //{
+        //    this.nomTaula = nomTaula;
+        //    this.censTaula = censTaula;
+        //    this.resultatsTaula = resultatsTaula;
+        //}
         public string ImprimirNomICensTaula()
         {
             return "Nom: " + nomTaula + "  Cens: " + censTaula;

@@ -4,6 +4,7 @@ using EleccionsM2;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EleccionsM2.Migrations
 {
     [DbContext(typeof(EleccionsMContext))]
-    partial class EleccionsMContextModelSnapshot : ModelSnapshot
+    [Migration("20230705105228_cambio5")]
+    partial class cambio5
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -41,7 +44,7 @@ namespace EleccionsM2.Migrations
 
                     b.HasIndex("PartitMunicipiID");
 
-                    b.ToTable("Candidats");
+                    b.ToTable("Candidat");
                 });
 
             modelBuilder.Entity("EleccionsM2.Models.Municipi", b =>

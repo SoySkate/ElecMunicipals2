@@ -218,6 +218,7 @@
             btnAfegirPartit.TabIndex = 5;
             btnAfegirPartit.Text = "Afegir Partit";
             btnAfegirPartit.UseVisualStyleBackColor = true;
+            btnAfegirPartit.Click += btnAfegirPartit_Click;
             // 
             // CandidatsBox
             // 

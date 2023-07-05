@@ -14,17 +14,20 @@ namespace EleccionsM2.Models
         //Potser la list de llista partits del municipi té més sentit...?
         public List<PartitMunicipi> llistaPartits { get; set; }
         public List<TaulaElectoral> taulesElectorals { get; set; }
-        public Municipi() { }
-        public Municipi(string nomMunicipi, int numeroRegidors, List<TaulaElectoral> taulaElectoral)
-        {
-            this.nomMunicipi = nomMunicipi;
-            this.numeroRegidors = numeroRegidors;
-            this.taulesElectorals = taulaElectoral;
-        }
+        //aqui en el constructor buit inicialtzo la List que no sabia que s'havia de fer xdd 
+        public Municipi() { llistaPartits = new List<PartitMunicipi>(); taulesElectorals = new List<TaulaElectoral>(); }
+
+        //public Municipi(string nomMunicipi, int numeroRegidors,List<PartitMunicipi> llistaPartits, List<TaulaElectoral> taulaElectoral)
+        //{
+        //    this.nomMunicipi = nomMunicipi;
+        //    this.numeroRegidors = numeroRegidors;
+        //    this.llistaPartits = llistaPartits;
+        //    this.taulesElectorals = taulaElectoral;
+        //}
 
         public string ImprimirDatosMunicipio()
         {
-            return "-" + nomMunicipi + "  -Regidors: " + numeroRegidors + " -TaulesElec: " + taulesElectorals.Count();
+            return "-" + nomMunicipi + "  -Regidors: " + numeroRegidors + " -TaulesElec: ";//+ taulesElectorals.Count();
         }
     }
 }

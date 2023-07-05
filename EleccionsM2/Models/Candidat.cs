@@ -11,10 +11,10 @@ namespace EleccionsM2.Models
         public long ID { get; set; }
         public string nomCandidat { get; set; }
         public Candidat() { }
-        public Candidat(string nomCandidat)
-        {
-            this.nomCandidat = nomCandidat;
-        }
+        //public Candidat(string nomCandidat)
+        //{
+        //    this.nomCandidat = nomCandidat;
+        //}
         public string ImprimirCandidat()
         {
             return nomCandidat;

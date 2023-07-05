@@ -12,12 +12,17 @@ namespace EleccionsM2.Models
         public string nomPartit { get; set; }
         public List<Candidat> candidats { get; set; }
         //Poner el municipio aqui creo que no porque al crear el onjeto este debo crear otro municipio y no tiene sentido...
-        public Municipi municipi { get; set; }  
-        public PartitMunicipi() { }
-        public PartitMunicipi(string nomPartit, List<Candidat> candidats)
+        //CREAR QUE NO NECESITO EL MUNICIPI AQUI
+        //public Municipi municipi { get; set; }  
+        public PartitMunicipi() { candidats = new List<Candidat>(); }
+        //public PartitMunicipi(string nomPartit, List<Candidat> candidats)
+        //{
+        //    this.nomPartit = nomPartit;
+        //    this.candidats = candidats;
+        //}
+        public string imprimirPartit()
         {
-            this.nomPartit = nomPartit;
-            this.candidats = candidats;
+            return nomPartit;
         }
     }
 }

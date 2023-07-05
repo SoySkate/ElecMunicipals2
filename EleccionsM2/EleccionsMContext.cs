@@ -12,6 +12,7 @@ namespace EleccionsM2
     {
         public DbSet<Municipi> Municipis { get; set; }
         public DbSet<PartitMunicipi> PartitsPolitics { get; set; }
+        public DbSet<Candidat> Candidats { get; set; }
         public DbSet<TaulaElectoral> TaulesElectorals { get; set; }
         public DbSet<ResultatsTaula> ResultatsTaules { get; set; }
 
