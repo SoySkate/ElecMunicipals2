@@ -61,6 +61,7 @@
             textBoxNomTaula = new TextBox();
             labelCensTaula = new Label();
             labelNomTaula = new Label();
+            btnCloseForm = new Button();
             panelMunicipis.SuspendLayout();
             panelNomMunicipi.SuspendLayout();
             panelNumRegidorsMunicipi.SuspendLayout();
@@ -91,7 +92,7 @@
             panelMunicipis.Controls.Add(MunicipisBox);
             panelMunicipis.Location = new Point(711, 53);
             panelMunicipis.Name = "panelMunicipis";
-            panelMunicipis.Size = new Size(235, 396);
+            panelMunicipis.Size = new Size(235, 345);
             panelMunicipis.TabIndex = 1;
             panelMunicipis.Visible = false;
             // 
@@ -291,6 +292,7 @@
             btnAfegirTaules.TabIndex = 2;
             btnAfegirTaules.Text = "Afegir Taules";
             btnAfegirTaules.UseVisualStyleBackColor = true;
+            btnAfegirTaules.Click += btnAfegirTaules_Click;
             // 
             // PartitsBox
             // 
@@ -360,6 +362,7 @@
             textBoxCensTaula.Name = "textBoxCensTaula";
             textBoxCensTaula.Size = new Size(100, 23);
             textBoxCensTaula.TabIndex = 3;
+            textBoxCensTaula.KeyDown += textBoxCensTaula_KeyDown;
             // 
             // textBoxNomTaula
             // 
@@ -367,6 +370,7 @@
             textBoxNomTaula.Name = "textBoxNomTaula";
             textBoxNomTaula.Size = new Size(100, 23);
             textBoxNomTaula.TabIndex = 2;
+            textBoxNomTaula.KeyDown += textBoxNomTaula_KeyDown;
             // 
             // labelCensTaula
             // 
@@ -386,12 +390,24 @@
             labelNomTaula.TabIndex = 0;
             labelNomTaula.Text = "Nom Taula:";
             // 
+            // btnCloseForm
+            // 
+            btnCloseForm.ForeColor = Color.Firebrick;
+            btnCloseForm.Location = new Point(879, 426);
+            btnCloseForm.Name = "btnCloseForm";
+            btnCloseForm.Size = new Size(56, 23);
+            btnCloseForm.TabIndex = 7;
+            btnCloseForm.Text = "CLOSE ";
+            btnCloseForm.UseVisualStyleBackColor = true;
+            btnCloseForm.Click += btnCloseForm_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
             ClientSize = new Size(947, 457);
+            Controls.Add(btnCloseForm);
             Controls.Add(panelTaulesElectorals);
             Controls.Add(panelLlistaPartits);
             Controls.Add(panelCandidatsPartitMunicipi);
@@ -451,5 +467,6 @@
         private Button btnEliminarPartit;
         private Button btnEliminarMunicipi;
         private Button btnEliminarTaula;
+        private Button btnCloseForm;
     }
 }

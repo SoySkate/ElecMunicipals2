@@ -10,14 +10,21 @@ namespace EleccionsM2
         }
         //crearContexto:
         EleccionsMContext Contexto1 = new EleccionsMContext();
+        //objectes que utilitzo en memoria
         Municipi varMunicipi = new Municipi();
         PartitMunicipi varPartit = new PartitMunicipi();
         Candidat varCandidat = new Candidat();
+        TaulaElectoral varTaula = new TaulaElectoral();
         //TODO:Butons and textBox:________________________________________________________________________________
         private void btnCarregarDades_Click(object sender, EventArgs e)
         {
             panelMunicipis.Show();
             carregarMunicipis();
+        }
+        //Close Form
+        private void btnCloseForm_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         private void btnCrearMunicipi_Click(object sender, EventArgs e)
@@ -56,6 +63,7 @@ namespace EleccionsM2
                 Contexto1.SaveChanges();
                 posarNomPartit();
                 textBoxNomCandidat.Focus();
+                Contexto1.SaveChanges();
             }
         }
         //cada keypress.enter meterá un Candidat en la listbox
@@ -66,9 +74,9 @@ namespace EleccionsM2
                 varCandidat = crearCandidat();
                 Contexto1.SaveChanges();
                 posarNomCandidat();
-                //posarcandidatalpartit?
                 CandidatsBox.Items.Add(varCandidat.ImprimirCandidat());
                 textBoxNomCandidat.Text = string.Empty;
+                Contexto1.SaveChanges();
 
                 //funcion crearcandidat y meterlo en la listbox
             }
@@ -84,6 +92,34 @@ namespace EleccionsM2
             CandidatsBox.Items.Clear();
             textBoxNomPartit.Text = string.Empty;
             panelLlistaPartits.Show();
+        }
+        //creartaula y showpanelTaules:
+        private void btnAfegirTaules_Click(object sender, EventArgs e)
+        {
+            panelTaulesElectorals.Show();
+            varTaula = crearTaula();
+            Contexto1.SaveChanges();
+            textBoxNomTaula.Focus();
+        }
+        private void textBoxNomTaula_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter && textBoxNomMunicipi.Text != "")
+            {
+                posarNomTaula();
+                textBoxCensTaula.Focus();
+            }
+        }
+        private void textBoxCensTaula_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter && textBoxNomMunicipi.Text != "")
+            {
+                posarCensTaula();
+                TaulesBox.Items.Add(varTaula.ImprimirNomICensTaula());
+                textBoxNomTaula.Text = string.Empty;
+                textBoxCensTaula.Text = string.Empty;
+                textBoxNomTaula.Focus();
+
+            }
         }
 
         //TODO:Functions:________________________________________________________________________________________
@@ -135,7 +171,6 @@ namespace EleccionsM2
         {
             PartitMunicipi trobantPartit = Contexto1.PartitsPolitics.SingleOrDefault(n => n.ID == varPartit.ID);
             trobantPartit.nomPartit = textBoxNomPartit.Text;
-            Contexto1.SaveChanges();
             //I enviarlo al Municipi que li pertoca
             Municipi trobantMunicipi = Contexto1.Municipis.SingleOrDefault(n => n.ID == varMunicipi.ID);
             trobantMunicipi.llistaPartits.Add(trobantPartit);
@@ -159,8 +194,33 @@ namespace EleccionsM2
             PartitMunicipi trobantPartit = Contexto1.PartitsPolitics.SingleOrDefault(n => n.ID == varPartit.ID);
             trobantPartit.candidats.Add(trobantCandidat);
         }
+        public TaulaElectoral crearTaula()
+        {
+            TaulaElectoral novaTaula = new TaulaElectoral();
+            novaTaula.nomTaula = "";
+            novaTaula.censTaula = 0;
+            Contexto1.TaulesElectorals.Add(novaTaula);
+            return novaTaula;
+        }
+        public void posarNomTaula()
+        {
+            TaulaElectoral trobantTaula = Contexto1.TaulesElectorals.SingleOrDefault(n => n.ID == varTaula.ID);
+            trobantTaula.nomTaula = textBoxNomTaula.Text;
+            //en memorialocal:
+            varTaula.nomTaula = textBoxNomTaula.Text;
+        }
+        //posar cens i pasar lobjecte al municipi corresponent
+        public void posarCensTaula()
+        {
+            TaulaElectoral trobantTaula = Contexto1.TaulesElectorals.SingleOrDefault(n => n.ID == varTaula.ID);
+            trobantTaula.censTaula = int.Parse(textBoxCensTaula.Text);
+            //en memorialocal:
+            varTaula.censTaula = int.Parse(textBoxCensTaula.Text);
+            //enviar object al municipi object que li pertoca
+            Municipi trobantMunicipi = Contexto1.Municipis.SingleOrDefault(n => n.ID == varMunicipi.ID);
+            trobantMunicipi.taulesElectorals.Add(trobantTaula);
+        }
 
-
-
+      
     }
 }

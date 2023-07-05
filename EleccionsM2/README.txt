@@ -4,12 +4,19 @@ DONE:___________________________________________________________________________
 -interfaz de entrada datos
 -keypress eventos hasta el nombreCandidat.
 -boton CarregarDades y CrearMunicipi los unicos que estan.
--
+-Al afegir el partit politic nomes safegeix un els altre sno safegeixen xd nose pq
+-Crear el objeto muncipio y poder ponerle data no consigo hacerlo. (debo acceder al objeto que he creado...)
 
 TODO:____________________________________________________________________________
--Crear el objeto muncipio y poder ponerle data no consigo hacerlo. (debo acceder al objeto que he creado...)
+
+{
 -Seguir con los eventos de keypress para ir avanzando segun se mete data en los textbox.
--Interfaz un panel por encima que muestre todos los municipios que hay en el dbset(
+-Restringir el tabulador para no hacer lo mismo que el Enter. pq sino hace lo msimo visualmente pero no hace la misma logica
+-Per al boto de afegir partit un cop s hagin introduit el numero de candidats segons el numero de regidors el proxim enter
+pot apretar el boto de afegirPartit en contes dapretarlo amb el click.
+-Tambe restringir lletres als llocs o nomes han danar numeros.
+--Millorar aixo pq nomes es criden les funcions si fas enter xd }
+
+----Interfaz un panel por encima que muestre todos los municipios que hay en el dbset(
 en la database y con todos los datos necesarios para que se vea bien).
--Seguir por el keypress deNomCandidat que debe añadir un candidato en la lista y en el db set tambien?(función que haga eso).
--
+----FER UN ALTRE FORM PER INTRODUIR RESULTATS I FER LES OPERACIONS AQUELLES
