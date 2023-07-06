@@ -98,10 +98,12 @@
             // 
             // btnEliminarMunicipi
             // 
+            btnEliminarMunicipi.ForeColor = Color.Red;
             btnEliminarMunicipi.Location = new Point(206, 46);
             btnEliminarMunicipi.Name = "btnEliminarMunicipi";
             btnEliminarMunicipi.Size = new Size(29, 27);
             btnEliminarMunicipi.TabIndex = 7;
+            btnEliminarMunicipi.Text = "X";
             btnEliminarMunicipi.UseVisualStyleBackColor = true;
             // 
             // btnCrearMunicipi
@@ -177,6 +179,7 @@
             textBoxNumRegidors.Size = new Size(51, 23);
             textBoxNumRegidors.TabIndex = 5;
             textBoxNumRegidors.KeyDown += textBoxNumRegidors_KeyDown;
+            textBoxNumRegidors.KeyPress += textBoxNumRegidors_KeyPress;
             // 
             // labelNumRegidors
             // 
@@ -205,11 +208,14 @@
             // 
             // btnEliminarCandidat
             // 
+            btnEliminarCandidat.ForeColor = Color.Red;
             btnEliminarCandidat.Location = new Point(207, 100);
             btnEliminarCandidat.Name = "btnEliminarCandidat";
             btnEliminarCandidat.Size = new Size(31, 30);
             btnEliminarCandidat.TabIndex = 7;
+            btnEliminarCandidat.Text = "X";
             btnEliminarCandidat.UseVisualStyleBackColor = true;
+            btnEliminarCandidat.Click += btnEliminarCandidat_Click;
             // 
             // btnAfegirPartit
             // 
@@ -278,11 +284,14 @@
             // 
             // btnEliminarPartit
             // 
+            btnEliminarPartit.ForeColor = Color.Red;
             btnEliminarPartit.Location = new Point(201, 42);
             btnEliminarPartit.Name = "btnEliminarPartit";
             btnEliminarPartit.Size = new Size(28, 28);
             btnEliminarPartit.TabIndex = 3;
+            btnEliminarPartit.Text = "X";
             btnEliminarPartit.UseVisualStyleBackColor = true;
+            btnEliminarPartit.Click += btnEliminarPartit_Click;
             // 
             // btnAfegirTaules
             // 
@@ -329,11 +338,14 @@
             // 
             // btnEliminarTaula
             // 
+            btnEliminarTaula.ForeColor = Color.Red;
             btnEliminarTaula.Location = new Point(200, 101);
             btnEliminarTaula.Name = "btnEliminarTaula";
             btnEliminarTaula.Size = new Size(29, 27);
             btnEliminarTaula.TabIndex = 6;
+            btnEliminarTaula.Text = "X";
             btnEliminarTaula.UseVisualStyleBackColor = true;
+            btnEliminarTaula.Click += btnEliminarTaula_Click;
             // 
             // btnDesarCanvis
             // 
@@ -363,6 +375,7 @@
             textBoxCensTaula.Size = new Size(100, 23);
             textBoxCensTaula.TabIndex = 3;
             textBoxCensTaula.KeyDown += textBoxCensTaula_KeyDown;
+            textBoxCensTaula.KeyPress += textBoxCensTaula_KeyPress;
             // 
             // textBoxNomTaula
             // 

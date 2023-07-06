@@ -24,6 +24,11 @@ namespace EleccionsM2.Models
         {
             return "Nom: " + nomTaula + "  Cens: " + censTaula;
         }
+
+        public override string ToString()
+        {
+            return "Nom: " + nomTaula + "  Cens: " + censTaula;
+        }
         //desde aqui imprimeixo la llista de resultats taula? o no?
     }
 }
