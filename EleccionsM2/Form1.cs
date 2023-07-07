@@ -1,4 +1,5 @@
 using EleccionsM2.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace EleccionsM2
 {
@@ -30,10 +31,15 @@ namespace EleccionsM2
 
         private void btnCrearMunicipi_Click(object sender, EventArgs e)
         {
+            carregarMunicipis();
+            textBoxNomMunicipi.Text = string.Empty;
+            textBoxNumRegidors.Text = string.Empty;
+            PartitsBox.Items.Clear();
+            TaulesBox.Items.Clear();
+            CandidatsBox.Items.Clear();
             panelNomMunicipi.Show();
             varMunicipi = crearMunicipi();
-            //comprobando lo del ID si se modifica o no...
-            Contexto1.SaveChanges(); //me sale un error aqui
+            Contexto1.SaveChanges();
         }
         //salto de texto nomMunicipi hasta NumRegidors textbox.
         private void textBoxNomMunicipi_KeyDown(object sender, KeyEventArgs e)
@@ -103,6 +109,7 @@ namespace EleccionsM2
                 PartitsBox.Items.Add(varPartit.imprimirPartit());
                 CandidatsBox.Items.Clear();
                 textBoxNomPartit.Text = string.Empty;
+                textBoxNomPartit.Focus();
                 panelLlistaPartits.Show();
             }
             else { MessageBox.Show("No hi ha la mateixa quantitat de regidors que de candidats."); }
@@ -111,14 +118,14 @@ namespace EleccionsM2
         private void btnAfegirTaules_Click(object sender, EventArgs e)
         {
             panelTaulesElectorals.Show();
-            varTaula = crearTaula();
-            Contexto1.SaveChanges();
             textBoxNomTaula.Focus();
         }
         private void textBoxNomTaula_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter && textBoxNomTaula.Text != "" && textBoxNomTaula.Text != string.Empty)
             {
+                varTaula = crearTaula();
+                Contexto1.SaveChanges();
                 posarNomTaula();
                 Contexto1.SaveChanges();
                 textBoxCensTaula.Focus();
@@ -138,6 +145,7 @@ namespace EleccionsM2
                 textBoxNomTaula.Text = string.Empty;
                 textBoxCensTaula.Text = string.Empty;
                 textBoxNomTaula.Focus();
+                Contexto1.SaveChanges();
             }
         }
         private void btnEliminarCandidat_Click(object sender, EventArgs e)
@@ -152,15 +160,21 @@ namespace EleccionsM2
         {
             eliminarTaula();
         }
+        private void btnEliminarMunicipi_Click(object sender, EventArgs e)
+        {
+            eliminarMunicipi();
+        }
 
         //TODO:Functions:________________________________________________________________________________________
 
         public void carregarMunicipis() //button CarregarDades
         {
             MunicipisBox.Items.Clear();
-            foreach (Municipi municipi in Contexto1.Municipis)
+            //joder faltaba el include sino no le pasaba los otros objetos a la puta esta
+            //em falta incloure els candidats per exemple ;((((
+            foreach (Municipi municipi in Contexto1.Municipis.Include(n => n.llistaPartits).ThenInclude(c => c.candidats).Include(t => t.taulesElectorals).ThenInclude(r => r.resultatsTaula))
             {
-                MunicipisBox.Items.Add(municipi.ImprimirDatosMunicipio());
+                MunicipisBox.Items.Add(municipi);
             }
         }
         //crearMunicipi
@@ -233,7 +247,6 @@ namespace EleccionsM2
             novaTaula.nomTaula = "";
             novaTaula.censTaula = 0;
             Contexto1.TaulesElectorals.Add(novaTaula);
-            MessageBox.Show(TaulesBox.Items.Count.ToString());
             return novaTaula;
         }
         public void posarNomTaula()
@@ -253,6 +266,7 @@ namespace EleccionsM2
             //enviar object al municipi object que li pertoca
             Municipi trobantMunicipi = Contexto1.Municipis.SingleOrDefault(n => n.ID == varMunicipi.ID);
             trobantMunicipi.taulesElectorals.Add(trobantTaula);
+
         }
         //restringir lletres
         public void solonums(KeyPressEventArgs e)
@@ -285,6 +299,11 @@ namespace EleccionsM2
         {
             string nomPartit = PartitsBox.SelectedItem.ToString();
             PartitMunicipi trobantPartit = Contexto1.PartitsPolitics.SingleOrDefault(p => p.nomPartit == nomPartit);
+            //como eliminar candidatos del contexto que coincidan con la lista candidatos del partido que quiero eliminar
+            foreach (Candidat c in trobantPartit.candidats)
+            {
+                Contexto1.Candidats.Remove(c);
+            }
             Contexto1.PartitsPolitics.Remove(trobantPartit);
             Contexto1.SaveChanges();
             PartitsBox.Items.RemoveAt(PartitsBox.SelectedIndex);
@@ -292,15 +311,41 @@ namespace EleccionsM2
         public void eliminarTaula()
         {
             TaulaElectoral taulavar = (TaulaElectoral)TaulesBox.SelectedItem;
-            TaulaElectoral trobantTaula = Contexto1.TaulesElectorals.SingleOrDefault(t=> t.ID == taulavar.ID);
+            TaulaElectoral trobantTaula = Contexto1.TaulesElectorals.SingleOrDefault(t => t.ID == taulavar.ID);
             Contexto1.TaulesElectorals.Remove(trobantTaula);
             Contexto1.SaveChanges();
             TaulesBox.Items.RemoveAt(TaulesBox.SelectedIndex);
-            //HI HA ALGO QUE NO FUNCIONA EM SEMBLA, COMPROVARHO
-            MessageBox.Show(TaulesBox.Items.Count.ToString());
+        }
+        public void eliminarMunicipi()
+        {
+            Municipi municipivar = (Municipi)MunicipisBox.SelectedItem;
+            Municipi trobantMunicipi = Contexto1.Municipis.SingleOrDefault(m => m.ID == municipivar.ID);
+            Contexto1.SaveChanges();
+            //EM DIU QUE NO HI HA RES AQUI: trobantMunicipi.llistaPartits * EL INCLUDE A L HORA DE CARREGAR DADES XD
+            //i el TEHN INCLUDE WTF HAHA
+            foreach (PartitMunicipi p in trobantMunicipi.llistaPartits)
+            {
+                foreach (Candidat c in p.candidats)
+                {
+                    Contexto1.Candidats.Remove(c);
 
+                }
+                Contexto1.PartitsPolitics.Remove(p);
+            }
+            PartitsBox.Items.Clear();
+
+            foreach (TaulaElectoral t in trobantMunicipi.taulesElectorals)
+            {
+                Contexto1.ResultatsTaules.Remove(t.resultatsTaula);
+                TaulesBox.Items.Clear();
+                Contexto1.TaulesElectorals.Remove(t);
+            }
+
+            Contexto1.Municipis.Remove(trobantMunicipi);
+            Contexto1.SaveChanges();
+            MunicipisBox.Items.RemoveAt(MunicipisBox.SelectedIndex);
         }
 
-       
+
     }
 }

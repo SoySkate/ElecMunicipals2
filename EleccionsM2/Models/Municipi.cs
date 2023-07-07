@@ -29,5 +29,10 @@ namespace EleccionsM2.Models
         {
             return "-" + nomMunicipi + "  -Regidors: " + numeroRegidors + " -TaulesElec: ";//+ taulesElectorals.Count();
         }
+        
+        public override string ToString()
+        {
+            return "-" + nomMunicipi + "  -Regidors: " + numeroRegidors + " -TaulesElec: ";//+ taulesElectorals.Count();
+        }
     }
 }
