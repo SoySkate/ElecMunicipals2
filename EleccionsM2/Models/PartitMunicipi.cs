@@ -24,5 +24,11 @@ namespace EleccionsM2.Models
         {
             return nomPartit;
         }
+        public void borrarDatos()
+        {
+            ID = 0;
+            nomPartit= string.Empty;
+            candidats.Clear();
+        }
     }
 }

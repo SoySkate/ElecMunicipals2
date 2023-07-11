@@ -29,6 +29,13 @@ namespace EleccionsM2.Models
         {
             return "Nom: " + nomTaula + "  Cens: " + censTaula;
         }
-        //desde aqui imprimeixo la llista de resultats taula? o no?
+
+        public void borrarDatos()
+        {
+            ID = 0;
+            nomTaula = string.Empty;
+            censTaula = 0;
+            //no cal borrar res de resultats taula pq no els he de controlar per aqui
+        }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             btnCarregarDades = new Button();
             panelMunicipis = new Panel();
             btnEliminarMunicipi = new Button();
@@ -64,6 +65,7 @@
             btnCloseForm = new Button();
             panelDataAzul = new Panel();
             btnClosePanelData = new Button();
+            eleccionsMContextBindingSource = new BindingSource(components);
             panelMunicipis.SuspendLayout();
             panelNomMunicipi.SuspendLayout();
             panelNumRegidorsMunicipi.SuspendLayout();
@@ -71,6 +73,7 @@
             panelLlistaPartits.SuspendLayout();
             panelTaulesElectorals.SuspendLayout();
             panelDataAzul.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)eleccionsMContextBindingSource).BeginInit();
             SuspendLayout();
             // 
             // btnCarregarDades
@@ -422,21 +425,26 @@
             // 
             panelDataAzul.BackColor = SystemColors.ActiveCaption;
             panelDataAzul.Controls.Add(btnClosePanelData);
-            panelDataAzul.Location = new Point(3, 3);
+            panelDataAzul.Location = new Point(3, 6);
             panelDataAzul.Name = "panelDataAzul";
-            panelDataAzul.Size = new Size(705, 430);
+            panelDataAzul.Size = new Size(943, 443);
             panelDataAzul.TabIndex = 8;
             panelDataAzul.Visible = false;
             // 
             // btnClosePanelData
             // 
             btnClosePanelData.ForeColor = Color.Red;
-            btnClosePanelData.Location = new Point(673, 3);
+            btnClosePanelData.Location = new Point(911, 3);
             btnClosePanelData.Name = "btnClosePanelData";
             btnClosePanelData.Size = new Size(29, 27);
             btnClosePanelData.TabIndex = 9;
             btnClosePanelData.Text = "X";
             btnClosePanelData.UseVisualStyleBackColor = true;
+            btnClosePanelData.Click += btnClosePanelData_Click;
+            // 
+            // eleccionsMContextBindingSource
+            // 
+            eleccionsMContextBindingSource.DataSource = typeof(EleccionsMContext);
             // 
             // Form1
             // 
@@ -444,7 +452,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
             ClientSize = new Size(947, 457);
-            Controls.Add(panelDataAzul);
             Controls.Add(btnCloseForm);
             Controls.Add(panelTaulesElectorals);
             Controls.Add(panelLlistaPartits);
@@ -453,6 +460,7 @@
             Controls.Add(panelNomMunicipi);
             Controls.Add(panelMunicipis);
             Controls.Add(btnCarregarDades);
+            Controls.Add(panelDataAzul);
             Name = "Form1";
             Text = "Form1";
             panelMunicipis.ResumeLayout(false);
@@ -468,6 +476,7 @@
             panelTaulesElectorals.ResumeLayout(false);
             panelTaulesElectorals.PerformLayout();
             panelDataAzul.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)eleccionsMContextBindingSource).EndInit();
             ResumeLayout(false);
         }
 
@@ -509,5 +518,6 @@
         private Button btnCloseForm;
         private Panel panelDataAzul;
         private Button btnClosePanelData;
+        private BindingSource eleccionsMContextBindingSource;
     }
 }

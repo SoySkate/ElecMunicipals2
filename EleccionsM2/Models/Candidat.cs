@@ -19,5 +19,10 @@ namespace EleccionsM2.Models
         {
             return nomCandidat;
         }
+        public void borrarDatos()
+        {
+            ID = 0;
+            nomCandidat= string.Empty;
+        }
     }
 }

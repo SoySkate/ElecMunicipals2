@@ -34,5 +34,13 @@ namespace EleccionsM2.Models
         {
             return "-" + nomMunicipi + "  -Regidors: " + numeroRegidors + " -TaulesElec: ";//+ taulesElectorals.Count();
         }
+        public void borrarDatos()
+        {
+            ID = 0;
+            nomMunicipi = string.Empty;
+            numeroRegidors = 0;
+            llistaPartits.Clear();
+            taulesElectorals.Clear();
+        }
     }
 }

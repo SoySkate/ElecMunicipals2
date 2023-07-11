@@ -14,18 +14,24 @@ pot apretar el boto de afegirPartit en contes dapretarlo amb el click.
 els candidats que te el partit..etc
 HEAVY: per eliminar el municipi he hagut de fer include de tota la merda que te dins a l hora de carregarlo xd claro.
 mi autismo avanza por momentos ;)))))))))) ajajaja crzaymotosierra. 
+-buton close panel azuldata
+-buton carregardata .show panel data azul i mirar com es veura la data. xd
+-fer funcio per borrar tot en la memoria+(crear funcions en les clases per borrar les dades del objecte)
 
 TODO:____________________________________________________________________________
 
 
 -Ara falta comprobar que funcioni i fer la pantalla ce carregar on pugui veure totes les dades i editarles i eliminarles
 desde allà.
--buton close panel azuldata
--buton carregardata .show panel data azul i mirar com es veura la data. xd
+
+-CREC QUE ES MILLOR FERHO AL PANEL NORMAL EN COMPTES DEL BLAU..dios niideaMostrar les dades al panel blau i poder editarles eliminarles i una opcio que sigui posar vots o algo aixi xd
+-¡pensar la millor forma de veure els datos i editarlos o eliminarlos!
+
 
 ---RESTRINGIR TAB el tabulador para no hacer lo mismo que el Enter. pq sino hace lo mismo visualmente pero
 no hace la misma logica. por ejemplo si pongo valor en cens taula y no en nom taula y le doy enter se peta creo xd
 MAYBE RESTINGINT L'ACCES ALS TEXTBOX EXCEPTE AL QUE TOCA PER ORDRE i manejarho amb el focus?
+POTSER RESTRINGINT EL RATOLI NOMES PER ELS TEXT AIXI NOMES PUC ANAR FENT ENTER PER PASAR DE TEXTBOXS
 ---IMPORTANT-> SI FAIG CLICK A UN ALTRE TEXTBOX EN COMPTES DE PASAR AMB EL ENTER OBLIDO FUNCIONS PEL MIG...!!!!!!!!!!!!!!!
 
 

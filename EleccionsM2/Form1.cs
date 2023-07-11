@@ -21,6 +21,8 @@ namespace EleccionsM2
         {
             panelMunicipis.Show();
             carregarMunicipis();
+            //fer funcio asyn and await per les dades
+            panelDataAzul.Show();
         }
         //Close Form
         private void btnCloseForm_Click(object sender, EventArgs e)
@@ -40,6 +42,7 @@ namespace EleccionsM2
             panelNomMunicipi.Show();
             varMunicipi = crearMunicipi();
             Contexto1.SaveChanges();
+            panelDataAzul.Hide();
         }
         //salto de texto nomMunicipi hasta NumRegidors textbox.
         private void textBoxNomMunicipi_KeyDown(object sender, KeyEventArgs e)
@@ -163,6 +166,11 @@ namespace EleccionsM2
         private void btnEliminarMunicipi_Click(object sender, EventArgs e)
         {
             eliminarMunicipi();
+        }
+        private void btnClosePanelData_Click(object sender, EventArgs e)
+        {
+            panelDataAzul.Hide();
+            borrarDataMemoria();
         }
 
         //TODO:Functions:________________________________________________________________________________________
@@ -344,6 +352,22 @@ namespace EleccionsM2
             Contexto1.Municipis.Remove(trobantMunicipi);
             Contexto1.SaveChanges();
             MunicipisBox.Items.RemoveAt(MunicipisBox.SelectedIndex);
+        }
+        public void borrarDataMemoria()
+        {
+            varCandidat.borrarDatos();
+            varMunicipi.borrarDatos();
+            varPartit.borrarDatos();
+            varTaula.borrarDatos();
+            textBoxNomMunicipi.Text = string.Empty;
+            textBoxNumRegidors.Text = string.Empty;
+            textBoxNomPartit.Text = string.Empty;
+            textBoxNomCandidat.Text = string.Empty;
+            textBoxNomTaula.Text = string.Empty;
+            textBoxCensTaula.Text = string.Empty;
+            CandidatsBox.Items.Clear();
+            PartitsBox.Items.Clear();
+            TaulesBox.Items.Clear();
         }
 
 
