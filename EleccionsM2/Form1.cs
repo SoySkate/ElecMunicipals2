@@ -1,4 +1,5 @@
 using EleccionsM2.Models;
+using EleccionsM2.ViewModel;
 using Microsoft.EntityFrameworkCore;
 
 namespace EleccionsM2
@@ -11,6 +12,7 @@ namespace EleccionsM2
         }
         //crearContexto:
         EleccionsMContext Contexto1 = new EleccionsMContext();
+        EleccionsViewModel eleccionsViewModel = new EleccionsViewModel();
         //objectes que utilitzo en memoria
         Municipi varMunicipi = new Municipi();
         PartitMunicipi varPartit = new PartitMunicipi();
@@ -171,12 +173,19 @@ namespace EleccionsM2
         {
             panelDataAzul.Hide();
             borrarDataMemoria();
+            eleccionsViewModel.Grabar();
         }
 
         //TODO:Functions:________________________________________________________________________________________
 
         public void carregarMunicipis() //button CarregarDades
         {
+            dataGridView1.DataSource = eleccionsViewModel;
+            dataGridView1.DataMember = "ListaMunicipis";
+
+
+
+
             MunicipisBox.Items.Clear();
             //joder faltaba el include sino no le pasaba los otros objetos a la puta esta
             //em falta incloure els candidats per exemple ;((((
@@ -370,6 +379,9 @@ namespace EleccionsM2
             TaulesBox.Items.Clear();
         }
 
+        private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
+        }
     }
 }

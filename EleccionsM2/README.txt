@@ -42,3 +42,7 @@ en la database y con todos los datos necesarios para que se vea bien).
 ----FER UN ALTRE FORM? PER INTRODUIR RESULTATS I FER LES OPERACIONS AQUELLES
 
 --FINAL	millorar amb el tema async await i tota la pesca que encara nose com va
+
+NEW TODO:____________________________________________________________________________
+-newform
+-newgridbindingsource mostrar datos y poder cambiarlos xd

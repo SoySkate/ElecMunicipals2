@@ -64,8 +64,12 @@
             labelNomTaula = new Label();
             btnCloseForm = new Button();
             panelDataAzul = new Panel();
+            dataGridView1 = new DataGridView();
+            iDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            nomMunicipiDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            numeroRegidorsDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            municipiBindingSource = new BindingSource(components);
             btnClosePanelData = new Button();
-            eleccionsMContextBindingSource = new BindingSource(components);
             panelMunicipis.SuspendLayout();
             panelNomMunicipi.SuspendLayout();
             panelNumRegidorsMunicipi.SuspendLayout();
@@ -73,7 +77,8 @@
             panelLlistaPartits.SuspendLayout();
             panelTaulesElectorals.SuspendLayout();
             panelDataAzul.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)eleccionsMContextBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)municipiBindingSource).BeginInit();
             SuspendLayout();
             // 
             // btnCarregarDades
@@ -424,12 +429,47 @@
             // panelDataAzul
             // 
             panelDataAzul.BackColor = SystemColors.ActiveCaption;
+            panelDataAzul.Controls.Add(dataGridView1);
             panelDataAzul.Controls.Add(btnClosePanelData);
             panelDataAzul.Location = new Point(3, 6);
             panelDataAzul.Name = "panelDataAzul";
             panelDataAzul.Size = new Size(943, 443);
             panelDataAzul.TabIndex = 8;
             panelDataAzul.Visible = false;
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.AutoGenerateColumns = false;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { iDDataGridViewTextBoxColumn, nomMunicipiDataGridViewTextBoxColumn, numeroRegidorsDataGridViewTextBoxColumn });
+            dataGridView1.DataSource = municipiBindingSource;
+            dataGridView1.Location = new Point(211, 63);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowTemplate.Height = 25;
+            dataGridView1.Size = new Size(348, 150);
+            dataGridView1.TabIndex = 10;
+            // 
+            // iDDataGridViewTextBoxColumn
+            // 
+            iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
+            iDDataGridViewTextBoxColumn.HeaderText = "ID";
+            iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
+            // 
+            // nomMunicipiDataGridViewTextBoxColumn
+            // 
+            nomMunicipiDataGridViewTextBoxColumn.DataPropertyName = "nomMunicipi";
+            nomMunicipiDataGridViewTextBoxColumn.HeaderText = "nomMunicipi";
+            nomMunicipiDataGridViewTextBoxColumn.Name = "nomMunicipiDataGridViewTextBoxColumn";
+            // 
+            // numeroRegidorsDataGridViewTextBoxColumn
+            // 
+            numeroRegidorsDataGridViewTextBoxColumn.DataPropertyName = "numeroRegidors";
+            numeroRegidorsDataGridViewTextBoxColumn.HeaderText = "numeroRegidors";
+            numeroRegidorsDataGridViewTextBoxColumn.Name = "numeroRegidorsDataGridViewTextBoxColumn";
+            // 
+            // municipiBindingSource
+            // 
+            municipiBindingSource.DataSource = typeof(Models.Municipi);
             // 
             // btnClosePanelData
             // 
@@ -442,25 +482,21 @@
             btnClosePanelData.UseVisualStyleBackColor = true;
             btnClosePanelData.Click += btnClosePanelData_Click;
             // 
-            // eleccionsMContextBindingSource
-            // 
-            eleccionsMContextBindingSource.DataSource = typeof(EleccionsMContext);
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
             ClientSize = new Size(947, 457);
-            Controls.Add(btnCloseForm);
-            Controls.Add(panelTaulesElectorals);
-            Controls.Add(panelLlistaPartits);
-            Controls.Add(panelCandidatsPartitMunicipi);
-            Controls.Add(panelNumRegidorsMunicipi);
-            Controls.Add(panelNomMunicipi);
+            Controls.Add(panelDataAzul);
             Controls.Add(panelMunicipis);
             Controls.Add(btnCarregarDades);
-            Controls.Add(panelDataAzul);
+            Controls.Add(panelTaulesElectorals);
+            Controls.Add(panelLlistaPartits);
+            Controls.Add(panelNumRegidorsMunicipi);
+            Controls.Add(panelNomMunicipi);
+            Controls.Add(panelCandidatsPartitMunicipi);
+            Controls.Add(btnCloseForm);
             Name = "Form1";
             Text = "Form1";
             panelMunicipis.ResumeLayout(false);
@@ -476,7 +512,8 @@
             panelTaulesElectorals.ResumeLayout(false);
             panelTaulesElectorals.PerformLayout();
             panelDataAzul.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)eleccionsMContextBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)municipiBindingSource).EndInit();
             ResumeLayout(false);
         }
 
@@ -518,6 +555,10 @@
         private Button btnCloseForm;
         private Panel panelDataAzul;
         private Button btnClosePanelData;
-        private BindingSource eleccionsMContextBindingSource;
+        private DataGridView dataGridView1;
+        private DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn nomMunicipiDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn numeroRegidorsDataGridViewTextBoxColumn;
+        private BindingSource municipiBindingSource;
     }
 }
