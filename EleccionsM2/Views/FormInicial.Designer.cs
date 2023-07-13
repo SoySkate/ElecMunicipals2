@@ -41,19 +41,21 @@
             iDDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             nomMunicipiDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             numeroRegidorsDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            Partit = new DataGridViewButtonColumn();
+            Partits = new DataGridViewButtonColumn();
+            municipiBindingSource1 = new BindingSource(components);
             dataGridView2 = new DataGridView();
-            dataGridView3 = new DataGridView();
-            iDDataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
-            nomCandidatDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             iDDataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
             nomPartitDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             Candidats = new DataGridViewButtonColumn();
+            dataGridView3 = new DataGridView();
+            iDDataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
+            nomCandidatDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)municipiBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)partitMunicipiBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)candidatBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)eleccionsMContextBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)municipiBindingSource1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
             SuspendLayout();
@@ -106,9 +108,9 @@
             // 
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { iDDataGridViewTextBoxColumn1, nomMunicipiDataGridViewTextBoxColumn1, numeroRegidorsDataGridViewTextBoxColumn1, Partit });
-            dataGridView1.DataSource = municipiBindingSource;
-            dataGridView1.Location = new Point(12, 21);
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { iDDataGridViewTextBoxColumn1, nomMunicipiDataGridViewTextBoxColumn1, numeroRegidorsDataGridViewTextBoxColumn1, Partits });
+            dataGridView1.DataSource = municipiBindingSource1;
+            dataGridView1.Location = new Point(12, 12);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.Size = new Size(470, 150);
@@ -133,12 +135,15 @@
             numeroRegidorsDataGridViewTextBoxColumn1.HeaderText = "numeroRegidors";
             numeroRegidorsDataGridViewTextBoxColumn1.Name = "numeroRegidorsDataGridViewTextBoxColumn1";
             // 
-            // Partit
+            // Partits
             // 
-            Partit.DataPropertyName = "ID";
-            Partit.HeaderText = "Partits";
-            Partit.Name = "Partit";
-            Partit.Text = "";
+            Partits.DataPropertyName = "ID";
+            Partits.HeaderText = "Partits";
+            Partits.Name = "Partits";
+            // 
+            // municipiBindingSource1
+            // 
+            municipiBindingSource1.DataSource = typeof(Models.Municipi);
             // 
             // dataGridView2
             // 
@@ -152,6 +157,25 @@
             dataGridView2.Size = new Size(358, 150);
             dataGridView2.TabIndex = 5;
             dataGridView2.CellClick += dataGridView2_CellClick;
+            dataGridView2.SelectionChanged += dataGridView2_SelectionChanged;
+            // 
+            // iDDataGridViewTextBoxColumn2
+            // 
+            iDDataGridViewTextBoxColumn2.DataPropertyName = "ID";
+            iDDataGridViewTextBoxColumn2.HeaderText = "ID";
+            iDDataGridViewTextBoxColumn2.Name = "iDDataGridViewTextBoxColumn2";
+            // 
+            // nomPartitDataGridViewTextBoxColumn
+            // 
+            nomPartitDataGridViewTextBoxColumn.DataPropertyName = "nomPartit";
+            nomPartitDataGridViewTextBoxColumn.HeaderText = "nomPartit";
+            nomPartitDataGridViewTextBoxColumn.Name = "nomPartitDataGridViewTextBoxColumn";
+            // 
+            // Candidats
+            // 
+            Candidats.DataPropertyName = "ID";
+            Candidats.HeaderText = "Candidats";
+            Candidats.Name = "Candidats";
             // 
             // dataGridView3
             // 
@@ -177,24 +201,6 @@
             nomCandidatDataGridViewTextBoxColumn.HeaderText = "nomCandidat";
             nomCandidatDataGridViewTextBoxColumn.Name = "nomCandidatDataGridViewTextBoxColumn";
             // 
-            // iDDataGridViewTextBoxColumn2
-            // 
-            iDDataGridViewTextBoxColumn2.DataPropertyName = "ID";
-            iDDataGridViewTextBoxColumn2.HeaderText = "ID";
-            iDDataGridViewTextBoxColumn2.Name = "iDDataGridViewTextBoxColumn2";
-            // 
-            // nomPartitDataGridViewTextBoxColumn
-            // 
-            nomPartitDataGridViewTextBoxColumn.DataPropertyName = "nomPartit";
-            nomPartitDataGridViewTextBoxColumn.HeaderText = "nomPartit";
-            nomPartitDataGridViewTextBoxColumn.Name = "nomPartitDataGridViewTextBoxColumn";
-            // 
-            // Candidats
-            // 
-            Candidats.DataPropertyName = "ID";
-            Candidats.HeaderText = "Candidats";
-            Candidats.Name = "Candidats";
-            // 
             // FormInicial
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -211,6 +217,7 @@
             ((System.ComponentModel.ISupportInitialize)candidatBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)eleccionsMContextBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)municipiBindingSource1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
             ResumeLayout(false);
@@ -230,12 +237,13 @@
         private DataGridView dataGridView3;
         private DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn3;
         private DataGridViewTextBoxColumn nomCandidatDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn nomMunicipiDataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn numeroRegidorsDataGridViewTextBoxColumn1;
-        private DataGridViewButtonColumn Partit;
         private DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn2;
         private DataGridViewTextBoxColumn nomPartitDataGridViewTextBoxColumn;
         private DataGridViewButtonColumn Candidats;
+        private DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn nomMunicipiDataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn numeroRegidorsDataGridViewTextBoxColumn1;
+        private DataGridViewButtonColumn Partits;
+        private BindingSource municipiBindingSource1;
     }
 }

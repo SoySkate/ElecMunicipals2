@@ -15,28 +15,43 @@ namespace EleccionsM2.ViewModel
         EleccionsM2.EleccionsMContext context;
 
         public List<Municipi> ListaMunicipis{ get; set; }
-        public List<PartitMunicipi> ListaPartits { get; set; }
+        public List<PartitMunicipi> ListaPartitsMunicipi { get; set; }
         public List<Candidat> ListaCandidats { get; set; }
-        public List<TaulaElectoral> ListaTaules { get; set; }
-        public List<ResultatsTaula> ListaResultats { get; set; }
+        //public List<TaulaElectoral> ListaTaules { get; set; }
+        //public List<ResultatsTaula> ListaResultats { get; set; }
+        public Municipi ActualMunicipi { get; set; }
+        public PartitMunicipi ActualPartit { get; set; }
 
-        
+
         //public Municipi MunicipiSeleccionat { get; set; } = new Municipi();
 
         public EleccionsViewModel()
         {
             context= new EleccionsMContext();
-            
-            ListaMunicipis = context.Municipis.ToList();
-            ListaPartits = context.PartitsPolitics.ToList();
-            ListaCandidats = context.Candidats.ToList();
-            ListaTaules = context.TaulesElectorals.ToList();
-            ListaResultats = context.ResultatsTaules.ToList();
+          
+            ListaMunicipis = context.Municipis.Include(m=> m.llistaPartits).ThenInclude(c=>c.candidats).ToList();
+           
         }
         public void Grabar()
         {
             context.SaveChanges();
+        }
+        public List<PartitMunicipi> mostrarPartidosM(Municipi municipiActual)
+        {
+          return municipiActual.llistaPartits;
+        }
+        public void idSelectedMostrarPartidos(long idSelected)
+        {
+            int n = (int)idSelected;
+            ActualMunicipi = ListaMunicipis.SingleOrDefault(m => m.ID == n);
+            
+            ListaPartitsMunicipi = ActualMunicipi.llistaPartits.ToList();
+        }
 
+        public void idSelectedPartidoMostrarCandidatos(long idSelected)
+        {
+            ActualPartit = ListaPartitsMunicipi.SingleOrDefault(p => p.ID == idSelected);
+            ListaCandidats = ActualPartit.candidats.ToList();
         }
 
 

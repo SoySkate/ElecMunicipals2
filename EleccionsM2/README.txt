@@ -1,3 +1,56 @@
+DONE:________________________________________________________________________________
+
+
+NEW TODO:____________________________________________________________________________
+-newform
+-newgridbindingsource mostrar datos y poder cambiar-los xd
+-Això pilla qualsevol canvi: DataGridView1_SelectionChanged i he de mirar lo del principi y selecciona el primer de una xd
+-Mirar com actualitzar les dades cada cop que clico a un municipi diferent i despres
+fer el mateix que he fet amb els partits->candidats
+
+
+-Recordar Cridar la funcio de Grabar();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 DONE:____________________________________________________________________________
 -estructura clases
@@ -43,6 +96,3 @@ en la database y con todos los datos necesarios para que se vea bien).
 
 --FINAL	millorar amb el tema async await i tota la pesca que encara nose com va
 
-NEW TODO:____________________________________________________________________________
--newform
--newgridbindingsource mostrar datos y poder cambiarlos xd
