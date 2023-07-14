@@ -63,22 +63,22 @@
             labelCensTaula = new Label();
             labelNomTaula = new Label();
             btnCloseForm = new Button();
-            panelDataAzul = new Panel();
-            dataGridView1 = new DataGridView();
-            iDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            nomMunicipiDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            numeroRegidorsDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             municipiBindingSource = new BindingSource(components);
             btnClosePanelData = new Button();
+            panelDataAzul = new Panel();
+            numeroRegidorsDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            nomMunicipiDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            iDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            dataGridView1 = new DataGridView();
             panelMunicipis.SuspendLayout();
             panelNomMunicipi.SuspendLayout();
             panelNumRegidorsMunicipi.SuspendLayout();
             panelCandidatsPartitMunicipi.SuspendLayout();
             panelLlistaPartits.SuspendLayout();
             panelTaulesElectorals.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)municipiBindingSource).BeginInit();
             panelDataAzul.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)municipiBindingSource).BeginInit();
             SuspendLayout();
             // 
             // btnCarregarDades
@@ -426,47 +426,6 @@
             btnCloseForm.UseVisualStyleBackColor = true;
             btnCloseForm.Click += btnCloseForm_Click;
             // 
-            // panelDataAzul
-            // 
-            panelDataAzul.BackColor = SystemColors.ActiveCaption;
-            panelDataAzul.Controls.Add(dataGridView1);
-            panelDataAzul.Controls.Add(btnClosePanelData);
-            panelDataAzul.Location = new Point(3, 6);
-            panelDataAzul.Name = "panelDataAzul";
-            panelDataAzul.Size = new Size(943, 443);
-            panelDataAzul.TabIndex = 8;
-            panelDataAzul.Visible = false;
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.AutoGenerateColumns = false;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { iDDataGridViewTextBoxColumn, nomMunicipiDataGridViewTextBoxColumn, numeroRegidorsDataGridViewTextBoxColumn });
-            dataGridView1.DataSource = municipiBindingSource;
-            dataGridView1.Location = new Point(211, 63);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(348, 150);
-            dataGridView1.TabIndex = 10;
-            // 
-            // iDDataGridViewTextBoxColumn
-            // 
-            iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
-            iDDataGridViewTextBoxColumn.HeaderText = "ID";
-            iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
-            // 
-            // nomMunicipiDataGridViewTextBoxColumn
-            // 
-            nomMunicipiDataGridViewTextBoxColumn.DataPropertyName = "nomMunicipi";
-            nomMunicipiDataGridViewTextBoxColumn.HeaderText = "nomMunicipi";
-            nomMunicipiDataGridViewTextBoxColumn.Name = "nomMunicipiDataGridViewTextBoxColumn";
-            // 
-            // numeroRegidorsDataGridViewTextBoxColumn
-            // 
-            numeroRegidorsDataGridViewTextBoxColumn.DataPropertyName = "numeroRegidors";
-            numeroRegidorsDataGridViewTextBoxColumn.HeaderText = "numeroRegidors";
-            numeroRegidorsDataGridViewTextBoxColumn.Name = "numeroRegidorsDataGridViewTextBoxColumn";
-            // 
             // municipiBindingSource
             // 
             municipiBindingSource.DataSource = typeof(Models.Municipi);
@@ -481,6 +440,47 @@
             btnClosePanelData.Text = "X";
             btnClosePanelData.UseVisualStyleBackColor = true;
             btnClosePanelData.Click += btnClosePanelData_Click;
+            // 
+            // panelDataAzul
+            // 
+            panelDataAzul.BackColor = SystemColors.ActiveCaption;
+            panelDataAzul.Controls.Add(dataGridView1);
+            panelDataAzul.Controls.Add(btnClosePanelData);
+            panelDataAzul.Location = new Point(3, 6);
+            panelDataAzul.Name = "panelDataAzul";
+            panelDataAzul.Size = new Size(943, 443);
+            panelDataAzul.TabIndex = 8;
+            panelDataAzul.Visible = false;
+            // 
+            // numeroRegidorsDataGridViewTextBoxColumn
+            // 
+            numeroRegidorsDataGridViewTextBoxColumn.DataPropertyName = "numeroRegidors";
+            numeroRegidorsDataGridViewTextBoxColumn.HeaderText = "numeroRegidors";
+            numeroRegidorsDataGridViewTextBoxColumn.Name = "numeroRegidorsDataGridViewTextBoxColumn";
+            // 
+            // nomMunicipiDataGridViewTextBoxColumn
+            // 
+            nomMunicipiDataGridViewTextBoxColumn.DataPropertyName = "nomMunicipi";
+            nomMunicipiDataGridViewTextBoxColumn.HeaderText = "nomMunicipi";
+            nomMunicipiDataGridViewTextBoxColumn.Name = "nomMunicipiDataGridViewTextBoxColumn";
+            // 
+            // iDDataGridViewTextBoxColumn
+            // 
+            iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
+            iDDataGridViewTextBoxColumn.HeaderText = "ID";
+            iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.AutoGenerateColumns = false;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { iDDataGridViewTextBoxColumn, nomMunicipiDataGridViewTextBoxColumn, numeroRegidorsDataGridViewTextBoxColumn });
+            dataGridView1.DataSource = municipiBindingSource;
+            dataGridView1.Location = new Point(211, 63);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowTemplate.Height = 25;
+            dataGridView1.Size = new Size(348, 150);
+            dataGridView1.TabIndex = 10;
             // 
             // Form1
             // 
@@ -511,9 +511,9 @@
             panelLlistaPartits.PerformLayout();
             panelTaulesElectorals.ResumeLayout(false);
             panelTaulesElectorals.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)municipiBindingSource).EndInit();
             panelDataAzul.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)municipiBindingSource).EndInit();
             ResumeLayout(false);
         }
 
@@ -553,12 +553,12 @@
         private Button btnEliminarMunicipi;
         private Button btnEliminarTaula;
         private Button btnCloseForm;
-        private Panel panelDataAzul;
+        private BindingSource municipiBindingSource;
         private Button btnClosePanelData;
+        private Panel panelDataAzul;
         private DataGridView dataGridView1;
         private DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn nomMunicipiDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn numeroRegidorsDataGridViewTextBoxColumn;
-        private BindingSource municipiBindingSource;
     }
 }

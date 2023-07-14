@@ -28,7 +28,7 @@ namespace EleccionsM2
             base.OnModelCreating(modelBuilder);
         }
         //Comandos para inicializar la Migracion una vez se ha creado o modificado las clases y por lo tanto
-        //Se habran modificado las tablas: Comando:::
+        //Se habran modificado las tablas(incluso cambiando de PC)Se modifica parte de las tablas pq la conexion ha cambiado: Comando:::
         //EntityFrameworkCore\Add-Migration (Migration'sName)
         //Después de esto el comando para actualizar la Database es:
         //EntityFrameworkCore\Update-DataBase

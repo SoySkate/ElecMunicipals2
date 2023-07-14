@@ -11,6 +11,7 @@ using System.Runtime.Serialization.DataContracts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace EleccionsM2.Views
 {
@@ -19,16 +20,11 @@ namespace EleccionsM2.Views
         public FormInicial()
         {
             InitializeComponent();
-
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.SelectionChanged += DataGridView1_SelectionChanged;
-            dataGridView1.CellClick += dataGridView1_CellClick;
 
         }
-        public long B;
-        public long C;
-        public int selectedRowMuni;
-        public int selectedRowParti;
+
         EleccionsViewModel viewModel = new EleccionsViewModel();
 
         public void mostrarMunicipis()
@@ -36,79 +32,81 @@ namespace EleccionsM2.Views
             dataGridView1.DataSource = viewModel;
             dataGridView1.DataMember = "ListaMunicipis";
         }
-        public void mostrarPartits()
+        public void mostrarPartits(long idMuni)
         {
-            if (B > 0)
-            {
-                dataGridView2.DataSource = null;
-                viewModel.idSelectedMostrarPartidos(B);
-                dataGridView2.DataSource = viewModel.ListaPartitsMunicipi;
-                //dataGridView2.DataMember = "ListaPartitsMunicipi";
-                dataGridView2.Refresh();
-            }
-        }
-        public void mostrarCandidats()
-        {
-            if(C > 0) 
-            {
-                dataGridView3.DataSource = null;
-                viewModel.idSelectedPartidoMostrarCandidatos(C);
-                dataGridView3.DataSource = viewModel.ListaCandidats;
-                //dataGridView3.DataMember = "ListaCandidats";
-                dataGridView3.Refresh();
-            }
-        }
 
+            if (idMuni > 0)
+            {
+                viewModel.idSelectedMostrarPartidos(idMuni);
+                dataGridView2.DataSource = viewModel.ListaPartitsMunicipi;
+            }
+            //este condicional chequea si hay data en partidos y si no hay deja las datagrid partit i candidat vacias
+            try
+            {
+                if (viewModel.ActualMunicipi.llistaPartits.Count == 0)
+                {
+                    dataGridView3.DataSource = null;
+                    viewModel.VaciarListaCandidatos();
+                    //dataGridView3.DataSource = viewModel.ListaCandidats;
+                }
+            }
+            catch (Exception) { MessageBox.Show("No hay nada I con esto me peta igual porque?"); }
+        }
+        public void mostrarCandidats(long idPartit)
+        {
+            if (idPartit > 0)
+            {
+                if (viewModel.ListaPartitsMunicipi.Count > 0)
+                {
+                    viewModel.idSelectedPartidoMostrarCandidatos(idPartit);
+                    dataGridView3.DataSource = viewModel.ListaCandidats;
+                }
+            }
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             mostrarMunicipis();
             viewModel.Grabar();
         }
-
-        //aqui trobo el id de la row per pasarli a laltre funció
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            selectedRowMuni = e.RowIndex;
-        }
         //Funcio per trobar el ID de la rowSelected
         private void DataGridView1_SelectionChanged(object? sender, EventArgs e)
         {
+            long idMuni = 0;
             if (dataGridView1.SelectedRows.Count > 0)
             {
                 DataGridViewRow a;
-                a = dataGridView1.SelectedRows[selectedRowMuni];
+                a = dataGridView1.SelectedRows[0];
                 foreach (DataGridViewColumn col in dataGridView1.Columns)
                 {
                     if (col.DataPropertyName == "ID")
                     {
-                        B = (long)a.Cells[col.Index].Value;
+                        idMuni = (long)a.Cells[col.Index].Value;
                     }
                 }
-                MessageBox.Show(B.ToString());
-                mostrarPartits();
+                mostrarPartits(idMuni);
             }
-        }
-        private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            selectedRowParti = e.RowIndex;
         }
         private void dataGridView2_SelectionChanged(object? sender, EventArgs e)
         {
-            if (dataGridView1.SelectedRows.Count > 0)
+            long idPartit = 0;
+            if (dataGridView2.SelectedRows.Count > 0)
             {
                 //A ver el evento este no funca rmano
                 DataGridViewRow a;
-                a = dataGridView2.SelectedRows[selectedRowParti];
+                a = dataGridView2.SelectedRows[0];
                 foreach (DataGridViewColumn col in dataGridView2.Columns)
                 {
                     if (col.DataPropertyName == "ID")
                     {
-                        C = (long)a.Cells[col.Index].Value;
+                        idPartit = (long)a.Cells[col.Index].Value;
                     }
                 }
-                MessageBox.Show(C.ToString());
-                mostrarCandidats();
+                mostrarCandidats(idPartit);
             }
+        }
+        private void btnGuardarDades_Click(object sender, EventArgs e)
+        {
+            viewModel.Grabar();
         }
     }
 }

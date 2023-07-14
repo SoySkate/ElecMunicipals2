@@ -36,10 +36,6 @@ namespace EleccionsM2.ViewModel
         {
             context.SaveChanges();
         }
-        public List<PartitMunicipi> mostrarPartidosM(Municipi municipiActual)
-        {
-          return municipiActual.llistaPartits;
-        }
         public void idSelectedMostrarPartidos(long idSelected)
         {
             int n = (int)idSelected;
@@ -53,8 +49,9 @@ namespace EleccionsM2.ViewModel
             ActualPartit = ListaPartitsMunicipi.SingleOrDefault(p => p.ID == n);
             ListaCandidats = ActualPartit.candidats.ToList();
         }
-
-
-
+        public void VaciarListaCandidatos()
+        {
+            ListaCandidats.Clear();
+        }
     }
 }
