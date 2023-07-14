@@ -26,6 +26,7 @@ namespace EleccionsM2.Views
 
         }
         public long B;
+        public long C;
         public int selectedRowMuni;
         public int selectedRowParti;
         EleccionsViewModel viewModel = new EleccionsViewModel();
@@ -48,8 +49,14 @@ namespace EleccionsM2.Views
         }
         public void mostrarCandidats()
         {
-            dataGridView3.DataSource = viewModel;
-            dataGridView3.DataMember = "ListaCandidats";
+            if(C > 0) 
+            {
+                dataGridView3.DataSource = null;
+                viewModel.idSelectedPartidoMostrarCandidatos(C);
+                dataGridView3.DataSource = viewModel.ListaCandidats;
+                //dataGridView3.DataMember = "ListaCandidats";
+                dataGridView3.Refresh();
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -62,18 +69,6 @@ namespace EleccionsM2.Views
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             selectedRowMuni = e.RowIndex;
-        }
-
-        private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            selectedRowParti = e.RowIndex;
-            int col; int row;
-            col = e.ColumnIndex;
-            row = e.RowIndex;
-            if (col == 2 && row == 0)
-            {
-                //mostrarCandidats();
-            }
         }
         //Funcio per trobar el ID de la rowSelected
         private void DataGridView1_SelectionChanged(object? sender, EventArgs e)
@@ -93,18 +88,26 @@ namespace EleccionsM2.Views
                 mostrarPartits();
             }
         }
-
-        private void dataGridView2_SelectionChanged(object sender, EventArgs e)
+        private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dataGridView2.SelectedRows.Count > 0)
+            selectedRowParti = e.RowIndex;
+        }
+        private void dataGridView2_SelectionChanged(object? sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
             {
+                //A ver el evento este no funca rmano
                 DataGridViewRow a;
                 a = dataGridView2.SelectedRows[selectedRowParti];
-                foreach ()
+                foreach (DataGridViewColumn col in dataGridView2.Columns)
                 {
-                    //fer lo mismo que la func de arriba
+                    if (col.DataPropertyName == "ID")
+                    {
+                        C = (long)a.Cells[col.Index].Value;
+                    }
                 }
-              
+                MessageBox.Show(C.ToString());
+                mostrarCandidats();
             }
         }
     }

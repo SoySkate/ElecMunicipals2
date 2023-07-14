@@ -44,13 +44,13 @@ namespace EleccionsM2.ViewModel
         {
             int n = (int)idSelected;
             ActualMunicipi = ListaMunicipis.SingleOrDefault(m => m.ID == n);
-            
             ListaPartitsMunicipi = ActualMunicipi.llistaPartits.ToList();
         }
 
         public void idSelectedPartidoMostrarCandidatos(long idSelected)
         {
-            ActualPartit = ListaPartitsMunicipi.SingleOrDefault(p => p.ID == idSelected);
+            int n = (int)idSelected;
+            ActualPartit = ListaPartitsMunicipi.SingleOrDefault(p => p.ID == n);
             ListaCandidats = ActualPartit.candidats.ToList();
         }
 

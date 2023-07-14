@@ -117,3 +117,4 @@ C:\Users\Andrew\source\repos\ElecMunicipals2\EleccionsM2\obj\Debug\net7.0-window
 C:\Users\Andrew\source\repos\ElecMunicipals2\EleccionsM2\obj\Debug\net7.0-windows\EleccionsM2.genruntimeconfig.cache
 C:\Users\Andrew\source\repos\ElecMunicipals2\EleccionsM2\obj\Debug\net7.0-windows\ref\EleccionsM2.dll
 C:\Users\formacio3\source\repos\EleccionsM2\EleccionsM2\obj\Debug\net7.0-windows\EleccionsM2.Views.FormInicial.resources
+C:\Users\Andrew\source\repos\ElecMunicipals2\EleccionsM2\obj\Debug\net7.0-windows\EleccionsM2.Views.FormInicial.resources
