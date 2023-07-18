@@ -10,7 +10,7 @@ namespace EleccionsM2.Models
     public class Municipi //INotifyPropertyChanged
     {
         public long ID { get; set; }
-        public string nomMunicipi { get; set; }
+        public string nomMunicipi {  get; set; }
         public int numeroRegidors { get; set; }
         //Potser la list de llista partits del municipi té més sentit...?
         public List<PartitMunicipi> llistaPartits { get; set; }

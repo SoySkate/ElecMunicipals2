@@ -2,9 +2,11 @@ DONE:___________________________________________________________________________
 
 
 NEW TODO:____________________________________________________________________________
--reordenar les funcions mostrar per ferles desde el viewModel
--https://learn.microsoft.com/en-us/ef/ef6/fundamentals/databinding/winforms
+- poder editar les altre dades (posar nous textbox?) per partits i candidats..?
 
+/no funca la funcion del textboxCandidat....
+
+-https://learn.microsoft.com/en-us/ef/ef6/fundamentals/databinding/winforms
 
 
 -Recordar Cridar la funcio de Grabar();

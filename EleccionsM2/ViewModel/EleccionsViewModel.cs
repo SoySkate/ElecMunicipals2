@@ -1,5 +1,6 @@
 ﻿using EleccionsM2.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -21,6 +22,7 @@ namespace EleccionsM2.ViewModel
         //public List<ResultatsTaula> ListaResultats { get; set; }
         public Municipi ActualMunicipi { get; set; }
         public PartitMunicipi ActualPartit { get; set; }
+        public Candidat ActualCandidat { get; set; }
 
 
         //public Municipi MunicipiSeleccionat { get; set; } = new Municipi();
@@ -42,16 +44,32 @@ namespace EleccionsM2.ViewModel
             ActualMunicipi = ListaMunicipis.SingleOrDefault(m => m.ID == n);
             ListaPartitsMunicipi = ActualMunicipi.llistaPartits.ToList();
         }
-
         public void idSelectedPartidoMostrarCandidatos(long idSelected)
         {
             int n = (int)idSelected;
             ActualPartit = ListaPartitsMunicipi.SingleOrDefault(p => p.ID == n);
             ListaCandidats = ActualPartit.candidats.ToList();
         }
+        public void idSelectedCandidat(long idCandidat)
+        {
+            int n = (int) idCandidat;
+            ActualCandidat = ListaCandidats.SingleOrDefault(c => c.ID == n);
+        }
         public void VaciarListaCandidatos()
         {
             ListaCandidats.Clear();
+        }
+        public Municipi passarMuncipiTxt()
+        {
+            return ActualMunicipi;
+        }
+        public PartitMunicipi passarPartitTxt()
+        {
+            return ActualPartit;
+        }
+        public Candidat passarCandidatTxt()
+        {
+            return ActualCandidat;
         }
     }
 }

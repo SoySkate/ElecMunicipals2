@@ -3,6 +3,7 @@ using EleccionsM2.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -34,20 +35,21 @@ namespace EleccionsM2.Views
         }
         public void mostrarPartits(long idMuni)
         {
-
             if (idMuni > 0)
             {
                 viewModel.idSelectedMostrarPartidos(idMuni);
                 dataGridView2.DataSource = viewModel.ListaPartitsMunicipi;
+                textBoxNomPartit.ReadOnly = false;
             }
             //este condicional chequea si hay data en partidos y si no hay deja las datagrid partit i candidat vacias
             try
             {
                 if (viewModel.ActualMunicipi.llistaPartits.Count == 0)
                 {
+                    textBoxNomPartit.ReadOnly = true;
                     dataGridView3.DataSource = null;
+                    dataGridView2.DataSource = null;
                     viewModel.VaciarListaCandidatos();
-                    //dataGridView3.DataSource = viewModel.ListaCandidats;
                 }
             }
             catch (Exception) { MessageBox.Show("No hay nada I con esto me peta igual porque?"); }
@@ -63,9 +65,13 @@ namespace EleccionsM2.Views
                 }
             }
         }
+        //Buttons load and save changes
         private void button1_Click(object sender, EventArgs e)
         {
             mostrarMunicipis();
+        }
+        private void btnGuardarDades_Click(object sender, EventArgs e)
+        {
             viewModel.Grabar();
         }
         //Funcio per trobar el ID de la rowSelected
@@ -84,6 +90,8 @@ namespace EleccionsM2.Views
                     }
                 }
                 mostrarPartits(idMuni);
+                bindtextBoxMunicipi();
+
             }
         }
         private void dataGridView2_SelectionChanged(object? sender, EventArgs e)
@@ -91,7 +99,6 @@ namespace EleccionsM2.Views
             long idPartit = 0;
             if (dataGridView2.SelectedRows.Count > 0)
             {
-                //A ver el evento este no funca rmano
                 DataGridViewRow a;
                 a = dataGridView2.SelectedRows[0];
                 foreach (DataGridViewColumn col in dataGridView2.Columns)
@@ -102,11 +109,49 @@ namespace EleccionsM2.Views
                     }
                 }
                 mostrarCandidats(idPartit);
+                bindtextBoxPartit();
             }
         }
-        private void btnGuardarDades_Click(object sender, EventArgs e)
+        private void dataGridView3_SelectionChanged(object sender, EventArgs e)
         {
-            viewModel.Grabar();
+            long idCandidat = 0;
+            if (dataGridView3.SelectedRows.Count > 0)
+            {
+                DataGridViewRow a;
+                a = dataGridView3.SelectedRows[0];
+                foreach (DataGridViewColumn col in dataGridView3.Columns)
+                {
+                    if (col.DataPropertyName == "ID")
+                    {
+                        idCandidat = (long)a.Cells[col.Index].Value;
+                    }
+                }
+                viewModel.idSelectedCandidat(idCandidat);
+                bindtextBoxCandidat();
+            }
         }
+        //Recoge el actual municipi i lo bindea con el textbox1
+        public void bindtextBoxMunicipi()
+        {
+            var municipi = viewModel.passarMuncipiTxt();
+            textBox1.DataBindings.Clear();
+            textBox1.DataBindings.Add("Text", municipi, "nomMunicipi");
+            textBox2.DataBindings.Clear();
+            textBox2.DataBindings.Add("Text", municipi, "numeroRegidors");
+        }
+        public void bindtextBoxPartit()
+        {
+            var partit = viewModel.passarPartitTxt();
+            textBoxNomPartit.DataBindings.Clear();
+            textBoxNomPartit.DataBindings.Add("Text", partit, "nomPartit");
+        }
+        //no funca esta funcionla del textboxCandidat
+        public void bindtextBoxCandidat()
+        {
+            var candidat = viewModel.passarCandidatTxt();
+            textBoxNomCandidat.DataBindings.Clear();
+            textBoxNomCandidat.DataBindings.Add("Text", candidat, "nomCandidat");
+        }
+
     }
 }

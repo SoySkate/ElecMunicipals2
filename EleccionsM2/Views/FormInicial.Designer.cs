@@ -37,6 +37,10 @@
             dataGridView3 = new DataGridView();
             btnGuardarDades = new Button();
             panel1 = new Panel();
+            label3 = new Label();
+            textBoxNomCandidat = new TextBox();
+            label2 = new Label();
+            textBoxNomPartit = new TextBox();
             label1 = new Label();
             textBox2 = new TextBox();
             textBox1 = new TextBox();
@@ -103,11 +107,12 @@
             dataGridView3.RowTemplate.Height = 25;
             dataGridView3.Size = new Size(244, 189);
             dataGridView3.TabIndex = 6;
+            dataGridView3.SelectionChanged += dataGridView3_SelectionChanged;
             // 
             // btnGuardarDades
             // 
             btnGuardarDades.Anchor = AnchorStyles.Top;
-            btnGuardarDades.Location = new Point(339, 339);
+            btnGuardarDades.Location = new Point(339, 348);
             btnGuardarDades.Name = "btnGuardarDades";
             btnGuardarDades.Size = new Size(107, 23);
             btnGuardarDades.TabIndex = 7;
@@ -118,6 +123,10 @@
             // panel1
             // 
             panel1.Anchor = AnchorStyles.Top;
+            panel1.Controls.Add(label3);
+            panel1.Controls.Add(textBoxNomCandidat);
+            panel1.Controls.Add(label2);
+            panel1.Controls.Add(textBoxNomPartit);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(textBox2);
             panel1.Controls.Add(dataGridView1);
@@ -129,14 +138,46 @@
             panel1.Size = new Size(776, 279);
             panel1.TabIndex = 8;
             // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(549, 39);
+            label3.Name = "label3";
+            label3.Size = new Size(91, 15);
+            label3.TabIndex = 16;
+            label3.Text = "Nom Candidat :";
+            // 
+            // textBoxNomCandidat
+            // 
+            textBoxNomCandidat.Location = new Point(657, 36);
+            textBoxNomCandidat.Name = "textBoxNomCandidat";
+            textBoxNomCandidat.Size = new Size(100, 23);
+            textBoxNomCandidat.TabIndex = 15;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(292, 39);
+            label2.Name = "label2";
+            label2.Size = new Size(71, 15);
+            label2.TabIndex = 14;
+            label2.Text = "Nom Partit :";
+            // 
+            // textBoxNomPartit
+            // 
+            textBoxNomPartit.Location = new Point(384, 39);
+            textBoxNomPartit.Name = "textBoxNomPartit";
+            textBoxNomPartit.Size = new Size(100, 23);
+            textBoxNomPartit.TabIndex = 12;
+            // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Location = new Point(59, 9);
             label1.Name = "label1";
-            label1.Size = new Size(116, 15);
+            label1.Size = new Size(122, 15);
             label1.TabIndex = 11;
-            label1.Text = "Nom i Num regidors";
+            label1.Text = "Nom i Num regidors :";
             // 
             // textBox2
             // 
@@ -183,5 +224,9 @@
         private Label label1;
         private TextBox textBox2;
         private TextBox textBox1;
+        private Label label2;
+        private TextBox textBoxNomPartit;
+        private Label label3;
+        private TextBox textBoxNomCandidat;
     }
 }
