@@ -2,19 +2,19 @@ DONE:___________________________________________________________________________
 
 
 NEW TODO:____________________________________________________________________________
-- poder editar les altre dades (posar nous textbox?) per partits i candidats..?
 
-/no funca la funcion del textboxCandidat....
+-com afegir i eliminar un muni o partit o candidat?
 
--https://learn.microsoft.com/en-us/ef/ef6/fundamentals/databinding/winforms
+-button afegir (crearform per afegir)
+-button eliminar
+
+
+-tinc eerror on hi ha linclude nos epq xd 
+
+-He comentat tot el form1 i el form1.designer
 
 
 -Recordar Cridar la funcio de Grabar();
-
-
-
-
-
 
 
 

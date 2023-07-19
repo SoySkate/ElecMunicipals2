@@ -33,13 +33,18 @@ namespace EleccionsM2.Views
             dataGridView1.DataSource = viewModel;
             dataGridView1.DataMember = "ListaMunicipis";
         }
-        public void mostrarPartits(long idMuni)
+        public void mostrarPartitsAndTaules(long idMuni)
         {
             if (idMuni > 0)
             {
-                viewModel.idSelectedMostrarPartidos(idMuni);
+                viewModel.idSelectedMostrarPartidosAndTaules(idMuni);
                 dataGridView2.DataSource = viewModel.ListaPartitsMunicipi;
+                dataGridView4.DataSource = viewModel.ListaTaulesMunicipi;
+                dataGridView4.Columns[3].Visible = false;
                 textBoxNomPartit.ReadOnly = false;
+                textBoxNomCandidat.ReadOnly = false;
+                textBoxNomTaula.ReadOnly = false;
+                textBoxCensTaula.ReadOnly = false;
             }
             //este condicional chequea si hay data en partidos y si no hay deja las datagrid partit i candidat vacias
             try
@@ -47,12 +52,18 @@ namespace EleccionsM2.Views
                 if (viewModel.ActualMunicipi.llistaPartits.Count == 0)
                 {
                     textBoxNomPartit.ReadOnly = true;
+                    textBoxNomCandidat.ReadOnly = true;
                     dataGridView3.DataSource = null;
                     dataGridView2.DataSource = null;
                     viewModel.VaciarListaCandidatos();
                 }
+                if (viewModel.ActualMunicipi.taulesElectorals.Count == 0)
+                {
+                    textBoxNomTaula.ReadOnly = true;
+                    textBoxCensTaula.ReadOnly = true;
+                }
             }
-            catch (Exception) { MessageBox.Show("No hay nada I con esto me peta igual porque?"); }
+            catch (Exception) { MessageBox.Show("Exception rara"); }
         }
         public void mostrarCandidats(long idPartit)
         {
@@ -89,9 +100,8 @@ namespace EleccionsM2.Views
                         idMuni = (long)a.Cells[col.Index].Value;
                     }
                 }
-                mostrarPartits(idMuni);
+                mostrarPartitsAndTaules(idMuni);
                 bindtextBoxMunicipi();
-
             }
         }
         private void dataGridView2_SelectionChanged(object? sender, EventArgs e)
@@ -112,6 +122,7 @@ namespace EleccionsM2.Views
                 bindtextBoxPartit();
             }
         }
+        //esto no funciona nose pq
         private void dataGridView3_SelectionChanged(object sender, EventArgs e)
         {
             long idCandidat = 0;
@@ -130,28 +141,78 @@ namespace EleccionsM2.Views
                 bindtextBoxCandidat();
             }
         }
-        //Recoge el actual municipi i lo bindea con el textbox1
+        private void dataGridView4_SelectionChanged(object sender, EventArgs e)
+        {
+            long idTaula = 0;
+            if (dataGridView4.SelectedRows.Count > 0)
+            {
+                DataGridViewRow a;
+                a = dataGridView4.SelectedRows[0];
+                foreach (DataGridViewColumn col in dataGridView4.Columns)
+                {
+                    if (col.DataPropertyName == "ID")
+                    {
+                        idTaula = (long)a.Cells[col.Index].Value;
+                    }
+                }
+                viewModel.idSelectedTaula(idTaula);
+                bindtextBoxTaula();
+            }
+        }
+        //Recoge el actual municipi i lo bindea con el textbox1 y así con los siguientes
         public void bindtextBoxMunicipi()
         {
-            var municipi = viewModel.passarMuncipiTxt();
             textBox1.DataBindings.Clear();
-            textBox1.DataBindings.Add("Text", municipi, "nomMunicipi");
+            textBox1.DataBindings.Add("Text", viewModel.ActualMunicipi, "nomMunicipi");
             textBox2.DataBindings.Clear();
-            textBox2.DataBindings.Add("Text", municipi, "numeroRegidors");
+            textBox2.DataBindings.Add("Text", viewModel.ActualMunicipi, "numeroRegidors");
         }
         public void bindtextBoxPartit()
         {
-            var partit = viewModel.passarPartitTxt();
             textBoxNomPartit.DataBindings.Clear();
-            textBoxNomPartit.DataBindings.Add("Text", partit, "nomPartit");
+            textBoxNomPartit.DataBindings.Add("Text", viewModel.ActualPartit, "nomPartit");
         }
-        //no funca esta funcionla del textboxCandidat
         public void bindtextBoxCandidat()
         {
-            var candidat = viewModel.passarCandidatTxt();
             textBoxNomCandidat.DataBindings.Clear();
-            textBoxNomCandidat.DataBindings.Add("Text", candidat, "nomCandidat");
+            textBoxNomCandidat.DataBindings.Add("Text", viewModel.ActualCandidat, "nomCandidat");
         }
-
+        public void bindtextBoxTaula()
+        {
+            textBoxNomTaula.DataBindings.Clear();
+            textBoxNomTaula.DataBindings.Add("Text", viewModel.ActualTaula, "nomTaula");
+            textBoxCensTaula.DataBindings.Clear();
+            textBoxCensTaula.DataBindings.Add("Text", viewModel.ActualTaula, "censTaula");
+        }
+        //Crea una instancia del formulario y la usa para acceder a los datos entrados en el form
+        //y la del viewmodel de ese form en concreto
+        private void buttonAddMuni_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(viewModel.ListaMunicipis.Count.ToString());
+            FormMunicipi formMunicipi = new();
+            if (formMunicipi.ShowDialog() == DialogResult.OK)
+            {
+                viewModel.ActualMunicipi = formMunicipi.Municipi;
+                viewModel.ListaMunicipis.Add(viewModel.ActualMunicipi);
+                viewModel.Grabar();
+                MessageBox.Show(viewModel.ListaMunicipis.Count.ToString());
+            }
+            else { MessageBox.Show("XDDDMAL"); }
+        }
+        private void buttonAddPartit_Click(object sender, EventArgs e)
+        {
+            FormPartit formPartit = new FormPartit();
+            formPartit.ShowDialog();
+        }
+        private void buttonAddCandidat_Click(object sender, EventArgs e)
+        {
+            FormCandidat formCandidat = new FormCandidat();
+            formCandidat.ShowDialog();
+        }
+        private void button3_Click(object sender, EventArgs e)
+        {
+            FormTaula formTaula = new FormTaula();
+            formTaula.ShowDialog();
+        }
     }
 }
