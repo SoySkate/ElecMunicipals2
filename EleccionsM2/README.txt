@@ -5,8 +5,8 @@ DONE:___________________________________________________________________________
 NEW TODO:____________________________________________________________________________
 -com afegir i eliminar un muni o partit o candidat?
 
--button eliminar
--Poder afegir resultats taula
+-Controlar els valors nulls si la db es null es ralla el programa xd
+-Poder afegir resultats taula (per mes endavant)
 
 
 -Textbox posar un maxim de lletres no?(ja hesta capat per nums i lletres segons el cas)

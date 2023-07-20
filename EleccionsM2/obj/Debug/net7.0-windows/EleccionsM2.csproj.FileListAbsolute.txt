@@ -122,3 +122,7 @@ C:\Users\formacio3\source\repos\EleccionsM2\EleccionsM2\obj\Debug\net7.0-windows
 C:\Users\formacio3\source\repos\EleccionsM2\EleccionsM2\obj\Debug\net7.0-windows\EleccionsM2.Views.FormMunicipi.resources
 C:\Users\formacio3\source\repos\EleccionsM2\EleccionsM2\obj\Debug\net7.0-windows\EleccionsM2.Views.FormPartit.resources
 C:\Users\formacio3\source\repos\EleccionsM2\EleccionsM2\obj\Debug\net7.0-windows\EleccionsM2.Views.FormTaula.resources
+C:\Users\Andrew\source\repos\ElecMunicipals2\EleccionsM2\obj\Debug\net7.0-windows\EleccionsM2.Views.FormCandidat.resources
+C:\Users\Andrew\source\repos\ElecMunicipals2\EleccionsM2\obj\Debug\net7.0-windows\EleccionsM2.Views.FormMunicipi.resources
+C:\Users\Andrew\source\repos\ElecMunicipals2\EleccionsM2\obj\Debug\net7.0-windows\EleccionsM2.Views.FormPartit.resources
+C:\Users\Andrew\source\repos\ElecMunicipals2\EleccionsM2\obj\Debug\net7.0-windows\EleccionsM2.Views.FormTaula.resources

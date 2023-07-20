@@ -29,8 +29,14 @@ namespace EleccionsM2.Views
         EleccionsViewModel viewModel = new EleccionsViewModel();
 
         public void mostrarMunicipis()
-        {
-            dataGridViewMunicipis.DataSource = viewModel.ListaMunicipis;
+        {         
+            if (viewModel.ListaMunicipis.Count == 0)
+            {
+                dataGridViewMunicipis.DataSource = null;
+                dataGridViewMunicipis.Rows.Clear();
+                dataGridViewMunicipis.Columns.Clear();
+            }
+            else { dataGridViewMunicipis.DataSource = viewModel.ListaMunicipis; }       
             //dataGridViewMunicipis.DataMember = "ListaMunicipis";
         }
         public void mostrarPartitsAndTaules(long idMuni)
