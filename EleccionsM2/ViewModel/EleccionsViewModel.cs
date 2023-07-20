@@ -1,4 +1,5 @@
 ﻿using EleccionsM2.Models;
+using EleccionsM2.Views;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;
@@ -17,9 +18,9 @@ namespace EleccionsM2.ViewModel
         EleccionsM2.EleccionsMContext context;
 
         public List<Municipi> ListaMunicipis{ get; set; }
-        public List<PartitMunicipi> ListaPartitsMunicipi { get; set; }
-        public List<Candidat> ListaCandidats { get; set; }
-        public List<TaulaElectoral> ListaTaulesMunicipi { get; set; }
+        public List<PartitMunicipi> ListaPartitsMunicipi { get=>ActualMunicipi.llistaPartits; }
+        public List<Candidat> ListaCandidats { get=>ActualPartit.candidats; }
+        public List<TaulaElectoral> ListaTaulesMunicipi { get => ActualMunicipi.taulesElectorals; }
         //amb el INotifyPropertyChanged podria ser més senzill ja que el binding nomes el faria un cop i cada cop que 
         //el ActualMunicipi canvi de valor será el foco i el binded.
         public Municipi ActualMunicipi { get; set; }
@@ -32,17 +33,6 @@ namespace EleccionsM2.ViewModel
           
             ListaMunicipis = context.Municipis.Include(m=> m.llistaPartits).ThenInclude(c=>c.candidats).Include(t =>t.taulesElectorals).ToList();
         }
-        //mal hecho pero para que almenos entre la data xd pero no funciona asi brooooo
-        //public void addmunicipio(Municipi municipi)
-        //{
-        //    context.Municipis.Add(municipi);
-           
-        //    ActualMunicipi = municipi;
-        //    context.SaveChanges();
-        //    ListaMunicipis.Add(municipi);
-        //}
-
-
         public void Grabar()
         {
             context.SaveChanges();
@@ -51,14 +41,14 @@ namespace EleccionsM2.ViewModel
         {
             int n = (int)idSelected;
             ActualMunicipi = ListaMunicipis.SingleOrDefault(m => m.ID == n);
-            ListaPartitsMunicipi = ActualMunicipi.llistaPartits.ToList();
-            ListaTaulesMunicipi = ActualMunicipi.taulesElectorals.ToList();
+            //ListaPartitsMunicipi = ActualMunicipi.llistaPartits.ToList();
+            //ListaTaulesMunicipi = ActualMunicipi.taulesElectorals.ToList();
         }
         public void idSelectedPartidoMostrarCandidatos(long idSelected)
         {
             int n = (int)idSelected;
             ActualPartit = ListaPartitsMunicipi.SingleOrDefault(p => p.ID == n);
-            ListaCandidats = ActualPartit.candidats.ToList();
+            //ListaCandidats = ActualPartit.candidats.ToList();
         }
         public void idSelectedCandidat(long idCandidat)
         {
@@ -73,6 +63,58 @@ namespace EleccionsM2.ViewModel
         public void VaciarListaCandidatos()
         {
             ListaCandidats.Clear();
+        }
+        //add functions..
+        //(mal hecho el de municipios, pq es directo al context)
+        public void addmunicipio(Municipi municipi)
+        {
+            context.Municipis.Add(municipi);
+            ActualMunicipi = municipi;
+            ListaMunicipis.Add(municipi);
+            Grabar();
+        }
+        public void addPartit(PartitMunicipi partit)
+        {
+            ActualPartit = partit;
+            //ActualMunicipi.llistaPartits.Add(ActualPartit);
+            ListaPartitsMunicipi.Add(ActualPartit);
+            Grabar();
+        }
+        public void addCandidat(Candidat candidat)
+        {
+            ActualCandidat = candidat;
+            //ActualPartit.candidats.Add(ActualCandidat);
+            ListaCandidats.Add(ActualCandidat);
+            Grabar();
+        }
+        public void addTaula(TaulaElectoral taula)
+        {
+            ActualTaula = taula;
+            //ActualMunicipi.taulesElectorals.Add(ActualTaula);
+            ListaTaulesMunicipi.Add(ActualTaula);
+            Grabar();
+        }
+        //delete functions
+        public void eliminarMunicipi()
+        {
+            //Em passa lo mateix que amb el addmunicipio ho he de fer directe al context nose pq xd
+            context.Municipis.Remove(ActualMunicipi);
+            ListaMunicipis.Remove(ActualMunicipi);
+        }
+        public void eliminarPartit()
+        {
+            ActualMunicipi.llistaPartits.Remove(ActualPartit);
+            ListaPartitsMunicipi.Remove(ActualPartit);
+        }
+        public void eliminarCandidat()
+        {
+            ActualPartit.candidats.Remove(ActualCandidat);
+            ListaCandidats.Remove(ActualCandidat);
+        }
+        public void eliminarTaula()
+        {
+            ActualMunicipi.taulesElectorals.Remove(ActualTaula);
+            ListaTaulesMunicipi.Remove(ActualTaula);
         }
     }
 }

@@ -59,6 +59,7 @@
             textBoxNomPartit.Name = "textBoxNomPartit";
             textBoxNomPartit.Size = new Size(116, 23);
             textBoxNomPartit.TabIndex = 6;
+            textBoxNomPartit.KeyPress += textBoxNomPartit_KeyPress;
             // 
             // buttonCrearPartit
             // 
@@ -68,6 +69,7 @@
             buttonCrearPartit.TabIndex = 12;
             buttonCrearPartit.Text = "Crear Partit";
             buttonCrearPartit.UseVisualStyleBackColor = true;
+            buttonCrearPartit.Click += buttonCrearPartit_Click;
             // 
             // FormPartit
             // 

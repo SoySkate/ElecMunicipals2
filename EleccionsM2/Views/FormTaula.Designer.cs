@@ -61,6 +61,7 @@
             textBoxCensTaula.Name = "textBoxCensTaula";
             textBoxCensTaula.Size = new Size(116, 23);
             textBoxCensTaula.TabIndex = 9;
+            textBoxCensTaula.KeyPress += textBoxCensTaula_KeyPress;
             // 
             // label1
             // 
@@ -79,6 +80,7 @@
             buttonCrearTaula.TabIndex = 7;
             buttonCrearTaula.Text = "Crear Taula";
             buttonCrearTaula.UseVisualStyleBackColor = true;
+            buttonCrearTaula.Click += buttonCrearTaula_Click;
             // 
             // textBoxNomTaula
             // 
@@ -86,6 +88,7 @@
             textBoxNomTaula.Name = "textBoxNomTaula";
             textBoxNomTaula.Size = new Size(116, 23);
             textBoxNomTaula.TabIndex = 6;
+            //textBoxNomTaula.KeyPress += textBoxNomTaula_KeyPress;
             // 
             // FormTaula
             // 

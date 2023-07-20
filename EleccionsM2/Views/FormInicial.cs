@@ -21,26 +21,26 @@ namespace EleccionsM2.Views
         public FormInicial()
         {
             InitializeComponent();
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.SelectionChanged += DataGridView1_SelectionChanged;
-
+            mostrarMunicipis();
+            dataGridViewMunicipis.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewMunicipis.SelectionChanged += DataGridView1_SelectionChanged;
         }
 
         EleccionsViewModel viewModel = new EleccionsViewModel();
 
         public void mostrarMunicipis()
         {
-            dataGridView1.DataSource = viewModel;
-            dataGridView1.DataMember = "ListaMunicipis";
+            dataGridViewMunicipis.DataSource = viewModel.ListaMunicipis;
+            //dataGridViewMunicipis.DataMember = "ListaMunicipis";
         }
         public void mostrarPartitsAndTaules(long idMuni)
         {
             if (idMuni > 0)
             {
                 viewModel.idSelectedMostrarPartidosAndTaules(idMuni);
-                dataGridView2.DataSource = viewModel.ListaPartitsMunicipi;
-                dataGridView4.DataSource = viewModel.ListaTaulesMunicipi;
-                dataGridView4.Columns[3].Visible = false;
+                dataGridViewPartits.DataSource = viewModel.ListaPartitsMunicipi;
+                dataGridViewTaules.DataSource = viewModel.ListaTaulesMunicipi;
+                dataGridViewTaules.Columns[3].Visible = false;
                 textBoxNomPartit.ReadOnly = false;
                 textBoxNomCandidat.ReadOnly = false;
                 textBoxNomTaula.ReadOnly = false;
@@ -53,8 +53,8 @@ namespace EleccionsM2.Views
                 {
                     textBoxNomPartit.ReadOnly = true;
                     textBoxNomCandidat.ReadOnly = true;
-                    dataGridView3.DataSource = null;
-                    dataGridView2.DataSource = null;
+                    dataGridViewCandidats.DataSource = null;
+                    dataGridViewPartits.DataSource = null;
                     viewModel.VaciarListaCandidatos();
                 }
                 if (viewModel.ActualMunicipi.taulesElectorals.Count == 0)
@@ -72,14 +72,22 @@ namespace EleccionsM2.Views
                 if (viewModel.ListaPartitsMunicipi.Count > 0)
                 {
                     viewModel.idSelectedPartidoMostrarCandidatos(idPartit);
-                    dataGridView3.DataSource = viewModel.ListaCandidats;
+                    dataGridViewCandidats.DataSource = viewModel.ListaCandidats;
                 }
             }
         }
         //Buttons load and save changes
+        //refreshDOne
+        public void dataRefresh()
+        {
+            dataGridViewMunicipis.DataSource = null;
+            dataGridViewMunicipis.Rows.Clear();
+            dataGridViewMunicipis.Columns.Clear();
+            mostrarMunicipis();
+        }
         private void button1_Click(object sender, EventArgs e)
         {
-            mostrarMunicipis();
+            dataRefresh();
         }
         private void btnGuardarDades_Click(object sender, EventArgs e)
         {
@@ -89,11 +97,11 @@ namespace EleccionsM2.Views
         private void DataGridView1_SelectionChanged(object? sender, EventArgs e)
         {
             long idMuni = 0;
-            if (dataGridView1.SelectedRows.Count > 0)
+            if (dataGridViewMunicipis.SelectedRows.Count > 0)
             {
                 DataGridViewRow a;
-                a = dataGridView1.SelectedRows[0];
-                foreach (DataGridViewColumn col in dataGridView1.Columns)
+                a = dataGridViewMunicipis.SelectedRows[0];
+                foreach (DataGridViewColumn col in dataGridViewMunicipis.Columns)
                 {
                     if (col.DataPropertyName == "ID")
                     {
@@ -107,11 +115,11 @@ namespace EleccionsM2.Views
         private void dataGridView2_SelectionChanged(object? sender, EventArgs e)
         {
             long idPartit = 0;
-            if (dataGridView2.SelectedRows.Count > 0)
+            if (dataGridViewPartits.SelectedRows.Count > 0)
             {
                 DataGridViewRow a;
-                a = dataGridView2.SelectedRows[0];
-                foreach (DataGridViewColumn col in dataGridView2.Columns)
+                a = dataGridViewPartits.SelectedRows[0];
+                foreach (DataGridViewColumn col in dataGridViewPartits.Columns)
                 {
                     if (col.DataPropertyName == "ID")
                     {
@@ -126,11 +134,11 @@ namespace EleccionsM2.Views
         private void dataGridView3_SelectionChanged(object sender, EventArgs e)
         {
             long idCandidat = 0;
-            if (dataGridView3.SelectedRows.Count > 0)
+            if (dataGridViewCandidats.SelectedRows.Count > 0)
             {
                 DataGridViewRow a;
-                a = dataGridView3.SelectedRows[0];
-                foreach (DataGridViewColumn col in dataGridView3.Columns)
+                a = dataGridViewCandidats.SelectedRows[0];
+                foreach (DataGridViewColumn col in dataGridViewCandidats.Columns)
                 {
                     if (col.DataPropertyName == "ID")
                     {
@@ -144,11 +152,11 @@ namespace EleccionsM2.Views
         private void dataGridView4_SelectionChanged(object sender, EventArgs e)
         {
             long idTaula = 0;
-            if (dataGridView4.SelectedRows.Count > 0)
+            if (dataGridViewTaules.SelectedRows.Count > 0)
             {
                 DataGridViewRow a;
-                a = dataGridView4.SelectedRows[0];
-                foreach (DataGridViewColumn col in dataGridView4.Columns)
+                a = dataGridViewTaules.SelectedRows[0];
+                foreach (DataGridViewColumn col in dataGridViewTaules.Columns)
                 {
                     if (col.DataPropertyName == "ID")
                     {
@@ -188,31 +196,73 @@ namespace EleccionsM2.Views
         //y la del viewmodel de ese form en concreto
         private void buttonAddMuni_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(viewModel.ListaMunicipis.Count.ToString());
             FormMunicipi formMunicipi = new();
             if (formMunicipi.ShowDialog() == DialogResult.OK)
-            {
-                viewModel.ActualMunicipi = formMunicipi.Municipi;
-                viewModel.ListaMunicipis.Add(viewModel.ActualMunicipi);
-                viewModel.Grabar();
-                MessageBox.Show(viewModel.ListaMunicipis.Count.ToString());
+            {//crido una funcio per enviarho directament al context i també ho poso a viewmodel (una mica raro)
+                viewModel.addmunicipio(formMunicipi.Municipi);
+                dataRefresh();
             }
             else { MessageBox.Show("XDDDMAL"); }
         }
         private void buttonAddPartit_Click(object sender, EventArgs e)
         {
             FormPartit formPartit = new FormPartit();
-            formPartit.ShowDialog();
+            if (formPartit.ShowDialog() == DialogResult.OK)
+            {
+                viewModel.addPartit(formPartit.PartitMunicipi);
+            }
+            else { MessageBox.Show("XDDDMAL"); }
         }
         private void buttonAddCandidat_Click(object sender, EventArgs e)
         {
             FormCandidat formCandidat = new FormCandidat();
-            formCandidat.ShowDialog();
+            if (formCandidat.ShowDialog() == DialogResult.OK)
+            {
+                viewModel.addCandidat(formCandidat.Candidat);
+            }
+            else { MessageBox.Show("XDDDMAL"); }
         }
+        //button addTaula:
         private void button3_Click(object sender, EventArgs e)
         {
             FormTaula formTaula = new FormTaula();
-            formTaula.ShowDialog();
+            if (formTaula.ShowDialog() == DialogResult.OK)
+            {
+                viewModel.addTaula(formTaula.TaulaElectoral);
+            }
+            else { MessageBox.Show("XDDmal"); }
+        }
+        //deletebuttons:
+        private void buttonDeleteMuni_Click(object sender, EventArgs e)
+        {
+            viewModel.eliminarMunicipi();
+        }
+        private void buttonDeletePartit_Click(object sender, EventArgs e)
+        {
+            viewModel.eliminarPartit();
+        }
+        private void buttonDeleteCandidat_Click(object sender, EventArgs e)
+        {
+            viewModel.eliminarCandidat();
+        }
+        private void buttonDeleteTaula_Click(object sender, EventArgs e)
+        {
+            viewModel.eliminarTaula();
+        }
+        //refresh la mierda que no funciona
+        private void dataGridViewMunicipis_DataSourceChanged(object sender, EventArgs e)
+        {
+            //dataGridViewMunicipis.Refresh();
+        }
+
+        private void dataGridViewTaules_DataSourceChanged(object sender, EventArgs e)
+        {
+
+            //dataGridViewTaules.DataSource = null;
+            //dataGridViewTaules.Rows.Clear();
+            //dataGridViewTaules.Columns.Clear();
+            //mostrarMunicipis();
+            //dataGridViewTaules.Refresh();
         }
     }
 }

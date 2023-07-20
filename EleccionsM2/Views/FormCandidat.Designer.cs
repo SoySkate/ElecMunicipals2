@@ -59,8 +59,9 @@
             buttonCrearCandidat.Name = "buttonCrearCandidat";
             buttonCrearCandidat.Size = new Size(123, 23);
             buttonCrearCandidat.TabIndex = 13;
-            buttonCrearCandidat.Text = "Crear Partit";
+            buttonCrearCandidat.Text = "Crear Candidat";
             buttonCrearCandidat.UseVisualStyleBackColor = true;
+            buttonCrearCandidat.Click += buttonCrearCandidat_Click;
             // 
             // textBoxNomCandidat
             // 
@@ -68,6 +69,7 @@
             textBoxNomCandidat.Name = "textBoxNomCandidat";
             textBoxNomCandidat.Size = new Size(116, 23);
             textBoxNomCandidat.TabIndex = 12;
+            textBoxNomCandidat.KeyPress += textBoxNomCandidat_KeyPress;
             // 
             // FormCandidat
             // 

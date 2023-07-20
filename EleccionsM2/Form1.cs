@@ -13,8 +13,8 @@
 //        //crearContexto:
 
 //        EleccionsMContext Contexto1 = new EleccionsMContext();
-        
-//        EleccionsViewModel eleccionsViewModel = new EleccionsViewModel();
+
+//        //EleccionsViewModel eleccionsViewModel = new EleccionsViewModel();
 //        //objectes que utilitzo en memoria
 //        Municipi varMunicipi = new Municipi();
 //        PartitMunicipi varPartit = new PartitMunicipi();
@@ -175,18 +175,15 @@
 //        {
 //            panelDataAzul.Hide();
 //            borrarDataMemoria();
-//            eleccionsViewModel.Grabar();
+//            //eleccionsViewModel.Grabar();
 //        }
 
 //        //TODO:Functions:________________________________________________________________________________________
 
 //        public void carregarMunicipis() //button CarregarDades
 //        {
-//            dataGridView1.DataSource = eleccionsViewModel;
-//            dataGridView1.DataMember = "ListaMunicipis";
-
-
-
+//            //dataGridView1.DataSource = eleccionsViewModel;
+//            //dataGridView1.DataMember = "ListaMunicipis";
 
 //            MunicipisBox.Items.Clear();
 //            //joder faltaba el include sino no le pasaba los otros objetos a la puta esta

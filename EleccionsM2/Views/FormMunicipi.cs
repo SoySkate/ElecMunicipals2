@@ -29,13 +29,11 @@ namespace EleccionsM2.Views
             DialogResult = DialogResult.OK;
             this.Close();
         }
-
         private void buttonVolver_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
             this.Close();
         }
-
         private void textBoxNomMunicipi_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))

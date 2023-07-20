@@ -1,23 +1,30 @@
 DONE:________________________________________________________________________________
-
+-button afegir muni, partit, candidat, taula(crearform per afegir)
+-No s'em carrega be la llista de municipis.........he creat un button que fa refresh....................
 
 NEW TODO:____________________________________________________________________________
-
 -com afegir i eliminar un muni o partit o candidat?
 
--button afegir (crearform per afegir)
 -button eliminar
+-Poder afegir resultats taula
 
 
--tinc eerror on hi ha linclude nos epq xd 
-
--He comentat tot el form1 i el form1.designer
-
-
+-Textbox posar un maxim de lletres no?(ja hesta capat per nums i lletres segons el cas)
 -Recordar Cridar la funcio de Grabar();
+_____________________________________________________________________________________________
+RUBEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEN:
+-EEl tolist fa que no em peti el singleordefault que sencarrega de buscar lunic element que coincideix de la lista
+i em diu que hi ha mes dun element que coincideix en canvi amb el tolist va bien..Randomxd
+-AAbans amagava una columna del grid Taula perque dins de taula hi ha una clase que es resultats taula 
+i es veia la ruta simplement osigui no es llegia.
+-EEliminar municipio //Em passa lo mateix que amb el addmunicipio ho he de fer directe al context nose pq xd
+-Intento ferho desde el gety set nose com va
+-Amb elboto refresh conseguiexo que el grid municipios es refresqui que es lunic que no ho feiaPPPER
+OPEROPEROPPPPPPPPPPERO no em va si vull fer resfresh si tinc el primer municipi selected.
 
 
-
+_____________________________________________________________________________________________
+-MILLORAR LA APP INOTIFYPROPERYCHANGED, POSARDIRECTE ELS CANSIS SIMPLEMENT ACTUALITZANT DIRECTE EN EL ATRIBUTS
 
 
 
