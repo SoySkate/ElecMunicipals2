@@ -100,7 +100,6 @@
             dataGridViewMunicipis.RowTemplate.Height = 25;
             dataGridViewMunicipis.Size = new Size(255, 189);
             dataGridViewMunicipis.TabIndex = 4;
-            dataGridViewMunicipis.DataSourceChanged += dataGridViewMunicipis_DataSourceChanged;
             // 
             // dataGridViewPartits
             // 
@@ -201,11 +200,11 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(76, 29);
+            label1.Location = new Point(22, 20);
             label1.Name = "label1";
-            label1.Size = new Size(122, 15);
+            label1.Size = new Size(211, 15);
             label1.TabIndex = 11;
-            label1.Text = "Nom i Num regidors :";
+            label1.Text = "Nom Municipi:               Num regidors :";
             // 
             // textBoxCensTaula
             // 
@@ -213,6 +212,7 @@
             textBoxCensTaula.Name = "textBoxCensTaula";
             textBoxCensTaula.Size = new Size(65, 23);
             textBoxCensTaula.TabIndex = 25;
+            textBoxCensTaula.TextChanged += textBoxCensTaula_TextChanged;
             // 
             // dataGridViewTaules
             // 
@@ -223,7 +223,6 @@
             dataGridViewTaules.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewTaules.Size = new Size(323, 189);
             dataGridViewTaules.TabIndex = 23;
-            dataGridViewTaules.DataSourceChanged += dataGridViewTaules_DataSourceChanged;
             dataGridViewTaules.SelectionChanged += dataGridView4_SelectionChanged;
             // 
             // textBoxNomTaula
@@ -232,12 +231,13 @@
             textBoxNomTaula.Name = "textBoxNomTaula";
             textBoxNomTaula.Size = new Size(110, 23);
             textBoxNomTaula.TabIndex = 24;
+            textBoxNomTaula.TextChanged += textBoxNomTaula_TextChanged;
             // 
             // buttonDeleteCandidat
             // 
             buttonDeleteCandidat.FlatStyle = FlatStyle.System;
             buttonDeleteCandidat.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonDeleteCandidat.Location = new Point(756, 45);
+            buttonDeleteCandidat.Location = new Point(770, 42);
             buttonDeleteCandidat.Name = "buttonDeleteCandidat";
             buttonDeleteCandidat.Size = new Size(22, 27);
             buttonDeleteCandidat.TabIndex = 22;
@@ -249,7 +249,7 @@
             // 
             buttonDeletePartit.FlatStyle = FlatStyle.System;
             buttonDeletePartit.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonDeletePartit.Location = new Point(498, 45);
+            buttonDeletePartit.Location = new Point(487, 41);
             buttonDeletePartit.Name = "buttonDeletePartit";
             buttonDeletePartit.Size = new Size(22, 27);
             buttonDeletePartit.TabIndex = 21;
@@ -261,7 +261,7 @@
             // 
             buttonDeleteMuni.FlatStyle = FlatStyle.System;
             buttonDeleteMuni.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonDeleteMuni.Location = new Point(230, 47);
+            buttonDeleteMuni.Location = new Point(246, 43);
             buttonDeleteMuni.Name = "buttonDeleteMuni";
             buttonDeleteMuni.Size = new Size(22, 27);
             buttonDeleteMuni.TabIndex = 20;
@@ -316,15 +316,16 @@
             // 
             // textBoxNomCandidat
             // 
-            textBoxNomCandidat.Location = new Point(650, 45);
+            textBoxNomCandidat.Location = new Point(641, 45);
             textBoxNomCandidat.Name = "textBoxNomCandidat";
-            textBoxNomCandidat.Size = new Size(100, 23);
+            textBoxNomCandidat.Size = new Size(123, 23);
             textBoxNomCandidat.TabIndex = 15;
+            textBoxNomCandidat.TextChanged += textBoxNomCandidat_TextChanged;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(288, 48);
+            label2.Location = new Point(298, 49);
             label2.Name = "label2";
             label2.Size = new Size(71, 15);
             label2.TabIndex = 14;
@@ -336,20 +337,23 @@
             textBoxNomPartit.Name = "textBoxNomPartit";
             textBoxNomPartit.Size = new Size(106, 23);
             textBoxNomPartit.TabIndex = 12;
+            textBoxNomPartit.TextChanged += textBoxNomPartit_TextChanged;
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(150, 47);
+            textBox2.Location = new Point(158, 47);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(65, 23);
             textBox2.TabIndex = 10;
+            textBox2.TextChanged += textBox2_TextChanged;
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(34, 47);
+            textBox1.Location = new Point(16, 47);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(110, 23);
+            textBox1.Size = new Size(128, 23);
             textBox1.TabIndex = 9;
+            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // FormInicial
             // 

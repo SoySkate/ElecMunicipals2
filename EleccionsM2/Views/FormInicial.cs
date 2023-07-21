@@ -22,21 +22,41 @@ namespace EleccionsM2.Views
         {
             InitializeComponent();
             mostrarMunicipis();
+            
             dataGridViewMunicipis.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewMunicipis.SelectionChanged += DataGridView1_SelectionChanged;
+            progresbuttons();
         }
 
         EleccionsViewModel viewModel = new EleccionsViewModel();
 
+        public void progresbuttons()
+        {
+            if (dataGridViewMunicipis.Rows.Count==0)
+            {
+                buttonAddCandidat.Visible = false;
+                buttonAddPartit.Visible = false;
+                buttonAddTaula.Visible = false;
+            }
+            else
+            {
+                buttonAddPartit.Visible = true;
+                buttonAddTaula.Visible = true;
+                if (dataGridViewPartits.Rows.Count == 0)
+                {
+                    buttonAddCandidat.Visible = true;
+                }
+            }
+        }
         public void mostrarMunicipis()
-        {         
+        {
             if (viewModel.ListaMunicipis.Count == 0)
             {
                 dataGridViewMunicipis.DataSource = null;
                 dataGridViewMunicipis.Rows.Clear();
                 dataGridViewMunicipis.Columns.Clear();
             }
-            else { dataGridViewMunicipis.DataSource = viewModel.ListaMunicipis; }       
+            else { dataGridViewMunicipis.DataSource = viewModel.ListaMunicipis; }
             //dataGridViewMunicipis.DataMember = "ListaMunicipis";
         }
         public void mostrarPartitsAndTaules(long idMuni)
@@ -44,42 +64,55 @@ namespace EleccionsM2.Views
             if (idMuni > 0)
             {
                 viewModel.idSelectedMostrarPartidosAndTaules(idMuni);
-                dataGridViewPartits.DataSource = viewModel.ListaPartitsMunicipi;
-                dataGridViewTaules.DataSource = viewModel.ListaTaulesMunicipi;
-                dataGridViewTaules.Columns[3].Visible = false;
-                textBoxNomPartit.ReadOnly = false;
-                textBoxNomCandidat.ReadOnly = false;
-                textBoxNomTaula.ReadOnly = false;
-                textBoxCensTaula.ReadOnly = false;
-            }
-            //este condicional chequea si hay data en partidos y si no hay deja las datagrid partit i candidat vacias
-            try
-            {
-                if (viewModel.ActualMunicipi.llistaPartits.Count == 0)
+                if(viewModel.ActualMunicipi.llistaPartits.Count > 0 && viewModel.ActualMunicipi!=null)
+                {
+                    dataGridViewPartits.DataSource = viewModel.ListaPartitsMunicipi;
+                    textBoxNomPartit.ReadOnly = false;
+                    textBoxNomCandidat.ReadOnly = false;
+                    if (viewModel.ActualPartit.candidats.Count == 0)
+                    {
+                        textBoxNomCandidat.ReadOnly = true;
+                        dataGridViewCandidats.DataSource = null;
+                    }
+                }
+                else
                 {
                     textBoxNomPartit.ReadOnly = true;
                     textBoxNomCandidat.ReadOnly = true;
                     dataGridViewCandidats.DataSource = null;
                     dataGridViewPartits.DataSource = null;
                     viewModel.VaciarListaCandidatos();
+                   
                 }
-                if (viewModel.ActualMunicipi.taulesElectorals.Count == 0)
+               if(viewModel.ActualMunicipi.taulesElectorals.Count > 0)
+                {
+                    dataGridViewTaules.DataSource = viewModel.ListaTaulesMunicipi;
+                    dataGridViewTaules.Columns[3].Visible = false;
+                    textBoxNomTaula.ReadOnly = false;
+                    textBoxCensTaula.ReadOnly = false;
+                }
+                else
                 {
                     textBoxNomTaula.ReadOnly = true;
                     textBoxCensTaula.ReadOnly = true;
+                    dataGridViewTaules.DataSource = null;
                 }
             }
-            catch (Exception) { MessageBox.Show("Exception rara"); }
         }
         public void mostrarCandidats(long idPartit)
         {
             if (idPartit > 0)
             {
-                if (viewModel.ListaPartitsMunicipi.Count > 0)
-                {
                     viewModel.idSelectedPartidoMostrarCandidatos(idPartit);
+                if (viewModel.ActualPartit.candidats.Count > 0)
+                {
                     dataGridViewCandidats.DataSource = viewModel.ListaCandidats;
                 }
+                else
+                {
+                    dataGridViewCandidats.DataSource = null;
+                }
+
             }
         }
         //Buttons load and save changes
@@ -206,6 +239,7 @@ namespace EleccionsM2.Views
             if (formMunicipi.ShowDialog() == DialogResult.OK)
             {//crido una funcio per enviarho directament al context i també ho poso a viewmodel (una mica raro)
                 viewModel.addmunicipio(formMunicipi.Municipi);
+                progresbuttons();
                 dataRefresh();
             }
             else { MessageBox.Show("XDDDMAL"); }
@@ -216,6 +250,8 @@ namespace EleccionsM2.Views
             if (formPartit.ShowDialog() == DialogResult.OK)
             {
                 viewModel.addPartit(formPartit.PartitMunicipi);
+                progresbuttons();
+                dataRefresh();
             }
             else { MessageBox.Show("XDDDMAL"); }
         }
@@ -225,6 +261,7 @@ namespace EleccionsM2.Views
             if (formCandidat.ShowDialog() == DialogResult.OK)
             {
                 viewModel.addCandidat(formCandidat.Candidat);
+                dataRefresh();
             }
             else { MessageBox.Show("XDDDMAL"); }
         }
@@ -235,6 +272,7 @@ namespace EleccionsM2.Views
             if (formTaula.ShowDialog() == DialogResult.OK)
             {
                 viewModel.addTaula(formTaula.TaulaElectoral);
+                dataRefresh();
             }
             else { MessageBox.Show("XDDmal"); }
         }
@@ -242,33 +280,54 @@ namespace EleccionsM2.Views
         private void buttonDeleteMuni_Click(object sender, EventArgs e)
         {
             viewModel.eliminarMunicipi();
+            dataRefresh();
         }
         private void buttonDeletePartit_Click(object sender, EventArgs e)
         {
             viewModel.eliminarPartit();
+            dataRefresh();
         }
         private void buttonDeleteCandidat_Click(object sender, EventArgs e)
         {
             viewModel.eliminarCandidat();
+            dataRefresh();
         }
         private void buttonDeleteTaula_Click(object sender, EventArgs e)
         {
             viewModel.eliminarTaula();
+            dataRefresh();
+        }
+        //Capar el maximo de caracteres de los textbox
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            textBox1.MaxLength = 20;
+        }
+
+        private void textBoxNomPartit_TextChanged(object sender, EventArgs e)
+        {
+            textBoxNomPartit.MaxLength = 20;
+        }
+
+        private void textBoxNomCandidat_TextChanged(object sender, EventArgs e)
+        {
+            textBoxNomCandidat.MaxLength = 30;
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            textBox2.MaxLength = 2;
+        }
+
+        private void textBoxNomTaula_TextChanged(object sender, EventArgs e)
+        {
+            textBoxNomTaula.MaxLength = 15;
+        }
+
+        private void textBoxCensTaula_TextChanged(object sender, EventArgs e)
+        {
+            textBoxCensTaula.MaxLength = 5;
         }
         //refresh la mierda que no funciona
-        private void dataGridViewMunicipis_DataSourceChanged(object sender, EventArgs e)
-        {
-            //dataGridViewMunicipis.Refresh();
-        }
 
-        private void dataGridViewTaules_DataSourceChanged(object sender, EventArgs e)
-        {
-
-            //dataGridViewTaules.DataSource = null;
-            //dataGridViewTaules.Rows.Clear();
-            //dataGridViewTaules.Columns.Clear();
-            //mostrarMunicipis();
-            //dataGridViewTaules.Refresh();
-        }
     }
 }

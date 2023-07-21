@@ -17,59 +17,70 @@ namespace EleccionsM2.ViewModel
 
         EleccionsM2.EleccionsMContext context;
 
+
         public List<Municipi> ListaMunicipis{ get; set; }
-        public List<PartitMunicipi> ListaPartitsMunicipi { get=>ActualMunicipi.llistaPartits; }
+        public List<PartitMunicipi> ListaPartitsMunicipi { get => ActualMunicipi.llistaPartits; }
         public List<Candidat> ListaCandidats { get=>ActualPartit.candidats; }
         public List<TaulaElectoral> ListaTaulesMunicipi { get => ActualMunicipi.taulesElectorals; }
         //amb el INotifyPropertyChanged podria ser més senzill ja que el binding nomes el faria un cop i cada cop que 
         //el ActualMunicipi canvi de valor será el foco i el binded.
-        public Municipi ActualMunicipi { get; set; }
-        public PartitMunicipi? ActualPartit { get; set; }
-        public Candidat? ActualCandidat { get; set; }
-        public TaulaElectoral ActualTaula { get; set; }
+        public Municipi? ActualMunicipi { get; set; } 
+        public PartitMunicipi? ActualPartit { get; set; } = new PartitMunicipi();
+        public Candidat? ActualCandidat { get; set; } = new Candidat();
+        public TaulaElectoral? ActualTaula { get; set; } 
+
         public EleccionsViewModel()
         {
-            context= new EleccionsMContext();
-          
-            ListaMunicipis = context.Municipis.Include(m=> m.llistaPartits).ThenInclude(c=>c.candidats).Include(t =>t.taulesElectorals).ToList();
+            context = new EleccionsMContext();
+
+            ListaMunicipis = context.Municipis.Include(m => m.llistaPartits).ThenInclude(c => c.candidats).Include(t => t.taulesElectorals).ToList();
+
         }
-        public void Grabar()
+        public async Task Grabar()
         {
+            try { 
             context.SaveChanges();
+            }catch(Exception ex) { }
         }
         public void idSelectedMostrarPartidosAndTaules(long idSelected)
         {
-            if (idSelected != null) { 
+    
             int n = (int)idSelected;
+            try { 
             ActualMunicipi = ListaMunicipis.SingleOrDefault(m => m.ID == n);
             }
+            catch { MessageBox.Show("Ningun municipio se ha podido seleccionar"); }
+            
             //ListaPartitsMunicipi = ActualMunicipi.llistaPartits.ToList();
             //ListaTaulesMunicipi = ActualMunicipi.taulesElectorals.ToList();
         }
         public void idSelectedPartidoMostrarCandidatos(long idSelected)
         {
             int n = (int)idSelected;
-            if (idSelected != 0) { 
-            ActualPartit = ListaPartitsMunicipi.SingleOrDefault(p => p.ID == n);
-            }
-            else { n=0; }
+            try
+            {
+                ActualPartit = ListaPartitsMunicipi.SingleOrDefault(p => p.ID == n);
+            }catch(Exception ex){}
+            
             //ListaCandidats = ActualPartit.candidats.ToList();
         }
         public void idSelectedCandidat(long idCandidat)
         {
             int n = (int) idCandidat;
-            if(idCandidat != 0) { 
+            try {
             ActualCandidat = ListaCandidats.SingleOrDefault(c => c.ID == n);
             }
-            else { n = 0; }
+            catch { MessageBox.Show("Ningun candidato se ha podido seleccionar"); }
+
         }
         public void idSelectedTaula(long idTaula)
         {
             int n = (int)idTaula;
-            if(idTaula != 0) { 
+            try { 
             ActualTaula = ListaTaulesMunicipi.SingleOrDefault(t => t.ID == n);
             }
-            else { n=0; }
+            catch { MessageBox.Show("Ninguna TaulaElectoral se ha podido seleccionar"); }
+
         }
         public void VaciarListaCandidatos()
         {
@@ -77,55 +88,63 @@ namespace EleccionsM2.ViewModel
         }
         //add functions..
         //(mal hecho el de municipios, pq es directo al context)
-        public void addmunicipio(Municipi municipi)
+        public async Task addmunicipio(Municipi municipi)
         {
-            context.Municipis.Add(municipi);
+            
             ActualMunicipi = municipi;
-            ListaMunicipis.Add(municipi);
-            Grabar();
+            context.Municipis.Add(ActualMunicipi);
+            await Grabar();
+            ListaMunicipis.Add(ActualMunicipi);
         }
-        public void addPartit(PartitMunicipi partit)
+        public async Task addPartit(PartitMunicipi partit)
         {
             ActualPartit = partit;
             //ActualMunicipi.llistaPartits.Add(ActualPartit);
             ListaPartitsMunicipi.Add(ActualPartit);
-            Grabar();
+            await Grabar();
+            MessageBox.Show("HOLA");
+            
         }
-        public void addCandidat(Candidat candidat)
+        public async Task addCandidat(Candidat candidat)
         {
             ActualCandidat = candidat;
             //ActualPartit.candidats.Add(ActualCandidat);
             ListaCandidats.Add(ActualCandidat);
-            Grabar();
+            await Grabar();
         }
-        public void addTaula(TaulaElectoral taula)
+        public async Task addTaula(TaulaElectoral taula)
         {
             ActualTaula = taula;
             //ActualMunicipi.taulesElectorals.Add(ActualTaula);
             ListaTaulesMunicipi.Add(ActualTaula);
-            Grabar();
+            await Grabar();
         }
         //delete functions
-        public void eliminarMunicipi()
+        public async Task eliminarMunicipi()
         {
             //Em passa lo mateix que amb el addmunicipio ho he de fer directe al context nose pq xd
-            context.Municipis.Remove(ActualMunicipi);
+             context.Municipis.Remove(ActualMunicipi);
             ListaMunicipis.Remove(ActualMunicipi);
+            await Grabar();
+            
         }
-        public void eliminarPartit()
+        public async Task eliminarPartit()
         {
             ActualMunicipi.llistaPartits.Remove(ActualPartit);
             ListaPartitsMunicipi.Remove(ActualPartit);
+            await Grabar();
         }
-        public void eliminarCandidat()
+        public async Task eliminarCandidat()
         {
             ActualPartit.candidats.Remove(ActualCandidat);
             ListaCandidats.Remove(ActualCandidat);
+            await Grabar();
         }
-        public void eliminarTaula()
+        public async Task eliminarTaula()
         {
             ActualMunicipi.taulesElectorals.Remove(ActualTaula);
             ListaTaulesMunicipi.Remove(ActualTaula);
+            await Grabar();
         }
     }
 }

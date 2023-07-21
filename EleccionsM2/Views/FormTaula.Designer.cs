@@ -59,8 +59,9 @@
             // 
             textBoxCensTaula.Location = new Point(204, 119);
             textBoxCensTaula.Name = "textBoxCensTaula";
-            textBoxCensTaula.Size = new Size(116, 23);
+            textBoxCensTaula.Size = new Size(73, 23);
             textBoxCensTaula.TabIndex = 9;
+            textBoxCensTaula.TextChanged += textBoxCensTaula_TextChanged;
             textBoxCensTaula.KeyPress += textBoxCensTaula_KeyPress;
             // 
             // label1
@@ -88,7 +89,7 @@
             textBoxNomTaula.Name = "textBoxNomTaula";
             textBoxNomTaula.Size = new Size(116, 23);
             textBoxNomTaula.TabIndex = 6;
-            //textBoxNomTaula.KeyPress += textBoxNomTaula_KeyPress;
+            textBoxNomTaula.TextChanged += textBoxNomTaula_TextChanged;
             // 
             // FormTaula
             // 

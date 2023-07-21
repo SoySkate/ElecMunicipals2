@@ -55,7 +55,7 @@
             // 
             // buttonCrearCandidat
             // 
-            buttonCrearCandidat.Location = new Point(130, 129);
+            buttonCrearCandidat.Location = new Point(153, 129);
             buttonCrearCandidat.Name = "buttonCrearCandidat";
             buttonCrearCandidat.Size = new Size(123, 23);
             buttonCrearCandidat.TabIndex = 13;
@@ -67,8 +67,9 @@
             // 
             textBoxNomCandidat.Location = new Point(202, 55);
             textBoxNomCandidat.Name = "textBoxNomCandidat";
-            textBoxNomCandidat.Size = new Size(116, 23);
+            textBoxNomCandidat.Size = new Size(150, 23);
             textBoxNomCandidat.TabIndex = 12;
+            textBoxNomCandidat.TextChanged += textBoxNomCandidat_TextChanged;
             textBoxNomCandidat.KeyPress += textBoxNomCandidat_KeyPress;
             // 
             // FormCandidat

@@ -44,5 +44,15 @@ namespace EleccionsM2.Views
                 e.Handled = true;
             }
         }
+
+        private void textBoxNomTaula_TextChanged(object sender, EventArgs e)
+        {
+            textBoxNomTaula.MaxLength = 15;
+        }
+
+        private void textBoxCensTaula_TextChanged(object sender, EventArgs e)
+        {
+            textBoxCensTaula.MaxLength = 5;
+        }
     }
 }

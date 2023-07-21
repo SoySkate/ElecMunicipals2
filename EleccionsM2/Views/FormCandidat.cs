@@ -42,5 +42,10 @@ namespace EleccionsM2.Views
                 e.Handled = true;
             }
         }
+
+        private void textBoxNomCandidat_TextChanged(object sender, EventArgs e)
+        {
+            textBoxNomCandidat.MaxLength = 30;
+        }
     }
 }

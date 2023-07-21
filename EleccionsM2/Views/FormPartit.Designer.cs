@@ -59,6 +59,7 @@
             textBoxNomPartit.Name = "textBoxNomPartit";
             textBoxNomPartit.Size = new Size(116, 23);
             textBoxNomPartit.TabIndex = 6;
+            textBoxNomPartit.TextChanged += textBoxNomPartit_TextChanged;
             textBoxNomPartit.KeyPress += textBoxNomPartit_KeyPress;
             // 
             // buttonCrearPartit

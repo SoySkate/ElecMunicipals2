@@ -40,8 +40,9 @@
             // 
             textBoxNomMunicipi.Location = new Point(247, 77);
             textBoxNomMunicipi.Name = "textBoxNomMunicipi";
-            textBoxNomMunicipi.Size = new Size(116, 23);
+            textBoxNomMunicipi.Size = new Size(141, 23);
             textBoxNomMunicipi.TabIndex = 0;
+            textBoxNomMunicipi.TextChanged += textBoxNomMunicipi_TextChanged;
             textBoxNomMunicipi.KeyPress += textBoxNomMunicipi_KeyPress;
             // 
             // buttonCrearMunicipi
@@ -76,8 +77,9 @@
             // 
             textBoxNumRegidors.Location = new Point(247, 147);
             textBoxNumRegidors.Name = "textBoxNumRegidors";
-            textBoxNumRegidors.Size = new Size(116, 23);
+            textBoxNumRegidors.Size = new Size(86, 23);
             textBoxNumRegidors.TabIndex = 3;
+            textBoxNumRegidors.TextChanged += textBoxNumRegidors_TextChanged;
             textBoxNumRegidors.KeyPress += textBoxNumRegidors_KeyPress;
             // 
             // buttonVolver

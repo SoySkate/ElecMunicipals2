@@ -48,6 +48,15 @@ namespace EleccionsM2.Views
                 e.Handled = true;
             }
         }
-         
+
+        private void textBoxNomMunicipi_TextChanged(object sender, EventArgs e)
+        {
+            textBoxNomMunicipi.MaxLength = 20;
+        }
+
+        private void textBoxNumRegidors_TextChanged(object sender, EventArgs e)
+        {
+            textBoxNumRegidors.MaxLength = 2;
+        }
     }
 }

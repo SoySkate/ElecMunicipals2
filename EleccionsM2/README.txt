@@ -1,15 +1,24 @@
 DONE:________________________________________________________________________________
 -button afegir muni, partit, candidat, taula(crearform per afegir)
 -No s'em carrega be la llista de municipis.........he creat un button que fa refresh....................
+-com afegir i eliminar un muni o partit o candidat?
+-Textbox posar un maxim de lletres no?(ja esta capat per nums i lletres segons el cas)
+-Controlar els valors nulls si la db es null es ralla el programa xd
+-Controlar també si no hi han munciipis no pots crear taules ni partits i si no hi han partits no pots crear candidats..
+(ho he fet amb lacces als buttons)
 
 NEW TODO:____________________________________________________________________________
--com afegir i eliminar un muni o partit o candidat?
+-QUE FER LOKO quan esta seleccinoat el primer municipi.. important
+-PERQUE HE DE TERBALLAR DIRECTAMENT AMB EL CONTEXT EN EL MUNICIPI?XD
 
--Controlar els valors nulls si la db es null es ralla el programa xd
+
+-el evento dataerror dels grid(solo surge en el primer seleccionado que es el que me esta jodiendoxd)
+-ha d'haver tans regidors com candidats (validacio en candidats)
 -Poder afegir resultats taula (per mes endavant)
 
-
--Textbox posar un maxim de lletres no?(ja hesta capat per nums i lletres segons el cas)
+DEMOMENTO HE TOCAT:_______________________________________________________________________________
+-creatfuncio per els butons segons si la list esta plena o no de muni i partits
+-he creat una altre que es diu inicializar per si no troba datos no peti xd
 -Recordar Cridar la funcio de Grabar();
 _____________________________________________________________________________________________
 RUBEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEN:
@@ -25,6 +34,7 @@ OPEROPEROPPPPPPPPPPERO no em va si vull fer resfresh si tinc el primer municipi 
 
 _____________________________________________________________________________________________
 -MILLORAR LA APP INOTIFYPROPERYCHANGED, POSARDIRECTE ELS CANSIS SIMPLEMENT ACTUALITZANT DIRECTE EN EL ATRIBUTS
+-buscador per trobar el municipi?xd
 
 
 
