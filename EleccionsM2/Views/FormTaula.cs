@@ -43,6 +43,10 @@ namespace EleccionsM2.Views
             {
                 e.Handled = true;
             }
+            if ((e.KeyChar == (char)Keys.Enter || e.KeyChar == (char)Keys.Tab) && textBoxNomTaula.Text != string.Empty && int.Parse(textBoxCensTaula.Text) > 0)
+            {
+                buttonCrearTaula.Focus();
+            }
         }
 
         private void textBoxNomTaula_TextChanged(object sender, EventArgs e)
@@ -53,6 +57,14 @@ namespace EleccionsM2.Views
         private void textBoxCensTaula_TextChanged(object sender, EventArgs e)
         {
             textBoxCensTaula.MaxLength = 5;
+        }
+
+        private void textBoxNomTaula_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == (char)Keys.Enter || e.KeyChar == (char)Keys.Tab)
+            {
+                textBoxCensTaula.Focus();
+            }
         }
     }
 }

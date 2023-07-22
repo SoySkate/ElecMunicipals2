@@ -35,7 +35,6 @@
             dataGridViewMunicipis = new DataGridView();
             dataGridViewPartits = new DataGridView();
             dataGridViewCandidats = new DataGridView();
-            btnGuardarDades = new Button();
             panel1 = new Panel();
             buttonDeleteTaula = new Button();
             buttonAddTaula = new Button();
@@ -67,26 +66,33 @@
             // 
             iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
             iDDataGridViewTextBoxColumn.HeaderText = "ID";
+            iDDataGridViewTextBoxColumn.MinimumWidth = 6;
             iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
+            iDDataGridViewTextBoxColumn.Width = 125;
             // 
             // nomMunicipiDataGridViewTextBoxColumn
             // 
             nomMunicipiDataGridViewTextBoxColumn.DataPropertyName = "nomMunicipi";
             nomMunicipiDataGridViewTextBoxColumn.HeaderText = "nomMunicipi";
+            nomMunicipiDataGridViewTextBoxColumn.MinimumWidth = 6;
             nomMunicipiDataGridViewTextBoxColumn.Name = "nomMunicipiDataGridViewTextBoxColumn";
+            nomMunicipiDataGridViewTextBoxColumn.Width = 125;
             // 
             // numeroRegidorsDataGridViewTextBoxColumn
             // 
             numeroRegidorsDataGridViewTextBoxColumn.DataPropertyName = "numeroRegidors";
             numeroRegidorsDataGridViewTextBoxColumn.HeaderText = "numeroRegidors";
+            numeroRegidorsDataGridViewTextBoxColumn.MinimumWidth = 6;
             numeroRegidorsDataGridViewTextBoxColumn.Name = "numeroRegidorsDataGridViewTextBoxColumn";
+            numeroRegidorsDataGridViewTextBoxColumn.Width = 125;
             // 
             // button1
             // 
             button1.Anchor = AnchorStyles.Top;
-            button1.Location = new Point(12, 26);
+            button1.Location = new Point(14, 13);
+            button1.Margin = new Padding(3, 4, 3, 4);
             button1.Name = "button1";
-            button1.Size = new Size(88, 23);
+            button1.Size = new Size(101, 31);
             button1.TabIndex = 3;
             button1.Text = "Refrescar";
             button1.UseVisualStyleBackColor = true;
@@ -95,44 +101,39 @@
             // dataGridViewMunicipis
             // 
             dataGridViewMunicipis.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewMunicipis.Location = new Point(13, 78);
+            dataGridViewMunicipis.Location = new Point(15, 104);
+            dataGridViewMunicipis.Margin = new Padding(3, 4, 3, 4);
             dataGridViewMunicipis.Name = "dataGridViewMunicipis";
+            dataGridViewMunicipis.RowHeadersWidth = 51;
             dataGridViewMunicipis.RowTemplate.Height = 25;
-            dataGridViewMunicipis.Size = new Size(255, 189);
+            dataGridViewMunicipis.Size = new Size(291, 252);
             dataGridViewMunicipis.TabIndex = 4;
             // 
             // dataGridViewPartits
             // 
             dataGridViewPartits.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewPartits.Location = new Point(288, 78);
+            dataGridViewPartits.Location = new Point(329, 104);
+            dataGridViewPartits.Margin = new Padding(3, 4, 3, 4);
             dataGridViewPartits.Name = "dataGridViewPartits";
+            dataGridViewPartits.RowHeadersWidth = 51;
             dataGridViewPartits.RowTemplate.Height = 25;
             dataGridViewPartits.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewPartits.Size = new Size(244, 189);
+            dataGridViewPartits.Size = new Size(279, 252);
             dataGridViewPartits.TabIndex = 5;
             dataGridViewPartits.SelectionChanged += dataGridView2_SelectionChanged;
             // 
             // dataGridViewCandidats
             // 
             dataGridViewCandidats.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCandidats.Location = new Point(548, 78);
+            dataGridViewCandidats.Location = new Point(626, 104);
+            dataGridViewCandidats.Margin = new Padding(3, 4, 3, 4);
             dataGridViewCandidats.Name = "dataGridViewCandidats";
+            dataGridViewCandidats.RowHeadersWidth = 51;
             dataGridViewCandidats.RowTemplate.Height = 25;
             dataGridViewCandidats.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewCandidats.Size = new Size(244, 189);
+            dataGridViewCandidats.Size = new Size(279, 252);
             dataGridViewCandidats.TabIndex = 6;
             dataGridViewCandidats.SelectionChanged += dataGridView3_SelectionChanged;
-            // 
-            // btnGuardarDades
-            // 
-            btnGuardarDades.Anchor = AnchorStyles.Top;
-            btnGuardarDades.Location = new Point(12, 516);
-            btnGuardarDades.Name = "btnGuardarDades";
-            btnGuardarDades.Size = new Size(67, 30);
-            btnGuardarDades.TabIndex = 7;
-            btnGuardarDades.Text = "Desar";
-            btnGuardarDades.UseVisualStyleBackColor = true;
-            btnGuardarDades.Click += btnGuardarDades_Click;
             // 
             // panel1
             // 
@@ -159,18 +160,20 @@
             panel1.Controls.Add(textBox1);
             panel1.Controls.Add(dataGridViewPartits);
             panel1.Controls.Add(dataGridViewCandidats);
-            panel1.Location = new Point(106, 23);
+            panel1.Location = new Point(121, 31);
+            panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(801, 523);
+            panel1.Size = new Size(915, 697);
             panel1.TabIndex = 8;
             // 
             // buttonDeleteTaula
             // 
             buttonDeleteTaula.FlatStyle = FlatStyle.System;
             buttonDeleteTaula.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonDeleteTaula.Location = new Point(352, 410);
+            buttonDeleteTaula.Location = new Point(402, 547);
+            buttonDeleteTaula.Margin = new Padding(3, 4, 3, 4);
             buttonDeleteTaula.Name = "buttonDeleteTaula";
-            buttonDeleteTaula.Size = new Size(22, 27);
+            buttonDeleteTaula.Size = new Size(25, 36);
             buttonDeleteTaula.TabIndex = 28;
             buttonDeleteTaula.Text = "-";
             buttonDeleteTaula.UseVisualStyleBackColor = true;
@@ -180,9 +183,10 @@
             // 
             buttonAddTaula.FlatStyle = FlatStyle.System;
             buttonAddTaula.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonAddTaula.Location = new Point(352, 479);
+            buttonAddTaula.Location = new Point(402, 639);
+            buttonAddTaula.Margin = new Padding(3, 4, 3, 4);
             buttonAddTaula.Name = "buttonAddTaula";
-            buttonAddTaula.Size = new Size(122, 27);
+            buttonAddTaula.Size = new Size(139, 36);
             buttonAddTaula.TabIndex = 27;
             buttonAddTaula.Text = "Afegir Taula";
             buttonAddTaula.UseVisualStyleBackColor = true;
@@ -191,45 +195,49 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(352, 334);
+            label4.Location = new Point(402, 445);
             label4.Name = "label4";
-            label4.Size = new Size(102, 15);
+            label4.Size = new Size(126, 20);
             label4.TabIndex = 26;
             label4.Text = "Nom i Cens Taula:";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(22, 20);
+            label1.Location = new Point(25, 27);
             label1.Name = "label1";
-            label1.Size = new Size(211, 15);
+            label1.Size = new Size(264, 20);
             label1.TabIndex = 11;
             label1.Text = "Nom Municipi:               Num regidors :";
             // 
             // textBoxCensTaula
             // 
-            textBoxCensTaula.Location = new Point(352, 381);
+            textBoxCensTaula.Location = new Point(402, 508);
+            textBoxCensTaula.Margin = new Padding(3, 4, 3, 4);
             textBoxCensTaula.Name = "textBoxCensTaula";
-            textBoxCensTaula.Size = new Size(65, 23);
+            textBoxCensTaula.Size = new Size(74, 27);
             textBoxCensTaula.TabIndex = 25;
             textBoxCensTaula.TextChanged += textBoxCensTaula_TextChanged;
             // 
             // dataGridViewTaules
             // 
             dataGridViewTaules.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewTaules.Location = new Point(16, 326);
+            dataGridViewTaules.Location = new Point(18, 435);
+            dataGridViewTaules.Margin = new Padding(3, 4, 3, 4);
             dataGridViewTaules.Name = "dataGridViewTaules";
+            dataGridViewTaules.RowHeadersWidth = 51;
             dataGridViewTaules.RowTemplate.Height = 25;
             dataGridViewTaules.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewTaules.Size = new Size(323, 189);
+            dataGridViewTaules.Size = new Size(369, 252);
             dataGridViewTaules.TabIndex = 23;
             dataGridViewTaules.SelectionChanged += dataGridView4_SelectionChanged;
             // 
             // textBoxNomTaula
             // 
-            textBoxNomTaula.Location = new Point(352, 352);
+            textBoxNomTaula.Location = new Point(402, 469);
+            textBoxNomTaula.Margin = new Padding(3, 4, 3, 4);
             textBoxNomTaula.Name = "textBoxNomTaula";
-            textBoxNomTaula.Size = new Size(110, 23);
+            textBoxNomTaula.Size = new Size(125, 27);
             textBoxNomTaula.TabIndex = 24;
             textBoxNomTaula.TextChanged += textBoxNomTaula_TextChanged;
             // 
@@ -237,9 +245,10 @@
             // 
             buttonDeleteCandidat.FlatStyle = FlatStyle.System;
             buttonDeleteCandidat.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonDeleteCandidat.Location = new Point(770, 42);
+            buttonDeleteCandidat.Location = new Point(880, 56);
+            buttonDeleteCandidat.Margin = new Padding(3, 4, 3, 4);
             buttonDeleteCandidat.Name = "buttonDeleteCandidat";
-            buttonDeleteCandidat.Size = new Size(22, 27);
+            buttonDeleteCandidat.Size = new Size(25, 36);
             buttonDeleteCandidat.TabIndex = 22;
             buttonDeleteCandidat.Text = "-";
             buttonDeleteCandidat.UseVisualStyleBackColor = true;
@@ -249,9 +258,10 @@
             // 
             buttonDeletePartit.FlatStyle = FlatStyle.System;
             buttonDeletePartit.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonDeletePartit.Location = new Point(487, 41);
+            buttonDeletePartit.Location = new Point(557, 55);
+            buttonDeletePartit.Margin = new Padding(3, 4, 3, 4);
             buttonDeletePartit.Name = "buttonDeletePartit";
-            buttonDeletePartit.Size = new Size(22, 27);
+            buttonDeletePartit.Size = new Size(25, 36);
             buttonDeletePartit.TabIndex = 21;
             buttonDeletePartit.Text = "-";
             buttonDeletePartit.UseVisualStyleBackColor = true;
@@ -261,9 +271,10 @@
             // 
             buttonDeleteMuni.FlatStyle = FlatStyle.System;
             buttonDeleteMuni.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonDeleteMuni.Location = new Point(246, 43);
+            buttonDeleteMuni.Location = new Point(281, 57);
+            buttonDeleteMuni.Margin = new Padding(3, 4, 3, 4);
             buttonDeleteMuni.Name = "buttonDeleteMuni";
-            buttonDeleteMuni.Size = new Size(22, 27);
+            buttonDeleteMuni.Size = new Size(25, 36);
             buttonDeleteMuni.TabIndex = 20;
             buttonDeleteMuni.Text = "-";
             buttonDeleteMuni.UseVisualStyleBackColor = true;
@@ -273,9 +284,10 @@
             // 
             buttonAddCandidat.FlatStyle = FlatStyle.System;
             buttonAddCandidat.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonAddCandidat.Location = new Point(602, 273);
+            buttonAddCandidat.Location = new Point(688, 364);
+            buttonAddCandidat.Margin = new Padding(3, 4, 3, 4);
             buttonAddCandidat.Name = "buttonAddCandidat";
-            buttonAddCandidat.Size = new Size(158, 27);
+            buttonAddCandidat.Size = new Size(181, 36);
             buttonAddCandidat.TabIndex = 19;
             buttonAddCandidat.Text = "Afegir Candidat";
             buttonAddCandidat.UseVisualStyleBackColor = true;
@@ -285,9 +297,10 @@
             // 
             buttonAddPartit.FlatStyle = FlatStyle.System;
             buttonAddPartit.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonAddPartit.Location = new Point(338, 273);
+            buttonAddPartit.Location = new Point(386, 364);
+            buttonAddPartit.Margin = new Padding(3, 4, 3, 4);
             buttonAddPartit.Name = "buttonAddPartit";
-            buttonAddPartit.Size = new Size(157, 27);
+            buttonAddPartit.Size = new Size(179, 36);
             buttonAddPartit.TabIndex = 18;
             buttonAddPartit.Text = "Afegir Partit";
             buttonAddPartit.UseVisualStyleBackColor = true;
@@ -297,9 +310,10 @@
             // 
             buttonAddMuni.FlatStyle = FlatStyle.System;
             buttonAddMuni.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonAddMuni.Location = new Point(58, 273);
+            buttonAddMuni.Location = new Point(66, 364);
+            buttonAddMuni.Margin = new Padding(3, 4, 3, 4);
             buttonAddMuni.Name = "buttonAddMuni";
-            buttonAddMuni.Size = new Size(165, 27);
+            buttonAddMuni.Size = new Size(189, 36);
             buttonAddMuni.TabIndex = 17;
             buttonAddMuni.Text = "Afegir Municipi";
             buttonAddMuni.UseVisualStyleBackColor = true;
@@ -308,63 +322,68 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(548, 48);
+            label3.Location = new Point(626, 64);
             label3.Name = "label3";
-            label3.Size = new Size(91, 15);
+            label3.Size = new Size(113, 20);
             label3.TabIndex = 16;
             label3.Text = "Nom Candidat :";
             // 
             // textBoxNomCandidat
             // 
-            textBoxNomCandidat.Location = new Point(641, 45);
+            textBoxNomCandidat.Location = new Point(745, 60);
+            textBoxNomCandidat.Margin = new Padding(3, 4, 3, 4);
             textBoxNomCandidat.Name = "textBoxNomCandidat";
-            textBoxNomCandidat.Size = new Size(123, 23);
+            textBoxNomCandidat.Size = new Size(128, 27);
             textBoxNomCandidat.TabIndex = 15;
             textBoxNomCandidat.TextChanged += textBoxNomCandidat_TextChanged;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(298, 49);
+            label2.Location = new Point(341, 65);
             label2.Name = "label2";
-            label2.Size = new Size(71, 15);
+            label2.Size = new Size(87, 20);
             label2.TabIndex = 14;
             label2.Text = "Nom Partit :";
             // 
             // textBoxNomPartit
             // 
-            textBoxNomPartit.Location = new Point(375, 45);
+            textBoxNomPartit.Location = new Point(429, 60);
+            textBoxNomPartit.Margin = new Padding(3, 4, 3, 4);
             textBoxNomPartit.Name = "textBoxNomPartit";
-            textBoxNomPartit.Size = new Size(106, 23);
+            textBoxNomPartit.Size = new Size(121, 27);
             textBoxNomPartit.TabIndex = 12;
             textBoxNomPartit.TextChanged += textBoxNomPartit_TextChanged;
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(158, 47);
+            textBox2.Location = new Point(181, 63);
+            textBox2.Margin = new Padding(3, 4, 3, 4);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(65, 23);
+            textBox2.Size = new Size(74, 27);
             textBox2.TabIndex = 10;
             textBox2.TextChanged += textBox2_TextChanged;
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(16, 47);
+            textBox1.Location = new Point(18, 63);
+            textBox1.Margin = new Padding(3, 4, 3, 4);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(128, 23);
+            textBox1.Size = new Size(146, 27);
             textBox1.TabIndex = 9;
             textBox1.TextChanged += textBox1_TextChanged;
             // 
             // FormInicial
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(919, 558);
-            Controls.Add(btnGuardarDades);
+            ClientSize = new Size(1050, 744);
             Controls.Add(button1);
             Controls.Add(panel1);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "FormInicial";
             Text = "FormInicial";
+            FormClosing += FormInicial_FormClosing;
             ((System.ComponentModel.ISupportInitialize)dataGridViewMunicipis).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewPartits).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewCandidats).EndInit();
@@ -382,7 +401,6 @@
         private DataGridView dataGridViewMunicipis;
         private DataGridView dataGridViewPartits;
         private DataGridView dataGridViewCandidats;
-        private Button btnGuardarDades;
         private Panel panel1;
         private Label label1;
         private TextBox textBox2;

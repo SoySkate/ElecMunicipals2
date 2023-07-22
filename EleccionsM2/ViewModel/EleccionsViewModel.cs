@@ -6,6 +6,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,9 +33,7 @@ namespace EleccionsM2.ViewModel
         public EleccionsViewModel()
         {
             context = new EleccionsMContext();
-
             ListaMunicipis = context.Municipis.Include(m => m.llistaPartits).ThenInclude(c => c.candidats).Include(t => t.taulesElectorals).ToList();
-
         }
         public async Task Grabar()
         {
@@ -44,13 +43,11 @@ namespace EleccionsM2.ViewModel
         }
         public void idSelectedMostrarPartidosAndTaules(long idSelected)
         {
-    
             int n = (int)idSelected;
             try { 
             ActualMunicipi = ListaMunicipis.SingleOrDefault(m => m.ID == n);
             }
             catch { MessageBox.Show("Ningun municipio se ha podido seleccionar"); }
-            
             //ListaPartitsMunicipi = ActualMunicipi.llistaPartits.ToList();
             //ListaTaulesMunicipi = ActualMunicipi.taulesElectorals.ToList();
         }
@@ -61,7 +58,6 @@ namespace EleccionsM2.ViewModel
             {
                 ActualPartit = ListaPartitsMunicipi.SingleOrDefault(p => p.ID == n);
             }catch(Exception ex){}
-            
             //ListaCandidats = ActualPartit.candidats.ToList();
         }
         public void idSelectedCandidat(long idCandidat)
@@ -71,7 +67,6 @@ namespace EleccionsM2.ViewModel
             ActualCandidat = ListaCandidats.SingleOrDefault(c => c.ID == n);
             }
             catch { MessageBox.Show("Ningun candidato se ha podido seleccionar"); }
-
         }
         public void idSelectedTaula(long idTaula)
         {
@@ -80,7 +75,6 @@ namespace EleccionsM2.ViewModel
             ActualTaula = ListaTaulesMunicipi.SingleOrDefault(t => t.ID == n);
             }
             catch { MessageBox.Show("Ninguna TaulaElectoral se ha podido seleccionar"); }
-
         }
         public void VaciarListaCandidatos()
         {
@@ -89,8 +83,7 @@ namespace EleccionsM2.ViewModel
         //add functions..
         //(mal hecho el de municipios, pq es directo al context)
         public async Task addmunicipio(Municipi municipi)
-        {
-            
+        {  
             ActualMunicipi = municipi;
             context.Municipis.Add(ActualMunicipi);
             await Grabar();
@@ -102,15 +95,17 @@ namespace EleccionsM2.ViewModel
             //ActualMunicipi.llistaPartits.Add(ActualPartit);
             ListaPartitsMunicipi.Add(ActualPartit);
             await Grabar();
-            MessageBox.Show("HOLA");
-            
         }
-        public async Task addCandidat(Candidat candidat)
+        public async Task addCandidat(Candidat candidat, string num)
         {
+            int regidors = int.Parse(num);
+            if (ActualPartit.candidats.Count < regidors) { 
             ActualCandidat = candidat;
             //ActualPartit.candidats.Add(ActualCandidat);
             ListaCandidats.Add(ActualCandidat);
             await Grabar();
+            }
+            else { MessageBox.Show("No puedes añadir mas candidatos que número de regidores."); }
         }
         public async Task addTaula(TaulaElectoral taula)
         {
@@ -125,8 +120,7 @@ namespace EleccionsM2.ViewModel
             //Em passa lo mateix que amb el addmunicipio ho he de fer directe al context nose pq xd
              context.Municipis.Remove(ActualMunicipi);
             ListaMunicipis.Remove(ActualMunicipi);
-            await Grabar();
-            
+            await Grabar();     
         }
         public async Task eliminarPartit()
         {

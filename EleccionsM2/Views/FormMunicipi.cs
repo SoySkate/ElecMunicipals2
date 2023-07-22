@@ -40,12 +40,20 @@ namespace EleccionsM2.Views
             {
                 e.Handled = true;
             }
+            if (e.KeyChar == (char)Keys.Enter || e.KeyChar ==(char)Keys.Tab)
+            {
+                textBoxNumRegidors.Focus();
+            }
         }
         private void textBoxNumRegidors_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
                 e.Handled = true;
+            }
+            if ((e.KeyChar == (char)Keys.Enter || e.KeyChar == (char)Keys.Tab) && textBoxNomMunicipi.Text!=string.Empty)
+            {
+                buttonCrearMunicipi.Focus();
             }
         }
 

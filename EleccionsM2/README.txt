@@ -6,19 +6,20 @@ DONE:___________________________________________________________________________
 -Controlar els valors nulls si la db es null es ralla el programa xd
 -Controlar també si no hi han munciipis no pots crear taules ni partits i si no hi han partits no pots crear candidats..
 (ho he fet amb lacces als buttons)
+-suposadament solved: -QUE FER LOKO quan esta seleccinoat el primer municipi.. important
 
 NEW TODO:____________________________________________________________________________
--QUE FER LOKO quan esta seleccinoat el primer municipi.. important
--PERQUE HE DE TERBALLAR DIRECTAMENT AMB EL CONTEXT EN EL MUNICIPI?XD
 
 
--el evento dataerror dels grid(solo surge en el primer seleccionado que es el que me esta jodiendoxd)
--ha d'haver tans regidors com candidats (validacio en candidats)
--Poder afegir resultats taula (per mes endavant)
+CONDICIONS:
+-ha d'haver tans regidors com candidats (validacio en candidats) """casifet"""
+-Poder afegir resultats taula (per mes endavant) fer datagrid resultats? millor un altre form per entrar resultats.cd sour
+
+-Si no hi ha res posar en readonly lo altre
+
 
 DEMOMENTO HE TOCAT:_______________________________________________________________________________
--creatfuncio per els butons segons si la list esta plena o no de muni i partits
--he creat una altre que es diu inicializar per si no troba datos no peti xd
+
 -Recordar Cridar la funcio de Grabar();
 _____________________________________________________________________________________________
 RUBEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEN:
@@ -28,12 +29,11 @@ i em diu que hi ha mes dun element que coincideix en canvi amb el tolist va bien
 i es veia la ruta simplement osigui no es llegia.
 -EEliminar municipio //Em passa lo mateix que amb el addmunicipio ho he de fer directe al context nose pq xd
 -Intento ferho desde el gety set nose com va
--Amb elboto refresh conseguiexo que el grid municipios es refresqui que es lunic que no ho feiaPPPER
-OPEROPEROPPPPPPPPPPERO no em va si vull fer resfresh si tinc el primer municipi selected.
+
 
 
 _____________________________________________________________________________________________
--MILLORAR LA APP INOTIFYPROPERYCHANGED, POSARDIRECTE ELS CANSIS SIMPLEMENT ACTUALITZANT DIRECTE EN EL ATRIBUTS
+-MILLORAR LA APP INOTIFYPROPERYCHANGED, POSARDIRECTE ELS CANSIS SIMPLEMENT ACTUALITZANT DIRECTE EN EL ATRIBUTS, ASYNCAWAIT, 
 -buscador per trobar el municipi?xd
 
 

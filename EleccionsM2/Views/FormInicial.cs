@@ -22,7 +22,7 @@ namespace EleccionsM2.Views
         {
             InitializeComponent();
             mostrarMunicipis();
-            
+
             dataGridViewMunicipis.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewMunicipis.SelectionChanged += DataGridView1_SelectionChanged;
             progresbuttons();
@@ -32,7 +32,7 @@ namespace EleccionsM2.Views
 
         public void progresbuttons()
         {
-            if (dataGridViewMunicipis.Rows.Count==0)
+            if (dataGridViewMunicipis.Rows.Count == 0)
             {
                 buttonAddCandidat.Visible = false;
                 buttonAddPartit.Visible = false;
@@ -57,6 +57,7 @@ namespace EleccionsM2.Views
                 dataGridViewMunicipis.Columns.Clear();
             }
             else { dataGridViewMunicipis.DataSource = viewModel.ListaMunicipis; }
+            //dataGridViewMunicipis.Refresh();
             //dataGridViewMunicipis.DataMember = "ListaMunicipis";
         }
         public void mostrarPartitsAndTaules(long idMuni)
@@ -64,38 +65,52 @@ namespace EleccionsM2.Views
             if (idMuni > 0)
             {
                 viewModel.idSelectedMostrarPartidosAndTaules(idMuni);
-                if(viewModel.ActualMunicipi.llistaPartits.Count > 0 && viewModel.ActualMunicipi!=null)
-                {
-                    dataGridViewPartits.DataSource = viewModel.ListaPartitsMunicipi;
-                    textBoxNomPartit.ReadOnly = false;
-                    textBoxNomCandidat.ReadOnly = false;
-                    if (viewModel.ActualPartit.candidats.Count == 0)
-                    {
-                        textBoxNomCandidat.ReadOnly = true;
-                        dataGridViewCandidats.DataSource = null;
-                    }
-                }
-                else
+                if (viewModel.ListaMunicipis.Count == 0)
                 {
                     textBoxNomPartit.ReadOnly = true;
                     textBoxNomCandidat.ReadOnly = true;
                     dataGridViewCandidats.DataSource = null;
                     dataGridViewPartits.DataSource = null;
+                    dataGridViewTaules.DataSource = null;
+                    textBoxNomTaula.ReadOnly = true;
+                    textBoxCensTaula.ReadOnly = true;
                     viewModel.VaciarListaCandidatos();
-                   
-                }
-               if(viewModel.ActualMunicipi.taulesElectorals.Count > 0)
-                {
-                    dataGridViewTaules.DataSource = viewModel.ListaTaulesMunicipi;
-                    dataGridViewTaules.Columns[3].Visible = false;
-                    textBoxNomTaula.ReadOnly = false;
-                    textBoxCensTaula.ReadOnly = false;
                 }
                 else
                 {
-                    textBoxNomTaula.ReadOnly = true;
-                    textBoxCensTaula.ReadOnly = true;
-                    dataGridViewTaules.DataSource = null;
+                    if (viewModel.ActualMunicipi.llistaPartits.Count > 0 && viewModel.ActualMunicipi != null)
+                    {
+                        dataGridViewPartits.DataSource = viewModel.ListaPartitsMunicipi;
+                        textBoxNomPartit.ReadOnly = false;
+                        textBoxNomCandidat.ReadOnly = false;
+                        if (viewModel.ActualPartit.candidats.Count == 0)
+                        {
+                            textBoxNomCandidat.ReadOnly = true;
+                            dataGridViewCandidats.DataSource = null;
+                        }
+                    }
+                    else
+                    {
+                        textBoxNomPartit.ReadOnly = true;
+                        textBoxNomCandidat.ReadOnly = true;
+                        dataGridViewCandidats.DataSource = null;
+                        dataGridViewPartits.DataSource = null;
+                        viewModel.VaciarListaCandidatos();
+
+                    }
+                    if (viewModel.ActualMunicipi.taulesElectorals.Count > 0)
+                    {
+                        dataGridViewTaules.DataSource = viewModel.ListaTaulesMunicipi;
+                        dataGridViewTaules.Columns[3].Visible = false;
+                        textBoxNomTaula.ReadOnly = false;
+                        textBoxCensTaula.ReadOnly = false;
+                    }
+                    else
+                    {
+                        textBoxNomTaula.ReadOnly = true;
+                        textBoxCensTaula.ReadOnly = true;
+                        dataGridViewTaules.DataSource = null;
+                    }
                 }
             }
         }
@@ -103,7 +118,7 @@ namespace EleccionsM2.Views
         {
             if (idPartit > 0)
             {
-                    viewModel.idSelectedPartidoMostrarCandidatos(idPartit);
+                viewModel.idSelectedPartidoMostrarCandidatos(idPartit);
                 if (viewModel.ActualPartit.candidats.Count > 0)
                 {
                     dataGridViewCandidats.DataSource = viewModel.ListaCandidats;
@@ -119,18 +134,18 @@ namespace EleccionsM2.Views
         //refreshDOne
         public void dataRefresh()
         {
+            dataGridViewMunicipis.DataBindings.Clear();
             dataGridViewMunicipis.DataSource = null;
             dataGridViewMunicipis.Rows.Clear();
             dataGridViewMunicipis.Columns.Clear();
+            dataGridViewCandidats.DataSource = null;
+            dataGridViewPartits.DataSource = null;
+            dataGridViewTaules.DataSource = null;
             mostrarMunicipis();
         }
         private void button1_Click(object sender, EventArgs e)
         {
             dataRefresh();
-        }
-        private void btnGuardarDades_Click(object sender, EventArgs e)
-        {
-            viewModel.Grabar();
         }
         //Funcio per trobar el ID de la rowSelected
         private void DataGridView1_SelectionChanged(object? sender, EventArgs e)
@@ -239,8 +254,8 @@ namespace EleccionsM2.Views
             if (formMunicipi.ShowDialog() == DialogResult.OK)
             {//crido una funcio per enviarho directament al context i també ho poso a viewmodel (una mica raro)
                 viewModel.addmunicipio(formMunicipi.Municipi);
-                progresbuttons();
                 dataRefresh();
+                progresbuttons();
             }
             else { MessageBox.Show("XDDDMAL"); }
         }
@@ -250,8 +265,8 @@ namespace EleccionsM2.Views
             if (formPartit.ShowDialog() == DialogResult.OK)
             {
                 viewModel.addPartit(formPartit.PartitMunicipi);
-                progresbuttons();
                 dataRefresh();
+                progresbuttons();
             }
             else { MessageBox.Show("XDDDMAL"); }
         }
@@ -260,7 +275,7 @@ namespace EleccionsM2.Views
             FormCandidat formCandidat = new FormCandidat();
             if (formCandidat.ShowDialog() == DialogResult.OK)
             {
-                viewModel.addCandidat(formCandidat.Candidat);
+                viewModel.addCandidat(formCandidat.Candidat, textBox2.Text);
                 dataRefresh();
             }
             else { MessageBox.Show("XDDDMAL"); }
@@ -279,22 +294,22 @@ namespace EleccionsM2.Views
         //deletebuttons:
         private void buttonDeleteMuni_Click(object sender, EventArgs e)
         {
-            viewModel.eliminarMunicipi();
+             viewModel.eliminarMunicipi();
             dataRefresh();
         }
         private void buttonDeletePartit_Click(object sender, EventArgs e)
         {
-            viewModel.eliminarPartit();
+             viewModel.eliminarPartit();
             dataRefresh();
         }
         private void buttonDeleteCandidat_Click(object sender, EventArgs e)
         {
-            viewModel.eliminarCandidat();
+             viewModel.eliminarCandidat();
             dataRefresh();
         }
         private void buttonDeleteTaula_Click(object sender, EventArgs e)
         {
-            viewModel.eliminarTaula();
+             viewModel.eliminarTaula();
             dataRefresh();
         }
         //Capar el maximo de caracteres de los textbox
@@ -302,32 +317,30 @@ namespace EleccionsM2.Views
         {
             textBox1.MaxLength = 20;
         }
-
         private void textBoxNomPartit_TextChanged(object sender, EventArgs e)
         {
             textBoxNomPartit.MaxLength = 20;
         }
-
         private void textBoxNomCandidat_TextChanged(object sender, EventArgs e)
         {
             textBoxNomCandidat.MaxLength = 30;
         }
-
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
             textBox2.MaxLength = 2;
         }
-
         private void textBoxNomTaula_TextChanged(object sender, EventArgs e)
         {
             textBoxNomTaula.MaxLength = 15;
         }
-
         private void textBoxCensTaula_TextChanged(object sender, EventArgs e)
         {
             textBoxCensTaula.MaxLength = 5;
         }
-        //refresh la mierda que no funciona
 
+        private void FormInicial_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            viewModel.Grabar();
+        }
     }
 }
