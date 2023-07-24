@@ -12,7 +12,7 @@ namespace EleccionsM2.Models
         public int votsBlanc { get; set; }
         public int votsNul { get; set; }
         public List<VotsPerLlista> votsLlista { get; set; }
-        public ResultatsTaula() { }
+        public ResultatsTaula() { votsLlista = new List<VotsPerLlista>(); }
         //public ResultatsTaula(int votsBlanc, int votsNul, List<VotsPerLlista> votsLlista)
         //{
         //    this.votsBlanc = votsBlanc;

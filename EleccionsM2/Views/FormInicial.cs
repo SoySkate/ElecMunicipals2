@@ -294,22 +294,22 @@ namespace EleccionsM2.Views
         //deletebuttons:
         private void buttonDeleteMuni_Click(object sender, EventArgs e)
         {
-             viewModel.eliminarMunicipi();
+            viewModel.eliminarMunicipi();
             dataRefresh();
         }
         private void buttonDeletePartit_Click(object sender, EventArgs e)
         {
-             viewModel.eliminarPartit();
+            viewModel.eliminarPartit();
             dataRefresh();
         }
         private void buttonDeleteCandidat_Click(object sender, EventArgs e)
         {
-             viewModel.eliminarCandidat();
+            viewModel.eliminarCandidat();
             dataRefresh();
         }
         private void buttonDeleteTaula_Click(object sender, EventArgs e)
         {
-             viewModel.eliminarTaula();
+            viewModel.eliminarTaula();
             dataRefresh();
         }
         //Capar el maximo de caracteres de los textbox
