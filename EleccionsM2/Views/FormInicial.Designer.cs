@@ -36,6 +36,7 @@
             dataGridViewPartits = new DataGridView();
             dataGridViewCandidats = new DataGridView();
             panel1 = new Panel();
+            buttonAddResultatsT = new Button();
             buttonDeleteTaula = new Button();
             buttonAddTaula = new Button();
             label4 = new Label();
@@ -55,7 +56,6 @@
             textBoxNomPartit = new TextBox();
             textBox2 = new TextBox();
             textBox1 = new TextBox();
-            buttonAddResultatsT = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewMunicipis).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewPartits).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewCandidats).BeginInit();
@@ -162,6 +162,18 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(801, 523);
             panel1.TabIndex = 8;
+            // 
+            // buttonAddResultatsT
+            // 
+            buttonAddResultatsT.FlatStyle = FlatStyle.System;
+            buttonAddResultatsT.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonAddResultatsT.Location = new Point(618, 407);
+            buttonAddResultatsT.Name = "buttonAddResultatsT";
+            buttonAddResultatsT.Size = new Size(122, 45);
+            buttonAddResultatsT.TabIndex = 29;
+            buttonAddResultatsT.Text = "Resultats Taula Seleccionada";
+            buttonAddResultatsT.UseVisualStyleBackColor = true;
+            buttonAddResultatsT.Click += buttonAddResultatsT_Click;
             // 
             // buttonDeleteTaula
             // 
@@ -354,17 +366,6 @@
             textBox1.Size = new Size(128, 23);
             textBox1.TabIndex = 9;
             textBox1.TextChanged += textBox1_TextChanged;
-            // 
-            // buttonAddResultatsT
-            // 
-            buttonAddResultatsT.FlatStyle = FlatStyle.System;
-            buttonAddResultatsT.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonAddResultatsT.Location = new Point(618, 407);
-            buttonAddResultatsT.Name = "buttonAddResultatsT";
-            buttonAddResultatsT.Size = new Size(122, 45);
-            buttonAddResultatsT.TabIndex = 29;
-            buttonAddResultatsT.Text = "Resultats Taula Seleccionada";
-            buttonAddResultatsT.UseVisualStyleBackColor = true;
             // 
             // FormInicial
             // 

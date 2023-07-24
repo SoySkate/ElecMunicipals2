@@ -33,7 +33,7 @@
             textBoxVotsNulls = new TextBox();
             labelVotsNull = new Label();
             dataGridViewVotsPartit = new DataGridView();
-            textBox1 = new TextBox();
+            textBoxVotsPartit = new TextBox();
             labelVotsPartitIndividual = new Label();
             buttonAddVotPartit = new Button();
             buttonAddResultatTaula = new Button();
@@ -57,6 +57,7 @@
             textBoxVotsBlanc.Name = "textBoxVotsBlanc";
             textBoxVotsBlanc.Size = new Size(100, 23);
             textBoxVotsBlanc.TabIndex = 1;
+            textBoxVotsBlanc.KeyPress += textBoxVotsBlanc_KeyPress;
             // 
             // textBoxVotsNulls
             // 
@@ -64,6 +65,7 @@
             textBoxVotsNulls.Name = "textBoxVotsNulls";
             textBoxVotsNulls.Size = new Size(100, 23);
             textBoxVotsNulls.TabIndex = 3;
+            textBoxVotsNulls.KeyPress += textBoxVotsNulls_KeyPress;
             // 
             // labelVotsNull
             // 
@@ -83,12 +85,13 @@
             dataGridViewVotsPartit.Size = new Size(240, 184);
             dataGridViewVotsPartit.TabIndex = 4;
             // 
-            // textBox1
+            // textBoxVotsPartit
             // 
-            textBox1.Location = new Point(151, 159);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(100, 23);
-            textBox1.TabIndex = 6;
+            textBoxVotsPartit.Location = new Point(151, 159);
+            textBoxVotsPartit.Name = "textBoxVotsPartit";
+            textBoxVotsPartit.Size = new Size(100, 23);
+            textBoxVotsPartit.TabIndex = 6;
+            textBoxVotsPartit.KeyPress += textBoxVotsPartit_KeyPress;
             // 
             // labelVotsPartitIndividual
             // 
@@ -107,6 +110,7 @@
             buttonAddVotPartit.TabIndex = 7;
             buttonAddVotPartit.Text = "AddNumVots";
             buttonAddVotPartit.UseVisualStyleBackColor = true;
+            buttonAddVotPartit.Click += buttonAddVotPartit_Click;
             // 
             // buttonAddResultatTaula
             // 
@@ -116,6 +120,7 @@
             buttonAddResultatTaula.TabIndex = 8;
             buttonAddResultatTaula.Text = "Add Resultats Taula";
             buttonAddResultatTaula.UseVisualStyleBackColor = true;
+            buttonAddResultatTaula.Click += buttonAddResultatTaula_Click;
             // 
             // labelLlistaVots
             // 
@@ -139,12 +144,12 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(600, 376);
+            ClientSize = new Size(587, 376);
             Controls.Add(label1);
             Controls.Add(labelLlistaVots);
             Controls.Add(buttonAddResultatTaula);
             Controls.Add(buttonAddVotPartit);
-            Controls.Add(textBox1);
+            Controls.Add(textBoxVotsPartit);
             Controls.Add(labelVotsPartitIndividual);
             Controls.Add(dataGridViewVotsPartit);
             Controls.Add(textBoxVotsNulls);
@@ -165,7 +170,7 @@
         private TextBox textBoxVotsNulls;
         private Label labelVotsNull;
         private DataGridView dataGridViewVotsPartit;
-        private TextBox textBox1;
+        private TextBox textBoxVotsPartit;
         private Label labelVotsPartitIndividual;
         private Button buttonAddVotPartit;
         private Button buttonAddResultatTaula;

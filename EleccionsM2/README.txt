@@ -10,6 +10,8 @@ DONE:___________________________________________________________________________
 
 NEW TODO:____________________________________________________________________________
 
+-Solucionar afegir VotsperTaula no working...
+-ListaCandidats (No sesta eliminant be de la database les coses repasarho)!
 
 CONDICIONS:
 -ha d'haver tans regidors com candidats (validacio en candidats) """casifet"""
@@ -23,13 +25,6 @@ DEMOMENTO HE TOCAT:_____________________________________________________________
 -Recordar Cridar la funcio de Grabar();
 _____________________________________________________________________________________________
 RUBEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEN:
--EEl tolist fa que no em peti el singleordefault que sencarrega de buscar lunic element que coincideix de la lista
-i em diu que hi ha mes dun element que coincideix en canvi amb el tolist va bien..Randomxd
--AAbans amagava una columna del grid Taula perque dins de taula hi ha una clase que es resultats taula 
-i es veia la ruta simplement osigui no es llegia.
--EEliminar municipio //Em passa lo mateix que amb el addmunicipio ho he de fer directe al context nose pq xd
--Intento ferho desde el gety set nose com va
-
 
 
 _____________________________________________________________________________________________

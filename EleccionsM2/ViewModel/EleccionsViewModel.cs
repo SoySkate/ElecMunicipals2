@@ -23,12 +23,14 @@ namespace EleccionsM2.ViewModel
         public List<PartitMunicipi> ListaPartitsMunicipi { get => ActualMunicipi.llistaPartits; }
         public List<Candidat> ListaCandidats { get=>ActualPartit.candidats; }
         public List<TaulaElectoral> ListaTaulesMunicipi { get => ActualMunicipi.taulesElectorals; }
+        public List<VotsPerLlista> ListaVotsPerLlista { get=> ActualTaula.resultatsTaula.votsLlista; }
         //amb el INotifyPropertyChanged podria ser més senzill ja que el binding nomes el faria un cop i cada cop que 
         //el ActualMunicipi canvi de valor será el foco i el binded.
         public Municipi? ActualMunicipi { get; set; } 
         public PartitMunicipi? ActualPartit { get; set; } = new PartitMunicipi();
         public Candidat? ActualCandidat { get; set; } = new Candidat();
         public TaulaElectoral? ActualTaula { get; set; } 
+        public ResultatsTaula ActualResultat { get; set; }
 
         public EleccionsViewModel()
         {
@@ -39,7 +41,7 @@ namespace EleccionsM2.ViewModel
         {
             try { 
             context.SaveChanges();
-            }catch(Exception ex) { }
+            }catch(Exception ex) { MessageBox.Show(ex.ToString()); }
         }
         public void idSelectedMostrarPartidosAndTaules(long idSelected)
         {
@@ -96,6 +98,7 @@ namespace EleccionsM2.ViewModel
             ListaPartitsMunicipi.Add(ActualPartit);
             await Grabar();
         }
+     
         public async Task addCandidat(Candidat candidat, string num)
         {
             int regidors = int.Parse(num);
@@ -114,18 +117,34 @@ namespace EleccionsM2.ViewModel
             ListaTaulesMunicipi.Add(ActualTaula);
             await Grabar();
         }
+        public async Task addResultatT(ResultatsTaula resultat)
+        {
+            ActualResultat = resultat;
+            ActualTaula.resultatsTaula = ActualResultat;
+            await Grabar();
+        }
+        public async Task addResultatVotsPerLlista(List<VotsPerLlista> vots)
+        {
+            foreach (VotsPerLlista vot in vots)
+            {
+                ListaVotsPerLlista.Add(vot);
+            }
+             await Grabar();
+        }
         //delete functions
         public async Task eliminarMunicipi()
         {
             //Em passa lo mateix que amb el addmunicipio ho he de fer directe al context nose pq xd
-             context.Municipis.Remove(ActualMunicipi);
+            context.Municipis.Remove(ActualMunicipi);
             ListaMunicipis.Remove(ActualMunicipi);
-            await Grabar();     
+            await Grabar();
         }
         public async Task eliminarPartit()
         {
             ActualMunicipi.llistaPartits.Remove(ActualPartit);
             ListaPartitsMunicipi.Remove(ActualPartit);
+            ListaCandidats.Clear();
+
             await Grabar();
         }
         public async Task eliminarCandidat()

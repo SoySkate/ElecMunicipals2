@@ -14,5 +14,9 @@ namespace EleccionsM2.ViewModel
         {
             ResultatTForm = new ResultatsTaula();
         }
+        public void addListaVots(VotsPerLlista vot)
+        {
+            ResultatTForm.votsLlista.Add(vot);
+        }
     }
 }

@@ -184,7 +184,6 @@ namespace EleccionsM2.Views
                 bindtextBoxPartit();
             }
         }
-        //esto no funciona nose pq
         private void dataGridView3_SelectionChanged(object sender, EventArgs e)
         {
             long idCandidat = 0;
@@ -291,6 +290,18 @@ namespace EleccionsM2.Views
             }
             else { MessageBox.Show("XDDmal"); }
         }
+        //not wokting xd mirarmho:!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        private void buttonAddResultatsT_Click(object sender, EventArgs e)
+        {
+            FormResultatsT formResultatT = new FormResultatsT();
+            if(formResultatT.ShowDialog() == DialogResult.OK)
+            {
+                viewModel.addResultatT(formResultatT.ResultatsTaula);
+                viewModel.addResultatVotsPerLlista(formResultatT.ResultatsTaula.votsLlista);
+                dataRefresh();
+            }
+            else { MessageBox.Show("XDDmal"); }
+        }
         //deletebuttons:
         private void buttonDeleteMuni_Click(object sender, EventArgs e)
         {
@@ -342,5 +353,6 @@ namespace EleccionsM2.Views
         {
             viewModel.Grabar();
         }
+
     }
 }
