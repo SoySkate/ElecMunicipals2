@@ -6,18 +6,20 @@ DONE:___________________________________________________________________________
 -Controlar els valors nulls si la db es null es ralla el programa xd
 -Controlar també si no hi han munciipis no pots crear taules ni partits i si no hi han partits no pots crear candidats..
 (ho he fet amb lacces als buttons)
--suposadament solved: -QUE FER LOKO quan esta seleccinoat el primer municipi.. important
+-suposadament solved: -QUE FER LOKO quan esta seleccinoat el primer municipi.. 
+-no permetre crear un municipi amb un 0 de num regidors.
 
 NEW TODO:____________________________________________________________________________
 
--Solucionar afegir VotsperTaula no working...
--ListaCandidats (No sesta eliminant be de la database les coses repasarho)!
+
+
 
 CONDICIONS:
--ha d'haver tans regidors com candidats (validacio en candidats) """casifet"""
+-ha d'haver tans regidors com candidats (validacio en candidats) """casifet""" he de fer el mínim.
+-Que no es pugui crear infinitament?
 -Poder afegir resultats taula (per mes endavant) fer datagrid resultats? millor un altre form per entrar resultats.cd sour
 
--Si no hi ha res posar en readonly lo altre
+-Si no hi ha res posar en readonly lo altre (per exemplequan elimino tot)
 
 
 DEMOMENTO HE TOCAT:_______________________________________________________________________________

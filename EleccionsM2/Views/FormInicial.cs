@@ -255,8 +255,9 @@ namespace EleccionsM2.Views
                 viewModel.addmunicipio(formMunicipi.Municipi);
                 dataRefresh();
                 progresbuttons();
+                viewModel.Grabar();
             }
-            else { MessageBox.Show("XDDDMAL"); }
+            else { MessageBox.Show("Cancelado"); }
         }
         private void buttonAddPartit_Click(object sender, EventArgs e)
         {
@@ -266,8 +267,9 @@ namespace EleccionsM2.Views
                 viewModel.addPartit(formPartit.PartitMunicipi);
                 dataRefresh();
                 progresbuttons();
+                viewModel.Grabar();
             }
-            else { MessageBox.Show("XDDDMAL"); }
+            else { MessageBox.Show("Cancelado"); }
         }
         private void buttonAddCandidat_Click(object sender, EventArgs e)
         {
@@ -276,8 +278,9 @@ namespace EleccionsM2.Views
             {
                 viewModel.addCandidat(formCandidat.Candidat, textBox2.Text);
                 dataRefresh();
+                viewModel.Grabar();
             }
-            else { MessageBox.Show("XDDDMAL"); }
+            else { MessageBox.Show("Cancelado"); }
         }
         //button addTaula:
         private void button3_Click(object sender, EventArgs e)
@@ -287,20 +290,9 @@ namespace EleccionsM2.Views
             {
                 viewModel.addTaula(formTaula.TaulaElectoral);
                 dataRefresh();
+                viewModel.Grabar();
             }
-            else { MessageBox.Show("XDDmal"); }
-        }
-        //not wokting xd mirarmho:!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        private void buttonAddResultatsT_Click(object sender, EventArgs e)
-        {
-            FormResultatsT formResultatT = new FormResultatsT();
-            if(formResultatT.ShowDialog() == DialogResult.OK)
-            {
-                viewModel.addResultatT(formResultatT.ResultatsTaula);
-                viewModel.addResultatVotsPerLlista(formResultatT.ResultatsTaula.votsLlista);
-                dataRefresh();
-            }
-            else { MessageBox.Show("XDDmal"); }
+            else { MessageBox.Show("Cancelado"); }
         }
         //deletebuttons:
         private void buttonDeleteMuni_Click(object sender, EventArgs e)

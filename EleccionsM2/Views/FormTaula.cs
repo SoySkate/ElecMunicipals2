@@ -15,7 +15,7 @@ namespace EleccionsM2.Views
     public partial class FormTaula : Form
     {
         TaulaViewModel viewModelTaula = new TaulaViewModel();
-        public TaulaElectoral TaulaElectoral { get => viewModelTaula.TaulaForm; private set => viewModelTaula.TaulaForm = value; }
+        public TaulaElectoral TaulaElectoral { get => viewModelTaula.TaulaForm; }
         public FormTaula()
         {
             InitializeComponent();

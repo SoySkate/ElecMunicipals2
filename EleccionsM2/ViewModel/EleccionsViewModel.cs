@@ -30,7 +30,7 @@ namespace EleccionsM2.ViewModel
         public PartitMunicipi? ActualPartit { get; set; } = new PartitMunicipi();
         public Candidat? ActualCandidat { get; set; } = new Candidat();
         public TaulaElectoral? ActualTaula { get; set; } 
-        public ResultatsTaula ActualResultat { get; set; }
+        public ResultatsTaula ActualResultat { get => ActualTaula.resultatsTaula; }
 
         public EleccionsViewModel()
         {
@@ -119,30 +119,60 @@ namespace EleccionsM2.ViewModel
         }
         public async Task addResultatT(ResultatsTaula resultat)
         {
-            ActualResultat = resultat;
-            ActualTaula.resultatsTaula = ActualResultat;
+            ActualTaula.resultatsTaula = resultat;
             await Grabar();
         }
-        public async Task addResultatVotsPerLlista(List<VotsPerLlista> vots)
-        {
-            foreach (VotsPerLlista vot in vots)
-            {
-                ListaVotsPerLlista.Add(vot);
-            }
-             await Grabar();
-        }
+        //public async Task addResultatVotsPerLlista(List<VotsPerLlista> vots)
+        //{
+        //    foreach (VotsPerLlista vot in vots)
+        //    {
+        //        ListaVotsPerLlista.Add(vot);
+        //    }
+        //     await Grabar();
+        //}
         //delete functions
         public async Task eliminarMunicipi()
         {
             //Em passa lo mateix que amb el addmunicipio ho he de fer directe al context nose pq xd
+            foreach(PartitMunicipi partit in ActualMunicipi.llistaPartits)
+            {
+                var itemp = context.PartitsPolitics.FirstOrDefault(p=>p.ID== partit.ID);
+                foreach (Candidat cand in partit.candidats)
+                {
+                    var itemcandi = context.Candidats.FirstOrDefault(x => x.ID == cand.ID);
+                    if (itemcandi != null)
+                    {
+                        context.Candidats.Remove(itemcandi);
+                    }
+                }
+                if (itemp != null) {
+                    itemp.candidats.Clear();
+                    context.PartitsPolitics.Remove(itemp); 
+                    
+                }
+            }
             context.Municipis.Remove(ActualMunicipi);
             ListaMunicipis.Remove(ActualMunicipi);
+            ActualMunicipi.llistaPartits.Clear();
+            ListaPartitsMunicipi.Clear();
+            ListaCandidats.Clear();
             await Grabar();
         }
         public async Task eliminarPartit()
         {
+            foreach(Candidat cand in ActualPartit.candidats)
+            {
+                var item = context.Candidats.FirstOrDefault(x => x.ID== cand.ID);
+                if(item != null)
+                {
+                    context.Candidats.Remove(item);
+                }
+            }
+
             ActualMunicipi.llistaPartits.Remove(ActualPartit);
+            context.PartitsPolitics.Remove(ActualPartit);
             ListaPartitsMunicipi.Remove(ActualPartit);
+            ActualPartit.candidats.Clear();
             ListaCandidats.Clear();
 
             await Grabar();
@@ -150,11 +180,21 @@ namespace EleccionsM2.ViewModel
         public async Task eliminarCandidat()
         {
             ActualPartit.candidats.Remove(ActualCandidat);
+            context.Candidats.Remove(ActualCandidat);
             ListaCandidats.Remove(ActualCandidat);
             await Grabar();
         }
+        //falta per fer la delete on cascade xd
         public async Task eliminarTaula()
         {
+            foreach(TaulaElectoral taula in ActualMunicipi.taulesElectorals)
+            {
+                var t = context.TaulesElectorals.FirstOrDefault(x=>x.ID == taula.ID);
+                if(t != null)
+                {
+                 context.TaulesElectorals.Remove(t);
+                }
+            }
             ActualMunicipi.taulesElectorals.Remove(ActualTaula);
             ListaTaulesMunicipi.Remove(ActualTaula);
             await Grabar();
