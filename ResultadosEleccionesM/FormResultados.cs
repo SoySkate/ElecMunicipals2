@@ -7,15 +7,12 @@ namespace ResultadosEleccionesM
 {
     public partial class FormResultados : Form
     {
-        //treballar amb el nou context i guiarme del eleccionsviewmodel 
-        //amb el nou resultatsviewmodel. ;;)) bit a bit loko
-       
         public FormResultados()
         {
             InitializeComponent();
-            //dataGridViewResultats.DataSource = 
+            dataGridViewResultats.DataSource = viewmodelR.ListaPartitsMunicipi;
         }
-
+        ResultatsViewModel viewmodelR = new ResultatsViewModel();
     }
 
 }

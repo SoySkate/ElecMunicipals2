@@ -38,7 +38,7 @@
             dataGridViewResultats.Location = new Point(120, 67);
             dataGridViewResultats.Name = "dataGridViewResultats";
             dataGridViewResultats.RowTemplate.Height = 25;
-            dataGridViewResultats.Size = new Size(597, 185);
+            dataGridViewResultats.Size = new Size(597, 302);
             dataGridViewResultats.TabIndex = 0;
             // 
             // FormResultados
