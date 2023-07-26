@@ -8,9 +8,12 @@ DONE:___________________________________________________________________________
 (ho he fet amb lacces als buttons)
 -suposadament solved: -QUE FER LOKO quan esta seleccinoat el primer municipi.. 
 -no permetre crear un municipi amb un 0 de num regidors.
+-Mirar de fer el delete on cascade alla el eleccionsviewmodel. Potser ve daqui lerror nose xd. NO funcionava nose be pq ho he fet a ma xd
 
 NEW TODO:____________________________________________________________________________
 
+
+-Pasar els partits al votsperllistaviewmodel y aixi es vegin al form de Resultats.
 
 
 

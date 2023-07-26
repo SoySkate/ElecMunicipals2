@@ -29,7 +29,7 @@ namespace EleccionsM2.ViewModel
            
             Rcontext = new EleccionsMContext();
             ListaMunicipis = Rcontext.Municipis.Include(p => p.llistaPartits).Include(t => t.taulesElectorals).ThenInclude(r => r.resultatsTaula).ThenInclude(v => v.votsLlista).ToList();
-            passarPartitsVotsViewModel();
+            //passarPartitsVotsViewModel();
         }
         public async Task grabar()
         {
@@ -46,18 +46,18 @@ namespace EleccionsM2.ViewModel
         {
             ActualTaula = selectedTaula;
         }
-        public void passarPartitsVotsViewModel()
-        {
-            foreach (Municipi muni in ListaMunicipis)
-            {
-                ActualMunicipi = muni;
-                foreach (PartitMunicipi partit in ListaPartitsMunicipi)
-                {
-                    VotsPerLlistaViewModel vots = new();
-                    vots.nomPartit = partit.nomPartit;
-                    ListaVisualVotsPerPartit.Add(vots);
-                }
-            }
-        }
+        //public void passarPartitsVotsViewModel()
+        //{
+        //    VotsPerLlistaViewModel vots = new();
+        //    foreach (Municipi muni in ListaMunicipis)
+        //    {
+        //        ActualMunicipi = muni;
+        //        foreach (PartitMunicipi partit in ListaPartitsMunicipi)
+        //        {                    
+        //            vots.nomPartit = partit.nomPartit;
+        //            ListaVisualVotsPerPartit.Add(vots);
+        //        }
+        //    }
+        //}
     }
 }

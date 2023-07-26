@@ -22,7 +22,6 @@ namespace EleccionsM2.ViewModel
         public List<PartitMunicipi> ListaPartitsMunicipi { get => ActualMunicipi.llistaPartits; }
         public List<Candidat> ListaCandidats { get=>ActualPartit.candidats; }
         public List<TaulaElectoral> ListaTaulesMunicipi { get => ActualMunicipi.taulesElectorals; }
-        public List<VotsPerLlista> ListaVotsPerLlista { get=> ActualTaula.resultatsTaula.votsLlista; }
         //amb el INotifyPropertyChanged podria ser més senzill ja que el binding nomes el faria un cop i cada cop que 
         //el ActualMunicipi canvi de valor será el foco i el binded.
         public Municipi? ActualMunicipi { get; set; } 
@@ -58,8 +57,7 @@ namespace EleccionsM2.ViewModel
             try
             {
                 ActualPartit = ListaPartitsMunicipi.SingleOrDefault(p => p.ID == n);
-            }catch(Exception ex){}
-            //ListaCandidats = ActualPartit.candidats.ToList();
+            }catch(Exception ex) { MessageBox.Show(ex.ToString()); }
         }
         public void idSelectedCandidat(long idCandidat)
         {
@@ -150,11 +148,23 @@ namespace EleccionsM2.ViewModel
                     
                 }
             }
+            foreach(TaulaElectoral taula in ListaTaulesMunicipi)
+            {
+                var taulaitem = context.TaulesElectorals.FirstOrDefault(t => t.ID == taula.ID);
+                var result = taulaitem.resultatsTaula;
+
+                //posible error de requerimiento de eliminar resultatstaula antes de eliminar la taula
+                context.ResultatsTaules.Remove(result);
+                context.TaulesElectorals.Remove(taulaitem);
+                
+            }
             context.Municipis.Remove(ActualMunicipi);
             ListaMunicipis.Remove(ActualMunicipi);
             ActualMunicipi.llistaPartits.Clear();
+            ActualMunicipi.taulesElectorals.Clear();
             ListaPartitsMunicipi.Clear();
             ListaCandidats.Clear();
+            ListaTaulesMunicipi.Clear();
             await Grabar();
         }
         public async Task eliminarPartit()
@@ -167,13 +177,14 @@ namespace EleccionsM2.ViewModel
                     context.Candidats.Remove(item);
                 }
             }
-
-            ActualMunicipi.llistaPartits.Remove(ActualPartit);
+            ListaCandidats.Clear();
+            ActualPartit.candidats.Clear();
             context.PartitsPolitics.Remove(ActualPartit);
             ListaPartitsMunicipi.Remove(ActualPartit);
-            ActualPartit.candidats.Clear();
-            ListaCandidats.Clear();
-
+            if (ActualMunicipi != null )
+            {
+                ActualMunicipi.llistaPartits.Remove(ActualPartit);
+            }
             await Grabar();
         }
         public async Task eliminarCandidat()
@@ -186,14 +197,8 @@ namespace EleccionsM2.ViewModel
         //falta per fer la delete on cascade xd
         public async Task eliminarTaula()
         {
-            foreach(TaulaElectoral taula in ActualMunicipi.taulesElectorals)
-            {
-                var t = context.TaulesElectorals.FirstOrDefault(x=>x.ID == taula.ID);
-                if(t != null)
-                {
-                 context.TaulesElectorals.Remove(t);
-                }
-            }
+            context.TaulesElectorals.Remove(ActualTaula);
+            context.ResultatsTaules.Remove(ActualResultat);
             ActualMunicipi.taulesElectorals.Remove(ActualTaula);
             ListaTaulesMunicipi.Remove(ActualTaula);
             await Grabar();
