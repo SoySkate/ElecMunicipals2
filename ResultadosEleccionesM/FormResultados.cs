@@ -10,9 +10,40 @@ namespace ResultadosEleccionesM
         public FormResultados()
         {
             InitializeComponent();
-            dataGridViewResultats.DataSource = viewmodelR.ListaPartitsMunicipi;
+            comboBoxMunicipis.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxMunicipis.Enabled = true;
+            comboBoxTaules.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxTaules.Enabled = true;
+            comboBoxMunicipis.DataSource = viewmodelR.ListaMunicipis;
+            controlPanel(); 
         }
         ResultatsViewModel viewmodelR = new ResultatsViewModel();
+        public void controlPanel()
+        {
+            if (viewmodelR.ListaMunicipis.Count > 0)
+            {
+                panel1.Visible = true;
+            }
+        }
+        private void comboBoxMunicipis_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var muni = (Municipi)comboBoxMunicipis.SelectedItem;
+            viewmodelR.selectMunicipiActual(muni);
+            comboBoxTaules.DataSource = viewmodelR.ListaTaulesMunicipi;
+        }
+
+        private void comboBoxTaules_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var taula = (TaulaElectoral)comboBoxTaules.SelectedItem;
+            viewmodelR.selectTaulaActual(taula);
+            textBoxVotsBlanc.DataBindings.Clear();
+            textBoxVotsBlanc.DataBindings.Add("Text", viewmodelR.ActualTaula.resultatsTaula, "votsBlanc");
+            textBoxVotsNuls.DataBindings.Clear();
+            textBoxVotsNuls.DataBindings.Add("Text", viewmodelR.ActualTaula.resultatsTaula, "votsNul");
+            dataGridViewVotsPartit.DataSource = null;            
+            dataGridViewVotsPartit.DataSource = viewmodelR.ListaVisualVotsPerPartit;
+        }
+
     }
 
 }

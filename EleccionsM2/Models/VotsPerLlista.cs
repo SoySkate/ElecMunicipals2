@@ -9,11 +9,13 @@ namespace EleccionsM2.Models
     public class VotsPerLlista
     {
         public long ID { get; set; }
+        public PartitMunicipi Partit { get; set; }
         public int numeroVotsLlista { get; set; }
         public VotsPerLlista() { }
         //public VotsPerLlista(int numeroVotsLlista)
         //{
         //    this.numeroVotsLlista = numeroVotsLlista;
         //}
+
     }
 }

@@ -9,10 +9,12 @@ namespace EleccionsM2.ViewModel
 {
     public class VotsPerLlistaViewModel
     {
-        public VotsPerLlista VotsPerLlistaForm { get; set; }
+        public long ID { get; set; }
+        public string nomPartit { get; set; }
+        public int numeroVotsPartit { get; set; }
+
         public VotsPerLlistaViewModel()
         {
-            VotsPerLlistaForm = new VotsPerLlista();
         }
     }
 }

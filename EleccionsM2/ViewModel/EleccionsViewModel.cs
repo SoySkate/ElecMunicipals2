@@ -18,7 +18,6 @@ namespace EleccionsM2.ViewModel
 
         EleccionsM2.EleccionsMContext context;
 
-
         public List<Municipi> ListaMunicipis{ get; set; }
         public List<PartitMunicipi> ListaPartitsMunicipi { get => ActualMunicipi.llistaPartits; }
         public List<Candidat> ListaCandidats { get=>ActualPartit.candidats; }

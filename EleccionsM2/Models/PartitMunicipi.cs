@@ -20,15 +20,15 @@ namespace EleccionsM2.Models
         //    this.nomPartit = nomPartit;
         //    this.candidats = candidats;
         //}
-        public string imprimirPartit()
-        {
-            return nomPartit;
-        }
         public void borrarDatos()
         {
             ID = 0;
             nomPartit= string.Empty;
             candidats.Clear();
+        }
+        public override string ToString()
+        {
+            return nomPartit;
         }
     }
 }
