@@ -21,11 +21,11 @@ namespace EleccionsM2
             //PCnutria
             //optionsBuilder.UseSqlServer(@"Data Source=PcNurs\SQLEXPRESS;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False; Database=ElecMunicipalsDB");
             //pcAndrew:
-            //optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-14D02GT\SQLEXPRESS01;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False; Database=ElecMunicipalsDB");
+            optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-14D02GT\SQLEXPRESS01;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False; Database=ElecMunicipalsDB");
             //pcPractiques:
             //optionsBuilder.UseSqlServer(@"Data Source=FORMACIO1\SQLEXPRESS03;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False; Database=ElecMunicipalsDB");
             //OtradatabasePracticas
-            optionsBuilder.UseSqlServer(@"Data Source=FORMACIO1\SQLEXPRESS03;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False; Database=ElecMunicipalsDBUpdated");
+            //optionsBuilder.UseSqlServer(@"Data Source=FORMACIO1\SQLEXPRESS03;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False; Database=ElecMunicipalsDBUpdated");
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -34,7 +34,6 @@ namespace EleccionsM2
             //     .HasMany(m => m.llistaPartits)
             //     .WithMany()
             //     .OnDelete(DeleteBehavior.Cascade);
-
         }
         //Comandos para inicializar la Migracion una vez se ha creado o modificado las clases y por lo tanto
         //Se habran modificado las tablas(incluso cambiando de PC)Se modifica parte de las tablas pq la conexion ha cambiado: Comando:::

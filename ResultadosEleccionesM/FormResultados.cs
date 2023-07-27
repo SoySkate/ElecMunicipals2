@@ -18,6 +18,7 @@ namespace ResultadosEleccionesM
             controlPanel();
             dataGridViewVotsPartit.DataSource = null;
             dataGridViewVotsPartit.DataSource = viewmodelR.ListaVisualVotsPerPartit;
+           
         }
         ResultatsViewModel viewmodelR = new ResultatsViewModel();
         public void controlPanel()

@@ -94,8 +94,10 @@ namespace EleccionsM2.ViewModel
                 }
             }
         }
-        public void getDataGridResults()
+        //donde uso esto? por cierto creo que no funciona bien xd
+        public async Task getDataGridResults()
         {
+            MessageBox.Show(ListaVisualVotsPerPartit.Count.ToString());
             foreach(VotsPerLlistaViewModel votVM in ListaVisualVotsPerPartit)
             {
                 VotsPerLlista item = new();
@@ -103,7 +105,17 @@ namespace EleccionsM2.ViewModel
                 long id =votVM.ID;
                 var partit = ListaPartitsMunicipi.SingleOrDefault(p=>p.nomPartit== votVM.nomPartit);
                 int num = votVM.numeroVotsPartit;
-
+                item.ID = id;
+                if (partit != null)
+                {
+                    item.Partit = partit;
+                }
+                item.numeroVotsLlista=num;
+                if(ListaVotsPerLlista.Exists(i=>i==item)==false)
+                {
+                    ListaVotsPerLlista.Add(item);
+                    await grabar();
+                }
             }
         }
     }
