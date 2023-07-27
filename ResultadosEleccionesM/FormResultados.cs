@@ -15,7 +15,9 @@ namespace ResultadosEleccionesM
             comboBoxTaules.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxTaules.Enabled = true;
             comboBoxMunicipis.DataSource = viewmodelR.ListaMunicipis;
-            controlPanel(); 
+            controlPanel();
+            dataGridViewVotsPartit.DataSource = null;
+            dataGridViewVotsPartit.DataSource = viewmodelR.ListaVisualVotsPerPartit;
         }
         ResultatsViewModel viewmodelR = new ResultatsViewModel();
         public void controlPanel()
@@ -36,12 +38,13 @@ namespace ResultadosEleccionesM
         {
             var taula = (TaulaElectoral)comboBoxTaules.SelectedItem;
             viewmodelR.selectTaulaActual(taula);
+            viewmodelR.passarPartitsVotsViewModel();
             textBoxVotsBlanc.DataBindings.Clear();
             textBoxVotsBlanc.DataBindings.Add("Text", viewmodelR.ActualTaula.resultatsTaula, "votsBlanc");
             textBoxVotsNuls.DataBindings.Clear();
             textBoxVotsNuls.DataBindings.Add("Text", viewmodelR.ActualTaula.resultatsTaula, "votsNul");
-            dataGridViewVotsPartit.DataSource = null;            
-            dataGridViewVotsPartit.DataSource = viewmodelR.ListaVisualVotsPerPartit;
+            dataGridViewVotsPartit.Refresh();
+
         }
 
     }

@@ -9,10 +9,13 @@ DONE:___________________________________________________________________________
 -suposadament solved: -QUE FER LOKO quan esta seleccinoat el primer municipi.. 
 -no permetre crear un municipi amb un 0 de num regidors.
 -Mirar de fer el delete on cascade alla el eleccionsviewmodel. Potser ve daqui lerror nose xd. NO funcionava nose be pq ho he fet a ma xd
+-repasar funcio: passarPartitsVotsViewModel() done
 
 NEW TODO:____________________________________________________________________________
 
-
+-Fer una altre funcio que getDataGridResults i convertirho del VotsPerLListaVM AL--> votsPerLlista 
+ i enviarho a la lista del dbset.
+-Els votsBlanc i VotsNull no han entrat encara tampoc (que llegeixi tot junt la list i els dos aquests).
 -Pasar els partits al votsperllistaviewmodel y aixi es vegin al form de Resultats.
 
 
@@ -20,7 +23,7 @@ NEW TODO:_______________________________________________________________________
 CONDICIONS:
 -ha d'haver tans regidors com candidats (validacio en candidats) """casifet""" he de fer el mínim.
 -Que no es pugui crear infinitament?
--Poder afegir resultats taula (per mes endavant) fer datagrid resultats? millor un altre form per entrar resultats.cd sour
+-Seguretat?
 
 -Si no hi ha res posar en readonly lo altre (per exemplequan elimino tot)
 
