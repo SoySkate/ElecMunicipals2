@@ -52,12 +52,10 @@ namespace EleccionsM2.ViewModel
                 {
                     vot.numeroVotsLlista = votVM.numeroVotsPartit;
                     await grabar();
-                }
-               
+                }               
             }
             await grabar();
             ActualTaula = selectedTaula;
-  
             ListaVisualVotsPerPartit.Clear();
            foreach (PartitMunicipi partit in ListaPartitsMunicipi)
            {
@@ -73,7 +71,6 @@ namespace EleccionsM2.ViewModel
                         await grabar();
                 }
            }
-        
             foreach(VotsPerLlista vot in ListaVotsPerLlista)
             {
                 if (ListaVisualVotsPerPartit.Exists(m => m.ID == vot.ID) == false)
@@ -92,34 +89,5 @@ namespace EleccionsM2.ViewModel
                 }
             }
         }
-        //public async Task getDataGridResults()
-        //{
-        //    foreach(VotsPerLlistaViewModel votVM in ListaVisualVotsPerPartit)
-        //    {
-        //        //buscar id i nomes canviar numvots lo demes ja esta
-        //        var vot = ListaVotsPerLlista.SingleOrDefault(v=>v.ID == votVM.ID);
-        //        if (vot != null)
-        //        {
-        //            vot.numeroVotsLlista = votVM.numeroVotsPartit;
-        //            await grabar();
-        //        }
-        //        //VotsPerLlista item = new();
-        //        ////singleordefault use it;))
-        //        //long id =votVM.ID;
-        //        //var partit = ListaPartitsMunicipi.SingleOrDefault(p=>p.nomPartit== votVM.nomPartit);
-        //        //int num = votVM.numeroVotsPartit;
-        //        //item.ID = id;
-        //        //if (partit != null)
-        //        //{
-        //        //    item.Partit = partit;
-        //        //}
-        //        //item.numeroVotsLlista=num;
-        //        //if(ListaVotsPerLlista.Exists(i=>i==item)==false)
-        //        //{
-        //        //    ListaVotsPerLlista.Add(item);
-        //        //    await grabar();
-        //        //}
-        //    }
-        //}
     }
 }
