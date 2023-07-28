@@ -15,7 +15,7 @@ namespace EleccionsM2.ViewModel
         public List<PartitMunicipi> ListaPartitsMunicipi { get =>ActualMunicipi.llistaPartits; }
         public List<Candidat> ListaCandidats { get => ActualPartit.candidats; }
         public List<TaulaElectoral> ListaTaulesMunicipi { get => ActualMunicipi.taulesElectorals; }
-        public List<ResultatsTaula> ListaResultats { get; set; }
+        public ResultatsTaula ActualResultat { get => ActualTaula.resultatsTaula; }
         public List<VotsPerLlista> ListaVotsPerLlista { get => ActualTaula.resultatsTaula.votsLlista; }
 
         //Esta lista es la que se ve en el formulario: ListaVisualVotsPerPartit
@@ -23,7 +23,7 @@ namespace EleccionsM2.ViewModel
         public Municipi ActualMunicipi { get; set; }
         public PartitMunicipi ActualPartit { get; set; }
         public TaulaElectoral ActualTaula { get; set; }
-        public ResultatsTaula ActualResultat { get; set; }
+       
         public VotsPerLlista ActualVot { get; set; } = new();
 
         public ResultatsViewModel() {
@@ -43,19 +43,27 @@ namespace EleccionsM2.ViewModel
         {
             ActualMunicipi = selectedMuni;
         }
-        public void selectTaulaActual(TaulaElectoral selectedTaula)
+        public async Task selectTaulaActual(TaulaElectoral selectedTaula)
         {
+            foreach (VotsPerLlistaViewModel votVM in ListaVisualVotsPerPartit)
+            {
+                var vot = ListaVotsPerLlista.SingleOrDefault(v => v.ID == votVM.ID);
+                if (vot != null)
+                {
+                    vot.numeroVotsLlista = votVM.numeroVotsPartit;
+                    await grabar();
+                }
+               
+            }
+            await grabar();
             ActualTaula = selectedTaula;
-            ActualResultat= selectedTaula.resultatsTaula;
-        }
-        public async Task passarPartitsVotsViewModel()
-        {
+  
             ListaVisualVotsPerPartit.Clear();
            foreach (PartitMunicipi partit in ListaPartitsMunicipi)
            {
                      ActualPartit = partit;
                      VotsPerLlista vots = new();
-                     VotsPerLlistaViewModel votsVM = new();
+                     //VotsPerLlistaViewModel votsVM = new();
                 //Pensava que creant lobjecte aquest que si esta a la database es posaria un id xd i podria copiarlo al altre
                 if (ListaVotsPerLlista.Exists(x => x.Partit.nomPartit == partit.nomPartit) == false)
                 {   
@@ -64,16 +72,6 @@ namespace EleccionsM2.ViewModel
                         ListaVotsPerLlista.Add(vots);
                         await grabar();
                 }
-                //if (ListaVisualVotsPerPartit.Exists(l => l.nomPartit == votsVM.nomPartit) == false)
-                //{
-                //    votsVM.ID = vots.ID;
-                //    votsVM.nomPartit = ActualPartit.nomPartit;
-                //    votsVM.numeroVotsPartit = 0;
-                //    ListaVisualVotsPerPartit.Add(votsVM);
-                //    await grabar();
-                //}
-                //else { MessageBox.Show("ListavotsVM: "+ListaVisualVotsPerPartit.Count.ToString()); }
-
            }
         
             foreach(VotsPerLlista vot in ListaVotsPerLlista)
@@ -94,29 +92,34 @@ namespace EleccionsM2.ViewModel
                 }
             }
         }
-        //donde uso esto? por cierto creo que no funciona bien xd
-        public async Task getDataGridResults()
-        {
-            MessageBox.Show(ListaVisualVotsPerPartit.Count.ToString());
-            foreach(VotsPerLlistaViewModel votVM in ListaVisualVotsPerPartit)
-            {
-                VotsPerLlista item = new();
-                //singleordefault use it;))
-                long id =votVM.ID;
-                var partit = ListaPartitsMunicipi.SingleOrDefault(p=>p.nomPartit== votVM.nomPartit);
-                int num = votVM.numeroVotsPartit;
-                item.ID = id;
-                if (partit != null)
-                {
-                    item.Partit = partit;
-                }
-                item.numeroVotsLlista=num;
-                if(ListaVotsPerLlista.Exists(i=>i==item)==false)
-                {
-                    ListaVotsPerLlista.Add(item);
-                    await grabar();
-                }
-            }
-        }
+        //public async Task getDataGridResults()
+        //{
+        //    foreach(VotsPerLlistaViewModel votVM in ListaVisualVotsPerPartit)
+        //    {
+        //        //buscar id i nomes canviar numvots lo demes ja esta
+        //        var vot = ListaVotsPerLlista.SingleOrDefault(v=>v.ID == votVM.ID);
+        //        if (vot != null)
+        //        {
+        //            vot.numeroVotsLlista = votVM.numeroVotsPartit;
+        //            await grabar();
+        //        }
+        //        //VotsPerLlista item = new();
+        //        ////singleordefault use it;))
+        //        //long id =votVM.ID;
+        //        //var partit = ListaPartitsMunicipi.SingleOrDefault(p=>p.nomPartit== votVM.nomPartit);
+        //        //int num = votVM.numeroVotsPartit;
+        //        //item.ID = id;
+        //        //if (partit != null)
+        //        //{
+        //        //    item.Partit = partit;
+        //        //}
+        //        //item.numeroVotsLlista=num;
+        //        //if(ListaVotsPerLlista.Exists(i=>i==item)==false)
+        //        //{
+        //        //    ListaVotsPerLlista.Add(item);
+        //        //    await grabar();
+        //        //}
+        //    }
+        //}
     }
 }

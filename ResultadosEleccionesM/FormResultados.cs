@@ -18,7 +18,7 @@ namespace ResultadosEleccionesM
             controlPanel();
             dataGridViewVotsPartit.DataSource = null;
             dataGridViewVotsPartit.DataSource = viewmodelR.ListaVisualVotsPerPartit;
-           
+
         }
         ResultatsViewModel viewmodelR = new ResultatsViewModel();
         public void controlPanel()
@@ -39,15 +39,16 @@ namespace ResultadosEleccionesM
         {
             var taula = (TaulaElectoral)comboBoxTaules.SelectedItem;
             viewmodelR.selectTaulaActual(taula);
-            viewmodelR.passarPartitsVotsViewModel();
+
             textBoxVotsBlanc.DataBindings.Clear();
-            textBoxVotsBlanc.DataBindings.Add("Text", viewmodelR.ActualTaula.resultatsTaula, "votsBlanc");
+            textBoxVotsBlanc.DataBindings.Add("Text", viewmodelR.ActualResultat, "votsBlanc");
             textBoxVotsNuls.DataBindings.Clear();
-            textBoxVotsNuls.DataBindings.Add("Text", viewmodelR.ActualTaula.resultatsTaula, "votsNul");
+            textBoxVotsNuls.DataBindings.Add("Text", viewmodelR.ActualResultat, "votsNul");
             dataGridViewVotsPartit.Refresh();
+            //viewmodelR.getDataGridResults();
+
 
         }
-
     }
 
 }
