@@ -1,3 +1,5 @@
+using ResultadosEleccionesM.ViewsResultats;
+
 namespace ResultadosEleccionesM
 {
     internal static class Program
@@ -11,7 +13,7 @@ namespace ResultadosEleccionesM
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new FormResultados());
+            Application.Run(new FormMenu());
         }
     }
 }
