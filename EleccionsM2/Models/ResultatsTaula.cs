@@ -11,6 +11,7 @@ namespace EleccionsM2.Models
         public long ID { get; set; }
         public int votsBlanc { get; set; }
         public int votsNul { get; set; }
+        public int votsTotals { get; set; }
         public List<VotsPerLlista> votsLlista { get; set; }
         public ResultatsTaula() { votsLlista = new List<VotsPerLlista>(); }
         //public ResultatsTaula(int votsBlanc, int votsNul, List<VotsPerLlista> votsLlista)

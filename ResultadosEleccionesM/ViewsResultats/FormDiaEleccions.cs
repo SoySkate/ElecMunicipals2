@@ -22,6 +22,7 @@ namespace ResultadosEleccionesM.ViewsResultats
             comboBoxMunicipisDiaE.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxMunicipisDiaE.Enabled = true;
             comboBoxMunicipisDiaE.DataSource = viewModel.ListaMunicipis;
+            this.AutoScroll = true;
 
 
         }

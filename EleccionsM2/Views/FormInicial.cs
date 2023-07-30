@@ -22,7 +22,6 @@ namespace EleccionsM2.Views
         {
             InitializeComponent();
             mostrarMunicipis();
-
             dataGridViewMunicipis.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewMunicipis.SelectionChanged += DataGridView1_SelectionChanged;
             progresbuttons();
@@ -134,7 +133,6 @@ namespace EleccionsM2.Views
                 {
                     dataGridViewCandidats.DataSource = null;
                 }
-
             }
         }
         //Buttons load and save changes

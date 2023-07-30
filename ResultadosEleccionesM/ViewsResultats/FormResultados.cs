@@ -37,6 +37,9 @@ namespace ResultadosEleccionesM
         {
             var taula = (TaulaElectoral)comboBoxTaules.SelectedItem;
             viewmodelR.selectTaulaActual(taula);
+            //if (viewmodelR.ActualTaula.resultatsTaula.votsTotals != null) { panelMainModal.Show(); }
+            //textBoxNumVotsTotals.DataBindings.Clear();
+            //textBoxNumVotsTotals.DataBindings.Add("Text", viewmodelR.ActualTaula.resultatsTaula.votsTotals, "votsTotals");
             textBoxVotsBlanc.DataBindings.Clear();
             textBoxVotsBlanc.DataBindings.Add("Text", viewmodelR.ActualResultat, "votsBlanc");
             textBoxVotsNuls.DataBindings.Clear();
@@ -47,6 +50,11 @@ namespace ResultadosEleccionesM
         {
             viewmodelR.grabar();
         }
+
+        //private void buttonAddTotalVots_Click(object sender, EventArgs e)
+        //{
+        //    panelMainModal.Visible = false;
+        //}
     }
 
 }

@@ -100,6 +100,9 @@ namespace EleccionsM2.Migrations
                     b.Property<int>("votsNul")
                         .HasColumnType("int");
 
+                    b.Property<int>("votsTotals")
+                        .HasColumnType("int");
+
                     b.HasKey("ID");
 
                     b.ToTable("ResultatsTaules");

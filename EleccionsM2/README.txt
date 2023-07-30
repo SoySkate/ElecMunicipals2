@@ -13,6 +13,8 @@ DONE:___________________________________________________________________________
 
 NEW TODO:____________________________________________________________________________
 
+what;eliminarmunicipis/notworking
+
 -Fer una altre funcio que getDataGridResults i convertirho del VotsPerLListaVM AL--> votsPerLlista 
  i enviarho a la lista del dbset.
 -Els votsBlanc i VotsNull no han entrat encara tampoc (que llegeixi tot junt la list i els dos aquests).

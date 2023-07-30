@@ -38,8 +38,15 @@
             label4 = new Label();
             panel1 = new Panel();
             dataGridViewVotsPartit = new DataGridView();
+            panelMainModal = new Panel();
+            panel3 = new Panel();
+            buttonAddTotalVots = new Button();
+            labelTotalVots = new Label();
+            textBoxNumVotsTotals = new TextBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewVotsPartit).BeginInit();
+            panelMainModal.SuspendLayout();
+            panel3.SuspendLayout();
             SuspendLayout();
             // 
             // comboBoxTaules
@@ -132,12 +139,61 @@
             dataGridViewVotsPartit.Size = new Size(343, 339);
             dataGridViewVotsPartit.TabIndex = 8;
             // 
+            // panelMainModal
+            // 
+            panelMainModal.Controls.Add(panel3);
+            panelMainModal.Location = new Point(204, 12);
+            panelMainModal.Name = "panelMainModal";
+            panelMainModal.Size = new Size(558, 408);
+            panelMainModal.TabIndex = 9;
+            panelMainModal.Visible = false;
+            // 
+            // panel3
+            // 
+            panel3.BackColor = Color.AliceBlue;
+            panel3.BorderStyle = BorderStyle.FixedSingle;
+            panel3.Controls.Add(buttonAddTotalVots);
+            panel3.Controls.Add(labelTotalVots);
+            panel3.Controls.Add(textBoxNumVotsTotals);
+            panel3.Location = new Point(85, 127);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(405, 148);
+            panel3.TabIndex = 2;
+            // 
+            // buttonAddTotalVots
+            // 
+            buttonAddTotalVots.Location = new Point(168, 112);
+            buttonAddTotalVots.Name = "buttonAddTotalVots";
+            buttonAddTotalVots.Size = new Size(52, 23);
+            buttonAddTotalVots.TabIndex = 2;
+            buttonAddTotalVots.Text = "OK";
+            buttonAddTotalVots.UseVisualStyleBackColor = true;
+            //buttonAddTotalVots.Click += buttonAddTotalVots_Click;
+            // 
+            // labelTotalVots
+            // 
+            labelTotalVots.AutoSize = true;
+            labelTotalVots.Font = new Font("Segoe UI", 12.75F, FontStyle.Underline, GraphicsUnit.Point);
+            labelTotalVots.Location = new Point(42, 36);
+            labelTotalVots.Name = "labelTotalVots";
+            labelTotalVots.Size = new Size(299, 23);
+            labelTotalVots.TabIndex = 1;
+            labelTotalVots.Text = "Introdueix el Total de Vots de la Taula:";
+            // 
+            // textBoxNumVotsTotals
+            // 
+            textBoxNumVotsTotals.Location = new Point(143, 83);
+            textBoxNumVotsTotals.Name = "textBoxNumVotsTotals";
+            textBoxNumVotsTotals.Size = new Size(100, 23);
+            textBoxNumVotsTotals.TabIndex = 0;
+            // 
             // FormResultados
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(panel1);
+            Controls.Add(panelMainModal);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(comboBoxMunicipis);
@@ -148,6 +204,9 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewVotsPartit).EndInit();
+            panelMainModal.ResumeLayout(false);
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -164,5 +223,10 @@
         private Label label4;
         private Panel panel1;
         private DataGridView dataGridViewVotsPartit;
+        private Panel panelMainModal;
+        private Label labelTotalVots;
+        private TextBox textBoxNumVotsTotals;
+        private Panel panel3;
+        private Button buttonAddTotalVots;
     }
 }
