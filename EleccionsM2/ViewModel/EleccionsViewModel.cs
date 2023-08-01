@@ -130,44 +130,74 @@ namespace EleccionsM2.ViewModel
         //delete functions
         public async Task eliminarMunicipi()
         {
+            //no me funcionadios
             //Em passa lo mateix que amb el addmunicipio ho he de fer directe al context nose pq xd
-            if(ActualMunicipi != null) { 
+                //foreach (TaulaElectoral taula in ListaTaulesMunicipi)
+                //{
+                    //var taulaitem = context.TaulesElectorals.SingleOrDefault(t => t.ID == taula.ID);
+                    //if (taulaitem != null)
+                    //{
+                        //ListaTaulesMunicipi.Remove(taula);
+                        //context.ResultatsTaules.Remove(taula.resultatsTaula);
+                        //context.TaulesElectorals.Remove(taula);
+                    //}
+                    //ActualMunicipi.taulesElectorals.Clear();
+                    //ListaTaulesMunicipi.Clear();
+
+                    //ActualMunicipi.llistaPartits.Clear();
+                    //ListaPartitsMunicipi.Clear();
+                    //ListaCandidats.Clear();
+                //}
+
+                //foreach (PartitMunicipi partit in ActualMunicipi.llistaPartits)
+                //{
+                //    var itempartit = context.PartitsPolitics.SingleOrDefault(p => p.ID == partit.ID);
+                //    if (itempartit != null)
+                //    {
+                //        foreach (Candidat cand in itempartit.candidats)
+                //        {
+                //            var itemcandi = context.Candidats.SingleOrDefault(x => x.ID == cand.ID);
+                //            if (itemcandi != null)
+                //            {
+                //                ListaCandidats.Remove(itemcandi);
+                //                context.Candidats.Remove(itemcandi);  
+                //            }
+                //        }
+                //        ListaPartitsMunicipi.Remove(itempartit);
+                //        //itempartit.candidats.Clear();
+                //        context.PartitsPolitics.Remove(itempartit);
+                //        //ListaCandidats.Clear();
+                //    }
+                //}
+                //ActualMunicipi.taulesElectorals.Clear();
+                //ActualMunicipi.llistaPartits.Clear();
+                //ListaCandidats.Clear();
+                //ListaTaulesMunicipi.Clear();             
+                //ListaPartitsMunicipi.Clear();
                 foreach(PartitMunicipi partit in ListaPartitsMunicipi)
                 {
-                    var itempartit = context.PartitsPolitics.FirstOrDefault(p=>p.ID== partit.ID);
-                    if (itempartit != null)
+                    foreach(Candidat candi in partit.candidats)
                     {
-                             foreach (Candidat cand in itempartit.candidats)
-                             {
-                                var itemcandi = context.Candidats.FirstOrDefault(x => x.ID == cand.ID);
-                                if (itemcandi != null)
-                                {
-                                context.Candidats.Remove(itemcandi);
-                                ListaCandidats.Remove(itemcandi);
-                                }
-                             }               
-                            context.PartitsPolitics.Remove(itempartit);
-                        ListaPartitsMunicipi.Remove(itempartit);
-                        await Grabar();
+                        context.Candidats.Remove(candi);
                     }
+                //ActualPartit = partit;
+                     ListaCandidats.Clear();
+                //partit.candidats.Clear();
+                    context.PartitsPolitics.Remove(partit);
                 }
+                ListaPartitsMunicipi.Clear();
                 foreach(TaulaElectoral taula in ListaTaulesMunicipi)
                 {
-                    var taulaitem = context.TaulesElectorals.FirstOrDefault(t => t.ID == taula.ID);
-                    if (taulaitem != null) { 
-                    var result = taulaitem.resultatsTaula;
-                       if(result != null) { 
-                            context.ResultatsTaules.Remove(result);
-                        }
-                        context.TaulesElectorals.Remove(taulaitem);
-                        ListaTaulesMunicipi.Remove(taulaitem);
-                    }
-                    await Grabar();
+                context.ResultatsTaules.Remove(taula.resultatsTaula);
+                context.TaulesElectorals.Remove(taula);
                 }
-                ListaMunicipis.Remove(ActualMunicipi);
-                context.Municipis.Remove(ActualMunicipi);
-            }
-            await Grabar();
+                 ListaTaulesMunicipi.Clear();
+                if(ListaTaulesMunicipi.Count==0 && ListaPartitsMunicipi.Count == 0) { 
+                    ListaMunicipis.Remove(ActualMunicipi);
+                    context.Municipis.Remove(ActualMunicipi);
+                }   
+
+            await Grabar();            
         }
         public async Task eliminarPartit()
         {

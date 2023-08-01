@@ -10,10 +10,15 @@ DONE:___________________________________________________________________________
 -no permetre crear un municipi amb un 0 de num regidors.
 -Mirar de fer el delete on cascade alla el eleccionsviewmodel. Potser ve daqui lerror nose xd. NO funcionava nose be pq ho he fet a ma xd
 -repasar funcio: passarPartitsVotsViewModel() done
+_____________________________________________________________________________________________
+RUBEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEN:
+La funcio eliminar municipis no em funciona be del tot hi han dos candidats que no saaben deliminar nose perque y es posa en null
+en la database.
+MIrar el tema de les llistes pq lactual nose que influeix en la llista tal i la dels candidats no funca nose i fa que peti lo demes
 
 NEW TODO:____________________________________________________________________________
 
-what;eliminarmunicipis/notworking
+
 
 -Fer una altre funcio que getDataGridResults i convertirho del VotsPerLListaVM AL--> votsPerLlista 
  i enviarho a la lista del dbset.
@@ -33,8 +38,7 @@ CONDICIONS:
 DEMOMENTO HE TOCAT:_______________________________________________________________________________
 
 -Recordar Cridar la funcio de Grabar();
-_____________________________________________________________________________________________
-RUBEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEN:
+
 
 
 _____________________________________________________________________________________________
