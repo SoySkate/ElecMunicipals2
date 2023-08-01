@@ -10,6 +10,7 @@ using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
 namespace EleccionsM2.ViewModel
 {
@@ -130,72 +131,29 @@ namespace EleccionsM2.ViewModel
         //delete functions
         public async Task eliminarMunicipi()
         {
-            //no me funcionadios
-            //Em passa lo mateix que amb el addmunicipio ho he de fer directe al context nose pq xd
-                //foreach (TaulaElectoral taula in ListaTaulesMunicipi)
-                //{
-                    //var taulaitem = context.TaulesElectorals.SingleOrDefault(t => t.ID == taula.ID);
-                    //if (taulaitem != null)
-                    //{
-                        //ListaTaulesMunicipi.Remove(taula);
-                        //context.ResultatsTaules.Remove(taula.resultatsTaula);
-                        //context.TaulesElectorals.Remove(taula);
-                    //}
-                    //ActualMunicipi.taulesElectorals.Clear();
-                    //ListaTaulesMunicipi.Clear();
-
-                    //ActualMunicipi.llistaPartits.Clear();
-                    //ListaPartitsMunicipi.Clear();
-                    //ListaCandidats.Clear();
-                //}
-
-                //foreach (PartitMunicipi partit in ActualMunicipi.llistaPartits)
-                //{
-                //    var itempartit = context.PartitsPolitics.SingleOrDefault(p => p.ID == partit.ID);
-                //    if (itempartit != null)
-                //    {
-                //        foreach (Candidat cand in itempartit.candidats)
-                //        {
-                //            var itemcandi = context.Candidats.SingleOrDefault(x => x.ID == cand.ID);
-                //            if (itemcandi != null)
-                //            {
-                //                ListaCandidats.Remove(itemcandi);
-                //                context.Candidats.Remove(itemcandi);  
-                //            }
-                //        }
-                //        ListaPartitsMunicipi.Remove(itempartit);
-                //        //itempartit.candidats.Clear();
-                //        context.PartitsPolitics.Remove(itempartit);
-                //        //ListaCandidats.Clear();
-                //    }
-                //}
-                //ActualMunicipi.taulesElectorals.Clear();
-                //ActualMunicipi.llistaPartits.Clear();
-                //ListaCandidats.Clear();
-                //ListaTaulesMunicipi.Clear();             
-                //ListaPartitsMunicipi.Clear();
-                foreach(PartitMunicipi partit in ListaPartitsMunicipi)
-                {
-                    foreach(Candidat candi in partit.candidats)
-                    {
-                        context.Candidats.Remove(candi);
-                    }
-                //ActualPartit = partit;
-                     ListaCandidats.Clear();
-                //partit.candidats.Clear();
-                    context.PartitsPolitics.Remove(partit);
-                }
-                ListaPartitsMunicipi.Clear();
-                foreach(TaulaElectoral taula in ListaTaulesMunicipi)
-                {
+        //El problema crec que es als candiats
+            //________________________
+            //LO DE LES TAULES FUNCIONA.
+            foreach (TaulaElectoral taula in ListaTaulesMunicipi)
+            {
                 context.ResultatsTaules.Remove(taula.resultatsTaula);
                 context.TaulesElectorals.Remove(taula);
-                }
-                 ListaTaulesMunicipi.Clear();
-                if(ListaTaulesMunicipi.Count==0 && ListaPartitsMunicipi.Count == 0) { 
-                    ListaMunicipis.Remove(ActualMunicipi);
-                    context.Municipis.Remove(ActualMunicipi);
-                }   
+            }
+            ListaTaulesMunicipi.Clear();
+            //________________________
+            //El partido solo creo que tambien Se lia en los candidatos
+            foreach (PartitMunicipi partit in ListaPartitsMunicipi)
+            {
+                //foreach(Candidat candi in ListaCandidats)//potser ha de ser partit.candiats
+                //{
+                //    context.Candidats.Remove(candi);
+                //}
+                //ListaCandidats.Clear();
+                context.PartitsPolitics.Remove(partit);
+            }
+            ListaPartitsMunicipi.Clear();
+          
+            
 
             await Grabar();            
         }
