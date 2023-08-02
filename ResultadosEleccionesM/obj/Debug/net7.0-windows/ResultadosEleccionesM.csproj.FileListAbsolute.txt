@@ -118,3 +118,4 @@ C:\Users\Andrew\source\repos\ElecMunicipals2\ResultadosEleccionesM\obj\Debug\net
 C:\Users\Andrew\source\repos\ElecMunicipals2\ResultadosEleccionesM\obj\Debug\net7.0-windows\ref\ResultadosEleccionesM.dll
 C:\Users\Andrew\source\repos\ElecMunicipals2\ResultadosEleccionesM\obj\Debug\net7.0-windows\ResultadosEleccionesM.ViewsResultats.FormMenu.resources
 C:\Users\Andrew\source\repos\ElecMunicipals2\ResultadosEleccionesM\obj\Debug\net7.0-windows\ResultadosEleccionesM.ViewsResultats.FormDiaEleccions.resources
+C:\Users\Andrew\source\repos\ElecMunicipals2\ResultadosEleccionesM\obj\Debug\net7.0-windows\ResultadosEleccionesM.ViewsResultats.FormVotsTotals.resources

@@ -14,12 +14,12 @@ ________________________________________________________________________________
 RUBEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEN:
 La funcio eliminar municipis no em funciona be del tot hi han dos candidats que no saaben deliminar nose perque y es posa en null
 en la database.
-MIrar el tema de les llistes pq lactual nose que influeix en la llista tal i la dels candidats no funca nose i fa que peti lo demes
+ELIMINARTAULES I PARTITS FUNCIONA PERO EL CANDIDATS NO FUNCIONA EM PETA LOKO  <--------
+{{{Al eliminar el candidat, i al voler eliminar els resultats taula peta el grid i tot nose. tal i com ho tinc ara funciona una mica xd}}}
 
 NEW TODO:____________________________________________________________________________
-
-
-
+//TODO: notworking el form de Resultats
+fer un viewmodel per el form de votstotals per pasar el votstotals al actualresultat del form resultats. ;)
 -Fer una altre funcio que getDataGridResults i convertirho del VotsPerLListaVM AL--> votsPerLlista 
  i enviarho a la lista del dbset.
 -Els votsBlanc i VotsNull no han entrat encara tampoc (que llegeixi tot junt la list i els dos aquests).

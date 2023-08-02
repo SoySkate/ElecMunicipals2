@@ -38,18 +38,17 @@
             // 
             labelTitol.AutoSize = true;
             labelTitol.Font = new Font("Georgia", 13.2000008F, FontStyle.Regular, GraphicsUnit.Point);
-            labelTitol.Location = new Point(208, 43);
+            labelTitol.Location = new Point(238, 57);
             labelTitol.Name = "labelTitol";
-            labelTitol.Size = new Size(245, 21);
+            labelTitol.Size = new Size(311, 27);
             labelTitol.TabIndex = 0;
             labelTitol.Text = "Menú d'Eleccions Municipals";
             // 
             // buttonDiaEleccions
             // 
-            buttonDiaEleccions.Location = new Point(280, 116);
-            buttonDiaEleccions.Margin = new Padding(3, 2, 3, 2);
+            buttonDiaEleccions.Location = new Point(320, 155);
             buttonDiaEleccions.Name = "buttonDiaEleccions";
-            buttonDiaEleccions.Size = new Size(126, 25);
+            buttonDiaEleccions.Size = new Size(144, 33);
             buttonDiaEleccions.TabIndex = 1;
             buttonDiaEleccions.Text = "Dia Eleccions";
             buttonDiaEleccions.UseVisualStyleBackColor = true;
@@ -57,21 +56,19 @@
             // 
             // buttonAfegirResultats
             // 
-            buttonAfegirResultats.Location = new Point(280, 178);
-            buttonAfegirResultats.Margin = new Padding(3, 2, 3, 2);
+            buttonAfegirResultats.Location = new Point(320, 237);
             buttonAfegirResultats.Name = "buttonAfegirResultats";
-            buttonAfegirResultats.Size = new Size(126, 27);
+            buttonAfegirResultats.Size = new Size(144, 36);
             buttonAfegirResultats.TabIndex = 2;
             buttonAfegirResultats.Text = "Afegir Resultats";
             buttonAfegirResultats.UseVisualStyleBackColor = true;
-            //buttonAfegirResultats.Click += buttonAfegirResultats_Click;
+            buttonAfegirResultats.Click += buttonAfegirResultats_Click_1;
             // 
             // buttonConfiguracio
             // 
-            buttonConfiguracio.Location = new Point(280, 241);
-            buttonConfiguracio.Margin = new Padding(3, 2, 3, 2);
+            buttonConfiguracio.Location = new Point(320, 321);
             buttonConfiguracio.Name = "buttonConfiguracio";
-            buttonConfiguracio.Size = new Size(126, 25);
+            buttonConfiguracio.Size = new Size(144, 33);
             buttonConfiguracio.TabIndex = 3;
             buttonConfiguracio.Text = "Configuració";
             buttonConfiguracio.UseVisualStyleBackColor = true;
@@ -79,14 +76,13 @@
             // 
             // FormMenu
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(700, 338);
+            ClientSize = new Size(800, 451);
             Controls.Add(buttonConfiguracio);
             Controls.Add(buttonAfegirResultats);
             Controls.Add(buttonDiaEleccions);
             Controls.Add(labelTitol);
-            Margin = new Padding(3, 2, 3, 2);
             Name = "FormMenu";
             Text = "FormMenu";
             ResumeLayout(false);

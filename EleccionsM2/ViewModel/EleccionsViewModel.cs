@@ -136,24 +136,27 @@ namespace EleccionsM2.ViewModel
             //LO DE LES TAULES FUNCIONA.
             foreach (TaulaElectoral taula in ListaTaulesMunicipi)
             {
-                context.ResultatsTaules.Remove(taula.resultatsTaula);
+                //context.ResultatsTaules.Remove(taula.resultatsTaula);
                 context.TaulesElectorals.Remove(taula);
+                               
             }
             ListaTaulesMunicipi.Clear();
             //________________________
-            //El partido solo creo que tambien Se lia en los candidatos
+            //El partido solo creo que tambien funciona. Se lia en los candidatos
             foreach (PartitMunicipi partit in ListaPartitsMunicipi)
             {
-                //foreach(Candidat candi in ListaCandidats)//potser ha de ser partit.candiats
-                //{
-                //    context.Candidats.Remove(candi);
-                //}
-                //ListaCandidats.Clear();
+            ////    //foreach(Candidat candi in ListaCandidats)//potser ha de ser partit.candiats
+            ////    //{
+            ////    //    context.Candidats.Remove(candi);
+            ////    //}
+            ////    //ListaCandidats.Clear();
                 context.PartitsPolitics.Remove(partit);
             }
             ListaPartitsMunicipi.Clear();
-          
-            
+
+            ListaMunicipis.Remove(ActualMunicipi);
+            context.Municipis.Remove(ActualMunicipi);
+           
 
             await Grabar();            
         }

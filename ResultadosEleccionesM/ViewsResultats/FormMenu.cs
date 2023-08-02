@@ -24,16 +24,16 @@ namespace ResultadosEleccionesM.ViewsResultats
             FormInicial formInicial = new FormInicial();
             formInicial.ShowDialog();
         }
-        private void buttonAfegirResultats_Click(object sender, EventArgs e)
-        {
-            //No funca loko xd
-            FormResultados formresultats = new FormResultados();
-            formresultats.ShowDialog();
-        }
         private void buttonDiaEleccions_Click(object sender, EventArgs e)
         {
             FormDiaEleccions formDiaEleccions = new FormDiaEleccions();
             formDiaEleccions.ShowDialog();
+        }
+
+        private void buttonAfegirResultats_Click_1(object sender, EventArgs e)
+        {
+            FormResultados formresultats = new FormResultados();
+            formresultats.ShowDialog();
         }
     }
 }
