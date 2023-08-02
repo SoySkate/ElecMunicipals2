@@ -20,7 +20,7 @@ namespace ResultadosEleccionesM.ViewsResultats
         {
             InitializeComponent();
             textBoxVotsTotals.DataBindings.Clear();
-            textBoxVotsTotals.DataBindings.Add("Text", viewModelVotsTotal.VotsTotalsResultatForm.votsTotals, "votsTotals");
+            textBoxVotsTotals.DataBindings.Add("Text", viewModelVotsTotal.VotsTotalsResultatForm, "votsTotals");
         }
 
         private void textBoxVotsTotals_KeyPress(object sender, KeyPressEventArgs e)

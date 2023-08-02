@@ -11,6 +11,7 @@ namespace ResultadosEleccionesM
         public FormResultados()
         {
             InitializeComponent();
+         
             comboBoxMunicipis.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxMunicipis.Enabled = true;
             comboBoxTaules.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -19,6 +20,7 @@ namespace ResultadosEleccionesM
             controlPanel();
             dataGridViewVotsPartit.DataSource = null;
             dataGridViewVotsPartit.DataSource = viewmodelR.ListaVisualVotsPerPartit;
+
         }
         ResultatsViewModel viewmodelR = new ResultatsViewModel();
         public void controlPanel()
@@ -38,16 +40,14 @@ namespace ResultadosEleccionesM
         {
             var taula = (TaulaElectoral)comboBoxTaules.SelectedItem;
             viewmodelR.selectTaulaActual(taula);
+
+           //No funciona
             FormVotsTotals formVotsTotals = new FormVotsTotals();
-            //TODO: notworking el form de Resultats
-            if(formVotsTotals.ShowDialog() == DialogResult.OK)
+            //TODO: notworking el form de Resultats he dentrar resulats be
+            if (formVotsTotals.ShowDialog() == DialogResult.OK)
             {
                 viewmodelR.ActualResultat.votsTotals = formVotsTotals.ResultatTaula.votsTotals;
             }
-            //if (viewmodelR.ActualTaula.resultatsTaula.votsTotals != null) { panelMainModal.Show(); }
-            //textBoxNumVotsTotals.DataBindings.Clear();
-            //textBoxNumVotsTotals.DataBindings.Add("Text", viewmodelR.ActualTaula.resultatsTaula.votsTotals, "votsTotals");
-
             textBoxVotsBlanc.DataBindings.Clear();
             textBoxVotsBlanc.DataBindings.Add("Text", viewmodelR.ActualResultat, "votsBlanc");
             textBoxVotsNuls.DataBindings.Clear();
@@ -56,6 +56,7 @@ namespace ResultadosEleccionesM
             //textBoxNumVotsTotals.DataBindings.Clear();
             //textBoxNumVotsTotals.DataBindings.Add("Text", viewmodelR.ActualResultat, "votsTotals");
             dataGridViewVotsPartit.Refresh();
+
         }
         private void FormResultados_FormClosing(object sender, FormClosingEventArgs e)
         {
