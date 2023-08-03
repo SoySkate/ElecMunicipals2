@@ -18,10 +18,9 @@ ELIMINARTAULES I PARTITS FUNCIONA PERO EL CANDIDATS NO FUNCIONA EM PETA LOKO  <-
 {{{Al eliminar el candidat, i al voler eliminar els resultats taula peta el grid i tot nose. tal i com ho tinc ara funciona una mica xd}}}
 
 NEW TODO:____________________________________________________________________________
-//TODO: notworking el form de Resultats
-fer un viewmodel per el form de votstotals per pasar el votstotals al actualresultat del form resultats. ;)
--Fer una altre funcio que getDataGridResults i convertirho del VotsPerLListaVM AL--> votsPerLlista 
- i enviarho a la lista del dbset.
+-El mini aviso que me sale no funciona be pq nomes funciona quan sha guardat al dbset i al sortir despres de posar la data encara
+conta la data anterior pq no sha guardat...
+
 -Els votsBlanc i VotsNull no han entrat encara tampoc (que llegeixi tot junt la list i els dos aquests).
 -Pasar els partits al votsperllistaviewmodel y aixi es vegin al form de Resultats.
 

@@ -11,7 +11,7 @@ namespace ResultadosEleccionesM
         public FormResultados()
         {
             InitializeComponent();
-         
+
             comboBoxMunicipis.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxMunicipis.Enabled = true;
             comboBoxTaules.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -35,37 +35,59 @@ namespace ResultadosEleccionesM
             var muni = (Municipi)comboBoxMunicipis.SelectedItem;
             viewmodelR.selectMunicipiActual(muni);
             comboBoxTaules.DataSource = viewmodelR.ListaTaulesMunicipi;
+            viewmodelR.grabar();
         }
         private void comboBoxTaules_SelectedIndexChanged(object sender, EventArgs e)
         {
             var taula = (TaulaElectoral)comboBoxTaules.SelectedItem;
             viewmodelR.selectTaulaActual(taula);
 
-           //No funciona
-            FormVotsTotals formVotsTotals = new FormVotsTotals();
-            //TODO: notworking el form de Resultats he dentrar resulats be
-            if (formVotsTotals.ShowDialog() == DialogResult.OK)
+            //No funciona
+            if (viewmodelR.ActualResultat.votsTotals == null || viewmodelR.ActualResultat.votsTotals == 0)
             {
-                viewmodelR.ActualResultat.votsTotals = formVotsTotals.ResultatTaula.votsTotals;
+                FormVotsTotals formVotsTotals = new FormVotsTotals();
+                //TODO: notworking el form de Resultats he dentrar resulats be
+                if (formVotsTotals.ShowDialog() == DialogResult.OK)
+                {
+                    viewmodelR.ActualResultat.votsTotals = formVotsTotals.ResultatTaula.votsTotals;
+                }
             }
+            textBoxVotsTotals.DataBindings.Clear();
+            textBoxVotsTotals.DataBindings.Add("Text", viewmodelR.ActualResultat, "votsTotals");
             textBoxVotsBlanc.DataBindings.Clear();
             textBoxVotsBlanc.DataBindings.Add("Text", viewmodelR.ActualResultat, "votsBlanc");
             textBoxVotsNuls.DataBindings.Clear();
             textBoxVotsNuls.DataBindings.Add("Text", viewmodelR.ActualResultat, "votsNul");
 
-            //textBoxNumVotsTotals.DataBindings.Clear();
-            //textBoxNumVotsTotals.DataBindings.Add("Text", viewmodelR.ActualResultat, "votsTotals");
             dataGridViewVotsPartit.Refresh();
-
+            viewmodelR.grabar();
         }
         private void FormResultados_FormClosing(object sender, FormClosingEventArgs e)
         {
             viewmodelR.grabar();
         }
-        //private void buttonAddTotalVots_Click(object sender, EventArgs e)
-        //{
-        //    panelMainModal.Visible = false;
-        //}
+
+        private void comboBoxMunicipis_MouseClick(object sender, MouseEventArgs e)
+        {
+            var check = viewmodelR.checkVots();
+            if (check == false) { panelCheckingVots.Show(); }
+        }
+
+        private void buttonAviso_Click(object sender, EventArgs e)
+        {
+            panelCheckingVots.Visible = false;
+        }
+
+        private void comboBoxTaules_MouseClick(object sender, MouseEventArgs e)
+        {
+            var check = viewmodelR.checkVots();
+            if (check == false) { panelCheckingVots.Show(); }
+        }
+
+        private void buttonDesarResultats_Click(object sender, EventArgs e)
+        {
+            viewmodelR.grabar();
+        }
     }
 
 }

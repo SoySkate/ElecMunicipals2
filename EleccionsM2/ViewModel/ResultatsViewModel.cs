@@ -89,5 +89,23 @@ namespace EleccionsM2.ViewModel
                 }
             }
         }
+        public bool checkVots()
+        {
+            int votsllista=0;
+            foreach(VotsPerLlista vot in ActualResultat.votsLlista)
+            {
+                votsllista+=vot.numeroVotsLlista;
+            }
+            bool check= true;
+            int suma = ActualResultat.votsBlanc + ActualResultat.votsNul + votsllista;
+            if (suma != ActualResultat.votsTotals)
+            {
+                check = false;
+                return check;
+            }
+            else { 
+            return check;
+            }
+        }
     }
 }
