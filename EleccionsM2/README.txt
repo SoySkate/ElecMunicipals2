@@ -15,15 +15,16 @@ RUBEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEN
 La funcio eliminar municipis no em funciona be del tot hi han dos candidats que no saaben deliminar nose perque y es posa en null
 en la database.
 ELIMINARTAULES I PARTITS FUNCIONA PERO EL CANDIDATS NO FUNCIONA EM PETA LOKO  <--------
+TAMBE ELS RESULTATS ES CREA UN DE MÉS
 {{{Al eliminar el candidat, i al voler eliminar els resultats taula peta el grid i tot nose. tal i com ho tinc ara funciona una mica xd}}}
 
 NEW TODO:____________________________________________________________________________
 -El mini aviso que me sale no funciona be pq nomes funciona quan sha guardat al dbset i al sortir despres de posar la data encara
 conta la data anterior pq no sha guardat...
 
--Els votsBlanc i VotsNull no han entrat encara tampoc (que llegeixi tot junt la list i els dos aquests).
--Pasar els partits al votsperllistaviewmodel y aixi es vegin al form de Resultats.
-
+-DiaEleccionsViewModel->Municipi. VotsTotals,VotsValids,%ParticipacioTaula i Municipi,%Escrotat,votsBlancsTotals,VotsNulsTotals
+	·Pensar el tema del grid que faig amb els partit politics.
+	·Escons com calcular.
 
 
 CONDICIONS:
@@ -31,7 +32,6 @@ CONDICIONS:
 -Que no es pugui crear infinitament?
 -Seguretat?
 
--Si no hi ha res posar en readonly lo altre (per exemplequan elimino tot)
 
 
 DEMOMENTO HE TOCAT:_______________________________________________________________________________
@@ -43,6 +43,7 @@ DEMOMENTO HE TOCAT:_____________________________________________________________
 _____________________________________________________________________________________________
 -MILLORAR LA APP INOTIFYPROPERYCHANGED, POSARDIRECTE ELS CANSIS SIMPLEMENT ACTUALITZANT DIRECTE EN EL ATRIBUTS, ASYNCAWAIT, 
 -buscador per trobar el municipi?xd
+-quesitos pels percentatges dels partits.
 
 
 

@@ -23,8 +23,6 @@ namespace ResultadosEleccionesM.ViewsResultats
             comboBoxMunicipisDiaE.Enabled = true;
             comboBoxMunicipisDiaE.DataSource = viewModel.ListaMunicipis;
             this.AutoScroll = true;
-
-
         }
 
         private void comboBoxMunicipisDiaE_SelectedIndexChanged(object sender, EventArgs e)
@@ -35,4 +33,4 @@ namespace ResultadosEleccionesM.ViewsResultats
             textBoxNumRegidors.Text = viewModel.ActualMunicipi.numeroRegidors.ToString();
         }
     }
-}
+}    
