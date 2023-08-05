@@ -21,7 +21,7 @@ TAMBE ELS RESULTATS ES CREA UN DE MÉS
 NEW TODO:____________________________________________________________________________
 -El mini aviso que me sale no funciona be pq nomes funciona quan sha guardat al dbset i al sortir despres de posar la data encara
 conta la data anterior pq no sha guardat...
-
+-La PRTICIPACIO no es carrega no es calcula
 -DiaEleccionsViewModel->Municipi. VotsTotals,VotsValids,%ParticipacioTaula i Municipi,%Escrotat,votsBlancsTotals,VotsNulsTotals
 	·Pensar el tema del grid que faig amb els partit politics.
 	·Escons com calcular.

@@ -31,6 +31,10 @@ namespace ResultadosEleccionesM.ViewsResultats
             viewModel.selectedMunicipi(muni);
             textBoxNumRegidors.DataBindings.Clear();
             textBoxNumRegidors.Text = viewModel.ActualMunicipi.numeroRegidors.ToString();
+            viewModel.calcularDades();
+            textBoxParticipacio.DataBindings.Clear();
+            //textBoxParticipacio.DataBindings.Add("Text", viewModel,"Participacio");
+            textBoxParticipacio.Text = viewModel.Participacio.ToString() + " %";
         }
     }
-}    
+}

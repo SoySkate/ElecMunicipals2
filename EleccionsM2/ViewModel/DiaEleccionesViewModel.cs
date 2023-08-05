@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,15 +28,15 @@ namespace EleccionsM2.ViewModel
         public PartitMunicipi ActualPartit { get; set; }
         public TaulaElectoral ActualTaula { get; set; }
         //_________________________________________
-        public double Participacio = 0;
+        public double Participacio;
         public double Escrotat = 0;
         public int VotsTotals = 0;
         public int VotsValidsTotals = 0;
         public int VotsPartitsTotals = 0;
         public int VotsBlancsTotals = 0;
         public int VotsNulsTotals = 0;
-        //problema actual %Escrotat com lagafo?
-        //I els escons com els calculo aqui
+        //problema actual %Escrotat com lagafo? ESCROTAT
+        //I els escons com els calculo aqui  ESCONS 
 
 
         public DiaEleccionesViewModel()
@@ -63,14 +64,14 @@ namespace EleccionsM2.ViewModel
             foreach(TaulaElectoral taula in ListaTaulesMunicipi)
             {
                 c += taula.censTaula;
-                vt += taula.resultatsTaula.votsTotals;
+                vt += taula.resultatsTaula.votsTotals;                
                 vn += taula.resultatsTaula.votsNul;
                 vb += taula.resultatsTaula.votsBlanc;
             }
             VotsTotals = vt;
             VotsBlancsTotals = vb;
             VotsNulsTotals = vn;
-            Participacio = (VotsTotals/c) * 100;
+            Participacio = (VotsTotals/c) * 100;            
             VotsValidsTotals = VotsTotals - VotsNulsTotals;
             VotsPartitsTotals = VotsValidsTotals - VotsBlancsTotals;
         }
