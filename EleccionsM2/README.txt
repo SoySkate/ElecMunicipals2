@@ -15,20 +15,19 @@ RUBEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEN
 La funcio eliminar municipis no em funciona be del tot hi han dos candidats que no saaben deliminar nose perque y es posa en null
 en la database.
 ELIMINARTAULES I PARTITS FUNCIONA PERO EL CANDIDATS NO FUNCIONA EM PETA LOKO  <--------
-TAMBE ELS RESULTATS ES CREA UN DE MÉS
+TAMBE ELS RESULTATS ES CREA UN DE MÉS  <--------
 {{{Al eliminar el candidat, i al voler eliminar els resultats taula peta el grid i tot nose. tal i com ho tinc ara funciona una mica xd}}}
 
 NEW TODO:____________________________________________________________________________
 -El mini aviso que me sale no funciona be pq nomes funciona quan sha guardat al dbset i al sortir despres de posar la data encara
 conta la data anterior pq no sha guardat...
--La PRTICIPACIO no es carrega no es calcula
--DiaEleccionsViewModel->Municipi. VotsTotals,VotsValids,%ParticipacioTaula i Municipi,%Escrotat,votsBlancsTotals,VotsNulsTotals
+-DiaEleccionsViewModel->Municipi. VotsTotals,VotsValids,%ParticipacioTaula i Municipi,%Escrotat,votsBlancsTotals,VotsNulsTotals, Abstencio
 	·Pensar el tema del grid que faig amb els partit politics.
 	·Escons com calcular.
 
 
 CONDICIONS:
--ha d'haver tans regidors com candidats (validacio en candidats) """casifet""" he de fer el mínim.
+-Ha d'haver tans regidors com candidats (validacio en candidats) """casifet""" he de fer el mínim.
 -Que no es pugui crear infinitament?
 -Seguretat?
 

@@ -28,13 +28,14 @@ namespace EleccionsM2.ViewModel
         public PartitMunicipi ActualPartit { get; set; }
         public TaulaElectoral ActualTaula { get; set; }
         //_________________________________________
-        public double Participacio;
+        public double Participacio=0;
         public double Escrotat = 0;
         public int VotsTotals = 0;
         public int VotsValidsTotals = 0;
         public int VotsPartitsTotals = 0;
         public int VotsBlancsTotals = 0;
         public int VotsNulsTotals = 0;
+        public double Abstencio = 0;
         //problema actual %Escrotat com lagafo? ESCROTAT
         //I els escons com els calculo aqui  ESCONS 
 
@@ -57,10 +58,13 @@ namespace EleccionsM2.ViewModel
         }
         public void calcularDades()
         {
-            int c = 0;
-            int vt = 0;
+            //entrant les public dades de actual municipi
+            double c = 0;
+            double vt = 0;
             int vn = 0;
             int vb = 0;
+            double p;
+            double a;
             foreach(TaulaElectoral taula in ListaTaulesMunicipi)
             {
                 c += taula.censTaula;
@@ -68,12 +72,16 @@ namespace EleccionsM2.ViewModel
                 vn += taula.resultatsTaula.votsNul;
                 vb += taula.resultatsTaula.votsBlanc;
             }
-            VotsTotals = vt;
+            VotsTotals = (int)vt;
             VotsBlancsTotals = vb;
             VotsNulsTotals = vn;
-            Participacio = (VotsTotals/c) * 100;            
-            VotsValidsTotals = VotsTotals - VotsNulsTotals;
-            VotsPartitsTotals = VotsValidsTotals - VotsBlancsTotals;
+            p = (vt/c)*100;  
+            Participacio=Math.Round(p,2);
+            a = 100 - p;
+            Abstencio = Math.Round(a, 2);
+            VotsValidsTotals = (int)vt - vn;
+            VotsPartitsTotals = VotsValidsTotals - vb;//potser aqui no funca
         }
+
     }
 }
