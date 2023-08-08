@@ -23,6 +23,8 @@ namespace ResultadosEleccionesM.ViewsResultats
             comboBoxMunicipisDiaE.Enabled = true;
             comboBoxMunicipisDiaE.DataSource = viewModel.ListaMunicipis;
             this.AutoScroll = true;
+            dataGridViewEscons.DataSource = null;
+            dataGridViewEscons.DataSource = viewModel.ListaEsconsPartit;
         }
 
         private void comboBoxMunicipisDiaE_SelectedIndexChanged(object sender, EventArgs e)
@@ -31,10 +33,10 @@ namespace ResultadosEleccionesM.ViewsResultats
             viewModel.selectedMunicipi(muni);
             textBoxNumRegidors.DataBindings.Clear();
             textBoxNumRegidors.Text = viewModel.ActualMunicipi.numeroRegidors.ToString();
-            viewModel.calcularDades();
-            //textBoxParticipacio.DataBindings.Clear();
-            //textBoxParticipacio.DataBindings.Add("Text", viewModel,"Participacio");
+            viewModel.calcularDades();            
             textBoxParticipacio.Text = viewModel.Participacio.ToString() + " %";
+            viewModel.repartoEscons();
+         
         }
     }
 }

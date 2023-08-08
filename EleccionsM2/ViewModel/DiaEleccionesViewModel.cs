@@ -18,9 +18,9 @@ namespace EleccionsM2.ViewModel
         public List<Candidat> ListaCandidats { get => ActualPartit.candidats; }
         public List<TaulaElectoral> ListaTaulesMunicipi { get => ActualMunicipi.taulesElectorals; }
         //_________________________________________
-        public List<EsconsPartitViewModel> ListaEsconsPartit { get; set; }
-        public List<TaulaDadesViewModel> ListaTaulaDades { get; set; }
-        public List<RegidorsViewModel> ListaRegidors { get; set; }
+        public List<EsconsPartitViewModel> ListaEsconsPartit { get; set; } = new();
+        public List<TaulaDadesViewModel> ListaTaulaDades { get; set; } = new();
+        public List<RegidorsViewModel> ListaRegidors { get; set; } = new();
         //_________________________________________
 
         //public ResultatsTaula ActualResultat { get => ActualTaula.resultatsTaula; }
@@ -36,6 +36,7 @@ namespace EleccionsM2.ViewModel
         public int VotsBlancsTotals = 0;
         public int VotsNulsTotals = 0;
         public double Abstencio = 0;
+        public double minimVots=0;
         //problema actual %Escrotat com lagafo? ESCROTAT
         //I els escons com els calculo aqui  ESCONS 
 
@@ -80,7 +81,35 @@ namespace EleccionsM2.ViewModel
             a = 100 - p;
             Abstencio = Math.Round(a, 2);
             VotsValidsTotals = (int)vt - vn;
-            VotsPartitsTotals = VotsValidsTotals - vb;//potser aqui no funca
+            VotsPartitsTotals = VotsValidsTotals - vb;
+            minimVots = VotsValidsTotals * 0.05;
+        }
+        public void repartoEscons()
+        {          
+            foreach(TaulaElectoral t in ListaTaulesMunicipi)
+            {
+                int count = 0;
+                foreach(VotsPerLlista v in t.resultatsTaula.votsLlista)
+                {
+                    //EsconsPartitViewModel sameP = new();
+                    //try { sameP = ListaEsconsPartit.SingleOrDefault(p => p.ID == v.Partit.ID); } 
+                    //catch { MessageBox.Show("No hay ningun objeto que coincida"); }
+                   
+                    //if(sameP != null)
+                    //{
+                    //    sameP.pVots += v.numeroVotsLlista;
+                    //}
+                    //else
+                    //{
+                        EsconsPartitViewModel nouItemEscons = new();
+                        string nom = v.Partit.nomPartit;
+                        int numV= v.numeroVotsLlista;
+                        nouItemEscons.nomPartit = nom;
+                        nouItemEscons.numeroVots = numV;
+                        ListaEsconsPartit.Add(nouItemEscons);
+                    //}
+                }
+            }
         }
 
     }
