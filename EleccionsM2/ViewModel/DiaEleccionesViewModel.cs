@@ -37,6 +37,7 @@ namespace EleccionsM2.ViewModel
         public int VotsNulsTotals = 0;
         public double Abstencio = 0;
         public double minimVots=0;
+        public int EsconsRepartir = 0;
         //problema actual %Escrotat com lagafo? ESCROTAT
         //I els escons com els calculo aqui  ESCONS 
 
@@ -83,31 +84,58 @@ namespace EleccionsM2.ViewModel
             VotsValidsTotals = (int)vt - vn;
             VotsPartitsTotals = VotsValidsTotals - vb;
             minimVots = VotsValidsTotals * 0.05;
+            int numEscons = ActualMunicipi.numeroRegidors;
+            EsconsRepartir = numEscons;
         }
-        public void repartoEscons()
-        {          
+        public async Task repartoEscons()
+        {
+            ListaEsconsPartit.Clear();
+            bool repartit =false;
             foreach(TaulaElectoral t in ListaTaulesMunicipi)
             {
                 int count = 0;
                 foreach(VotsPerLlista v in t.resultatsTaula.votsLlista)
-                {
-                    //EsconsPartitViewModel sameP = new();
-                    //try { sameP = ListaEsconsPartit.SingleOrDefault(p => p.ID == v.Partit.ID); } 
-                    //catch { MessageBox.Show("No hay ningun objeto que coincida"); }
-                   
-                    //if(sameP != null)
-                    //{
-                    //    sameP.pVots += v.numeroVotsLlista;
-                    //}
-                    //else
-                    //{
+                {              
                         EsconsPartitViewModel nouItemEscons = new();
                         string nom = v.Partit.nomPartit;
                         int numV= v.numeroVotsLlista;
                         nouItemEscons.nomPartit = nom;
                         nouItemEscons.numeroVots = numV;
-                        ListaEsconsPartit.Add(nouItemEscons);
-                    //}
+                    
+                        var partit = ListaPartitsMunicipi.SingleOrDefault(p=>p.nomPartit == nom);
+                    nouItemEscons.ID = partit.ID;
+
+                    if (ListaEsconsPartit.Exists(i => i.nomPartit == nouItemEscons.nomPartit) == true)
+                    {
+                        var sameItem = ListaEsconsPartit.SingleOrDefault(i => i.nomPartit == nouItemEscons.nomPartit);
+                        sameItem.numeroVots += nouItemEscons.numeroVots;
+                    }
+                    else { ListaEsconsPartit.Add(nouItemEscons); }
+                    //ordenar la list per qui tingui mes votacions
+                    ListaEsconsPartit.Sort((p1, p2) => p2.numeroVots.CompareTo(p1.numeroVots));
+
+
+
+
+
+                    //Aixo ho he de fer fora daquest foreach de les taules una cosa es imprimir i ordenar i laltre calcular escons....................
+                    ///reparto descons
+
+                    for (int i = 0; i<ActualMunicipi.numeroRegidors; i++)
+                    {
+                        count++;
+                        double result = nouItemEscons.numeroVots / count;
+                        while (result > minimVots && EsconsRepartir !=0) {
+                            //Esto es probable que no funcione ya que solo toma un partido para repartir escons no??????????????????????????????????????????
+                            nouItemEscons.escons++;
+                            EsconsRepartir--;
+                            repartit = true;
+                            break;                                
+                        }
+                        if (count == ActualMunicipi.numeroRegidors) {break; }
+                    }
+                    
+                    await grabar();                   
                 }
             }
         }

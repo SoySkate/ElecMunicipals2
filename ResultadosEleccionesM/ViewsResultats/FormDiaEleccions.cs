@@ -25,6 +25,8 @@ namespace ResultadosEleccionesM.ViewsResultats
             this.AutoScroll = true;
             dataGridViewEscons.DataSource = null;
             dataGridViewEscons.DataSource = viewModel.ListaEsconsPartit;
+
+
         }
 
         private void comboBoxMunicipisDiaE_SelectedIndexChanged(object sender, EventArgs e)
@@ -36,6 +38,9 @@ namespace ResultadosEleccionesM.ViewsResultats
             viewModel.calcularDades();            
             textBoxParticipacio.Text = viewModel.Participacio.ToString() + " %";
             viewModel.repartoEscons();
+            
+            dataGridViewEscons.Refresh();
+            viewModel.grabar();
          
         }
     }
