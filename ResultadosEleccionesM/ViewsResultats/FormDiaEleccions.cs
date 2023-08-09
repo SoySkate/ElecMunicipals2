@@ -37,8 +37,8 @@ namespace ResultadosEleccionesM.ViewsResultats
             textBoxNumRegidors.Text = viewModel.ActualMunicipi.numeroRegidors.ToString();
             viewModel.calcularDades();            
             textBoxParticipacio.Text = viewModel.Participacio.ToString() + " %";
-            viewModel.repartoEscons();
-            
+            viewModel.visualitzarEscons();
+            viewModel.AsignarEscons();
             dataGridViewEscons.Refresh();
             viewModel.grabar();
          

@@ -38,6 +38,7 @@ namespace EleccionsM2.ViewModel
         public double Abstencio = 0;
         public double minimVots=0;
         public int EsconsRepartir = 0;
+        public int count = 0;
         //problema actual %Escrotat com lagafo? ESCROTAT
         //I els escons com els calculo aqui  ESCONS 
 
@@ -87,13 +88,13 @@ namespace EleccionsM2.ViewModel
             int numEscons = ActualMunicipi.numeroRegidors;
             EsconsRepartir = numEscons;
         }
-        public async Task repartoEscons()
+        public async Task visualitzarEscons()
         {
             ListaEsconsPartit.Clear();
-            bool repartit =false;
+           
             foreach(TaulaElectoral t in ListaTaulesMunicipi)
             {
-                int count = 0;
+                //int count = 0;
                 foreach(VotsPerLlista v in t.resultatsTaula.votsLlista)
                 {              
                         EsconsPartitViewModel nouItemEscons = new();
@@ -113,31 +114,63 @@ namespace EleccionsM2.ViewModel
                     else { ListaEsconsPartit.Add(nouItemEscons); }
                     //ordenar la list per qui tingui mes votacions
                     ListaEsconsPartit.Sort((p1, p2) => p2.numeroVots.CompareTo(p1.numeroVots));
+                    await grabar();
 
-
-
-
-
-                    //Aixo ho he de fer fora daquest foreach de les taules una cosa es imprimir i ordenar i laltre calcular escons....................
-                    ///reparto descons
-
-                    for (int i = 0; i<ActualMunicipi.numeroRegidors; i++)
-                    {
-                        count++;
-                        double result = nouItemEscons.numeroVots / count;
-                        while (result > minimVots && EsconsRepartir !=0) {
-                            //Esto es probable que no funcione ya que solo toma un partido para repartir escons no??????????????????????????????????????????
-                            nouItemEscons.escons++;
-                            EsconsRepartir--;
-                            repartit = true;
-                            break;                                
-                        }
-                        if (count == ActualMunicipi.numeroRegidors) {break; }
-                    }
-                    
-                    await grabar();                   
                 }
             }
+        }
+        public void AsignarEscons()
+        {
+            //intentant fer el mateix pero mes facil crec*******
+            List<List<double>> listaTest = new();
+            foreach(EsconsPartitViewModel e in ListaEsconsPartit)
+            {
+                List<double> listaP = new();
+                for(int i=1; i < EsconsRepartir +1; i++)
+                {
+                   var result= e.numeroVots / i;
+                    listaP.Add(result);
+                }
+                listaTest.Add(listaP);
+            }
+            foreach(List<double> list in listaTest)
+            {
+
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+            //Aixo ho he de fer fora daquest foreach de les taules una cosa es imprimir i ordenar i laltre calcular escons....................
+            ///reparto descons            
+            //bool repartit = false;
+            //if (nouItemEscons != null) { 
+           
+            //    for (int i = 0; i < EsconsRepartir; i++)
+            //    {                   
+            //        double result = nouItemEscons.numeroVots / count;
+            //        while (result > minimVots && EsconsRepartir != 0)
+            //        {
+            //            //Esto es probable que no funcione ya que solo toma un partido para repartir escons no??????????????????????????????????????????
+            //            nouItemEscons.escons++;
+            //            EsconsRepartir--;
+            //            repartit = true;
+            //            return repartit;
+            //        }
+            //            //if (EsconsRepartir == ActualMunicipi.numeroRegidors) { break; }
+            //    }
+            //        return repartit;
+            //}
+            //else { return repartit; }
+            //if (repartit == true) { return repartit; } else { return repartit; }
         }
 
     }
