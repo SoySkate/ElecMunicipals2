@@ -93,27 +93,32 @@ namespace EleccionsM2.ViewModel
             ListaEsconsPartit.Clear();
            
             foreach(TaulaElectoral t in ListaTaulesMunicipi)
-            {
-                //int count = 0;
+            {                
+                double percentatgeV = 0;
                 foreach(VotsPerLlista v in t.resultatsTaula.votsLlista)
-                {              
+                {
+                    //aqui no esta agafant be els vots dels partits m'agafa de tots
                         EsconsPartitViewModel nouItemEscons = new();
                         string nom = v.Partit.nomPartit;
-                        int numV= v.numeroVotsLlista;
+                        int numV = v.numeroVotsLlista;
                         nouItemEscons.nomPartit = nom;
                         nouItemEscons.numeroVots = numV;
-                    
-                        var partit = ListaPartitsMunicipi.SingleOrDefault(p=>p.nomPartit == nom);
-                    nouItemEscons.ID = partit.ID;
+                        //nouItemEscons.pVots = s;
+
+                    var partit = ListaPartitsMunicipi.SingleOrDefault(p=>p.nomPartit == nom);
+                        nouItemEscons.ID = partit.ID;
 
                     if (ListaEsconsPartit.Exists(i => i.nomPartit == nouItemEscons.nomPartit) == true)
                     {
                         var sameItem = ListaEsconsPartit.SingleOrDefault(i => i.nomPartit == nouItemEscons.nomPartit);
                         sameItem.numeroVots += nouItemEscons.numeroVots;
+                        percentatgeV = ((double)sameItem.numeroVots / (double)VotsPartitsTotals) * 100;
+                        double pround = Math.Round(percentatgeV, 2);
+                        sameItem.pVots = pround;
                     }
                     else { ListaEsconsPartit.Add(nouItemEscons); }
                     //ordenar la list per qui tingui mes votacions
-                    ListaEsconsPartit.Sort((p1, p2) => p2.numeroVots.CompareTo(p1.numeroVots));
+                    ListaEsconsPartit.Sort((p1, p2) => p2.numeroVots.CompareTo(p1.numeroVots));                   
                     await grabar();
 
                 }
@@ -121,22 +126,54 @@ namespace EleccionsM2.ViewModel
         }
         public void AsignarEscons()
         {
-            //intentant fer el mateix pero mes facil crec*******
+            //potser per fer aixo era necesari crear una nova class?            
             List<List<double>> listaTest = new();
             foreach(EsconsPartitViewModel e in ListaEsconsPartit)
             {
                 List<double> listaP = new();
-                for(int i=1; i < EsconsRepartir +1; i++)
+                for(int i=1; i < ActualMunicipi.numeroRegidors +1; i++)
                 {
                    var result= e.numeroVots / i;
                     listaP.Add(result);
                 }
                 listaTest.Add(listaP);
             }
+            int lastIteration = 0;
+            int posi = 0;
+            int listmesgran = 0;
             foreach(List<double> list in listaTest)
             {
-
+                if (list.Count > listmesgran)
+                {
+                    listmesgran = list.Count;
+                }
             }
+            for(int i = 0; i < listmesgran; i++)
+            {
+                foreach (List<double> list in listaTest)
+                {
+                    //millorable la forma de seleccionar
+                    var partitEsco = ListaEsconsPartit.SingleOrDefault(p=>p.numeroVots == list[0]);
+                    lastIteration++;
+                    if (posi < list.Count)
+                    {
+                        if(list[posi] != null) {
+
+                            if (list[posi] > minimVots)
+                            {
+                                if (EsconsRepartir != 0) {
+                                    partitEsco.escons++;
+                                    //ha repartit els 2 escons als 2 partits esto esta mal xd
+                                    EsconsRepartir--;
+                                }                               
+                            }
+                        }                       
+                    }
+                }              
+                    posi++;             
+            }
+            
+
 
 
 
@@ -150,27 +187,27 @@ namespace EleccionsM2.ViewModel
 
 
             //Aixo ho he de fer fora daquest foreach de les taules una cosa es imprimir i ordenar i laltre calcular escons....................
-            ///reparto descons            
-            //bool repartit = false;
-            //if (nouItemEscons != null) { 
-           
-            //    for (int i = 0; i < EsconsRepartir; i++)
-            //    {                   
-            //        double result = nouItemEscons.numeroVots / count;
-            //        while (result > minimVots && EsconsRepartir != 0)
-            //        {
-            //            //Esto es probable que no funcione ya que solo toma un partido para repartir escons no??????????????????????????????????????????
-            //            nouItemEscons.escons++;
-            //            EsconsRepartir--;
-            //            repartit = true;
-            //            return repartit;
-            //        }
-            //            //if (EsconsRepartir == ActualMunicipi.numeroRegidors) { break; }
-            //    }
-            //        return repartit;
-            //}
-            //else { return repartit; }
-            //if (repartit == true) { return repartit; } else { return repartit; }
+                ///reparto descons            
+                //bool repartit = false;
+                //if (nouItemEscons != null) { 
+
+                //    for (int i = 0; i < EsconsRepartir; i++)
+                //    {                   
+                //        double result = nouItemEscons.numeroVots / count;
+                //        while (result > minimVots && EsconsRepartir != 0)
+                //        {
+                //            //Esto es probable que no funcione ya que solo toma un partido para repartir escons no??????????????????????????????????????????
+                //            nouItemEscons.escons++;
+                //            EsconsRepartir--;
+                //            repartit = true;
+                //            return repartit;
+                //        }
+                //            //if (EsconsRepartir == ActualMunicipi.numeroRegidors) { break; }
+                //    }
+                //        return repartit;
+                //}
+                //else { return repartit; }
+                //if (repartit == true) { return repartit; } else { return repartit; }
         }
 
     }
