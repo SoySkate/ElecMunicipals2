@@ -25,6 +25,10 @@ namespace ResultadosEleccionesM.ViewsResultats
             this.AutoScroll = true;
             dataGridViewEscons.DataSource = null;
             dataGridViewEscons.DataSource = viewModel.ListaEsconsPartit;
+            dataGridViewEscons.Columns[0].Visible = false;
+            dataGridViewRegidors.DataSource = null;
+            dataGridViewRegidors.DataSource = viewModel.ListaRegidors;
+            dataGridViewRegidors.Columns[0].Visible = false;
 
 
         }
@@ -39,6 +43,7 @@ namespace ResultadosEleccionesM.ViewsResultats
             textBoxParticipacio.Text = viewModel.Participacio.ToString() + " %";
             viewModel.visualitzarEscons();
             viewModel.AsignarEscons();
+            viewModel.seleccionarCandidats();
             dataGridViewEscons.Refresh();
             viewModel.grabar();
          

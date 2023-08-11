@@ -126,7 +126,7 @@ namespace EleccionsM2.ViewModel
         }
         public void AsignarEscons()
         {
-            //potser per fer aixo era necesari crear una nova class?            
+            //potser per fer aixo era necesari crear una nova class?  maybe si pq           
             List<List<double>> listaTest = new();
             foreach(EsconsPartitViewModel e in ListaEsconsPartit)
             {
@@ -152,7 +152,7 @@ namespace EleccionsM2.ViewModel
             {
                 foreach (List<double> list in listaTest)
                 {
-                    //millorable la forma de seleccionar
+                    //millorable la forma de seleccionar MOLT MILLORABLE (NECESSARI)
                     var partitEsco = ListaEsconsPartit.SingleOrDefault(p=>p.numeroVots == list[0]);
                     lastIteration++;
                     if (posi < list.Count)
@@ -163,7 +163,6 @@ namespace EleccionsM2.ViewModel
                             {
                                 if (EsconsRepartir != 0) {
                                     partitEsco.escons++;
-                                    //ha repartit els 2 escons als 2 partits esto esta mal xd
                                     EsconsRepartir--;
                                 }                               
                             }
@@ -171,44 +170,27 @@ namespace EleccionsM2.ViewModel
                     }
                 }              
                     posi++;             
-            }
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-            //Aixo ho he de fer fora daquest foreach de les taules una cosa es imprimir i ordenar i laltre calcular escons....................
-                ///reparto descons            
-                //bool repartit = false;
-                //if (nouItemEscons != null) { 
-
-                //    for (int i = 0; i < EsconsRepartir; i++)
-                //    {                   
-                //        double result = nouItemEscons.numeroVots / count;
-                //        while (result > minimVots && EsconsRepartir != 0)
-                //        {
-                //            //Esto es probable que no funcione ya que solo toma un partido para repartir escons no??????????????????????????????????????????
-                //            nouItemEscons.escons++;
-                //            EsconsRepartir--;
-                //            repartit = true;
-                //            return repartit;
-                //        }
-                //            //if (EsconsRepartir == ActualMunicipi.numeroRegidors) { break; }
-                //    }
-                //        return repartit;
-                //}
-                //else { return repartit; }
-                //if (repartit == true) { return repartit; } else { return repartit; }
+            }          
         }
-
+        public void seleccionarCandidats()           
+        {
+            ListaEsconsPartit.Sort((p1, p2) => p2.numeroVots.CompareTo(p1.numeroVots));
+            foreach (EsconsPartitViewModel e in ListaEsconsPartit)
+            {
+                var partit = ListaPartitsMunicipi.SingleOrDefault(p=>p.ID== e.ID);
+                if(e.escons != 0)
+                {
+                    for(int i=0; i < e.escons; i++)
+                    {
+                        RegidorsViewModel regi = new RegidorsViewModel();
+                        regi.ID = partit.candidats[i].ID;
+                        regi.nomCandiat = partit.candidats[i].nomCandidat;
+                        regi.nomPartit = partit.nomPartit;
+                        
+                        ListaRegidors.Add(regi);
+                    }
+                }
+            }
+        }
     }
 }

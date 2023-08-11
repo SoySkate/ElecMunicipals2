@@ -362,6 +362,7 @@
             Controls.Add(panel1);
             Name = "FormInicial";
             Text = "FormInicial";
+     
             FormClosing += FormInicial_FormClosing;
             ((System.ComponentModel.ISupportInitialize)dataGridViewMunicipis).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewPartits).EndInit();

@@ -61,7 +61,9 @@ namespace EleccionsM2.Views
                 textBoxNomPartit.ReadOnly = true;
                 textBoxNomCandidat.ReadOnly = true;
             }
-            else { dataGridViewMunicipis.DataSource = viewModel.ListaMunicipis;
+            else
+            {
+                dataGridViewMunicipis.DataSource = viewModel.ListaMunicipis;
                 textBox1.ReadOnly = false;
                 textBox2.ReadOnly = false;
             }
@@ -81,7 +83,7 @@ namespace EleccionsM2.Views
                     dataGridViewPartits.DataSource = null;
                     dataGridViewTaules.DataSource = null;
                     textBoxNomTaula.ReadOnly = true;
-                    textBoxCensTaula.ReadOnly = true;                   
+                    textBoxCensTaula.ReadOnly = true;
                 }
                 else
                 {
@@ -101,7 +103,7 @@ namespace EleccionsM2.Views
                         textBoxNomPartit.ReadOnly = true;
                         textBoxNomCandidat.ReadOnly = true;
                         dataGridViewCandidats.DataSource = null;
-                        dataGridViewPartits.DataSource = null;                        
+                        dataGridViewPartits.DataSource = null;
 
                     }
                     if (viewModel.ActualMunicipi.taulesElectorals.Count > 0)
@@ -348,9 +350,8 @@ namespace EleccionsM2.Views
         }
 
         private void FormInicial_FormClosing(object sender, FormClosingEventArgs e)
-        {
+        {           
             viewModel.Grabar();
         }
-
     }
 }
