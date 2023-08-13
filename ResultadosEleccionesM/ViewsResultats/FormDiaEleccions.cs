@@ -45,6 +45,7 @@ namespace ResultadosEleccionesM.ViewsResultats
             viewModel.AsignarEscons();
             viewModel.seleccionarCandidats();
             dataGridViewEscons.Refresh();
+            dataGridViewRegidors.Refresh();
             viewModel.grabar();
          
         }

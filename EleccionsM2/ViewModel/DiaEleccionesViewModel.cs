@@ -174,6 +174,7 @@ namespace EleccionsM2.ViewModel
         }
         public void seleccionarCandidats()           
         {
+            ListaRegidors.Clear();
             ListaEsconsPartit.Sort((p1, p2) => p2.numeroVots.CompareTo(p1.numeroVots));
             foreach (EsconsPartitViewModel e in ListaEsconsPartit)
             {
