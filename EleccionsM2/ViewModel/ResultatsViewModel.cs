@@ -16,6 +16,8 @@ namespace EleccionsM2.ViewModel
         public List<Candidat> ListaCandidats { get => ActualPartit.candidats; }
         public List<TaulaElectoral> ListaTaulesMunicipi { get => ActualMunicipi.taulesElectorals; }
         public ResultatsTaula ActualResultat { get => ActualTaula.resultatsTaula; }
+        //crec que la listavotsperlilista esta mal el getter y el setter que? nose no crec que sigui de
+        //ActualTaula.resultatsTaula.votsLlista
         public List<VotsPerLlista> ListaVotsPerLlista { get => ActualTaula.resultatsTaula.votsLlista; }
 
         //Esta lista es la que se ve en el formulario: ListaVisualVotsPerPartit
@@ -23,7 +25,6 @@ namespace EleccionsM2.ViewModel
         public Municipi ActualMunicipi { get; set; }
         public PartitMunicipi ActualPartit { get; set; }
         public TaulaElectoral ActualTaula { get; set; }
-       
         public VotsPerLlista ActualVot { get; set; } = new();
 
         public ResultatsViewModel() {
@@ -43,19 +44,12 @@ namespace EleccionsM2.ViewModel
         {
             ActualMunicipi = selectedMuni;
         }
-        public async Task selectTaulaActual(TaulaElectoral selectedTaula)
+        public void selectTaulaActual(TaulaElectoral selectedTaula)
         {
-            foreach (VotsPerLlistaViewModel votVM in ListaVisualVotsPerPartit)
-            {
-                var vot = ListaVotsPerLlista.SingleOrDefault(v => v.ID == votVM.ID);
-                if (vot != null)
-                {
-                    vot.numeroVotsLlista = votVM.numeroVotsPartit;
-                    await grabar();
-                }               
-            }
-            await grabar();
             ActualTaula = selectedTaula;
+        }
+        public async Task printarTaula() {
+            //per aqui sestan creant els partits del municipi1 al altre municipi2            
             ListaVisualVotsPerPartit.Clear();
            foreach (PartitMunicipi partit in ListaPartitsMunicipi)
            {
@@ -65,6 +59,7 @@ namespace EleccionsM2.ViewModel
                 //Pensava que creant lobjecte aquest que si esta a la database es posaria un id xd i podria copiarlo al altre
                 if (ListaVotsPerLlista.Exists(x => x.Partit.nomPartit == partit.nomPartit) == false)
                 {   
+                        vots.ID = ActualPartit.ID;
                         vots.Partit = ActualPartit;
                         vots.numeroVotsLlista = 0;
                         ListaVotsPerLlista.Add(vots);
@@ -76,16 +71,29 @@ namespace EleccionsM2.ViewModel
                 if (ListaVisualVotsPerPartit.Exists(m => m.ID == vot.ID) == false)
                 {
                     VotsPerLlistaViewModel nuevoitem = new();
-                    long id = vot.ID;
-                    string nom = vot.Partit.nomPartit;
-                    int num = vot.numeroVotsLlista;
-                    nuevoitem.ID = id;
-                    nuevoitem.nomPartit = nom;
-                    nuevoitem.numeroVotsPartit = num;
+                    //long id = vot.ID;
+                    //string nom = vot.Partit.nomPartit;
+                    //int num = vot.numeroVotsLlista;
+                    nuevoitem.ID = vot.ID;
+                    nuevoitem.nomPartit = vot.Partit.nomPartit;
+                    nuevoitem.numeroVotsPartit = vot.numeroVotsLlista;
                     if (ListaVisualVotsPerPartit.Exists(i => i == nuevoitem) == false)
                     {
                         ListaVisualVotsPerPartit.Add(nuevoitem);
                     }
+                }
+            }
+            await grabar();
+        }
+        public async Task grabarResultadosPartits()
+        {
+            foreach (VotsPerLlistaViewModel votVM in ListaVisualVotsPerPartit)
+            {
+                var vot = ListaVotsPerLlista.SingleOrDefault(v => v.ID == votVM.ID);
+                if (vot != null)
+                {
+                    vot.numeroVotsLlista = votVM.numeroVotsPartit;
+                    await grabar();
                 }
             }
         }

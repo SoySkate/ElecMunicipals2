@@ -34,24 +34,27 @@ namespace ResultadosEleccionesM
         {
             var muni = (Municipi)comboBoxMunicipis.SelectedItem;
             viewmodelR.selectMunicipiActual(muni);
-            comboBoxTaules.DataSource = viewmodelR.ListaTaulesMunicipi;
+            comboBoxTaules.DataSource = viewmodelR.ListaTaulesMunicipi;            
             viewmodelR.grabar();
         }
-        private void comboBoxTaules_SelectedIndexChanged(object sender, EventArgs e)
+        private async void comboBoxTaules_SelectedIndexChanged(object sender, EventArgs e)
         {
             var taula = (TaulaElectoral)comboBoxTaules.SelectedItem;
             viewmodelR.selectTaulaActual(taula);
+            await viewmodelR.grabarResultadosPartits();
+            await mostrarTaula();
+          
+           
 
             //No funciona
-            if (viewmodelR.ActualResultat.votsTotals == null || viewmodelR.ActualResultat.votsTotals == 0)
-            {
-                FormVotsTotals formVotsTotals = new FormVotsTotals();
-                //TODO: notworking el form de Resultats he dentrar resulats be
-                if (formVotsTotals.ShowDialog() == DialogResult.OK)
-                {
-                    viewmodelR.ActualResultat.votsTotals = formVotsTotals.ResultatTaula.votsTotals;
-                }
-            }
+            //if (viewmodelR.ActualResultat.votsTotals == null || viewmodelR.ActualResultat.votsTotals == 0)
+            //{
+            //    FormVotsTotals formVotsTotals = new FormVotsTotals();                
+            //    if (formVotsTotals.ShowDialog() == DialogResult.OK)
+            //    {
+            //        viewmodelR.ActualResultat.votsTotals = formVotsTotals.ResultatTaula.votsTotals;
+            //    }
+            //}
             textBoxVotsTotals.DataBindings.Clear();
             textBoxVotsTotals.DataBindings.Add("Text", viewmodelR.ActualResultat, "votsTotals");
             textBoxVotsBlanc.DataBindings.Clear();
@@ -62,15 +65,22 @@ namespace ResultadosEleccionesM
             dataGridViewVotsPartit.Refresh();
             viewmodelR.grabar();
         }
-        private void FormResultados_FormClosing(object sender, FormClosingEventArgs e)
+        public async Task mostrarTaula()
         {
-            viewmodelR.grabar();
+            await viewmodelR.printarTaula();
+            await Task.Delay(1000);
+        }
+        private async void FormResultados_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            await viewmodelR.grabarResultadosPartits();
+            await viewmodelR.grabar();
         }
 
-        private void comboBoxMunicipis_MouseClick(object sender, MouseEventArgs e)
+        private async void comboBoxMunicipis_MouseClick(object sender, MouseEventArgs e)
         {
-            var check = viewmodelR.checkVots();
-            if (check == false) { panelCheckingVots.Show(); }
+            //var check = viewmodelR.checkVots();
+            //if (check == false) { panelCheckingVots.Show(); }
+            await viewmodelR.grabarResultadosPartits();
         }
 
         private void buttonAviso_Click(object sender, EventArgs e)
@@ -78,15 +88,17 @@ namespace ResultadosEleccionesM
             panelCheckingVots.Visible = false;
         }
 
-        private void comboBoxTaules_MouseClick(object sender, MouseEventArgs e)
+        private async void comboBoxTaules_MouseClick(object sender, MouseEventArgs e)
         {
-            var check = viewmodelR.checkVots();
-            if (check == false) { panelCheckingVots.Show(); }
+            //var check = viewmodelR.checkVots();
+            //if (check == false) { panelCheckingVots.Show(); }
+            await viewmodelR.grabarResultadosPartits();
         }
 
-        private void buttonDesarResultats_Click(object sender, EventArgs e)
+        private async void buttonDesarResultats_Click(object sender, EventArgs e)
         {
-            viewmodelR.grabar();
+            await viewmodelR.grabarResultadosPartits();
+           await viewmodelR.grabar();
         }
     }
 
