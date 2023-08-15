@@ -18,8 +18,7 @@ namespace ResultadosEleccionesM
             comboBoxTaules.Enabled = true;
             comboBoxMunicipis.DataSource = viewmodelR.ListaMunicipis;
             controlPanel();
-            dataGridViewVotsPartit.DataSource = null;
-            dataGridViewVotsPartit.DataSource = viewmodelR.ListaVisualVotsPerPartit;
+
 
         }
         ResultatsViewModel viewmodelR = new ResultatsViewModel();
@@ -34,7 +33,7 @@ namespace ResultadosEleccionesM
         {
             var muni = (Municipi)comboBoxMunicipis.SelectedItem;
             viewmodelR.selectMunicipiActual(muni);
-            comboBoxTaules.DataSource = viewmodelR.ListaTaulesMunicipi;            
+            comboBoxTaules.DataSource = viewmodelR.ListaTaulesMunicipi;
             viewmodelR.grabar();
         }
         private async void comboBoxTaules_SelectedIndexChanged(object sender, EventArgs e)
@@ -43,8 +42,8 @@ namespace ResultadosEleccionesM
             viewmodelR.selectTaulaActual(taula);
             await viewmodelR.grabarResultadosPartits();
             await mostrarTaula();
-          
-           
+            dataGridViewVotsPartit.DataSource = null;
+            dataGridViewVotsPartit.DataSource = viewmodelR.ListaVisualVotsPerPartit;
 
             //No funciona
             //if (viewmodelR.ActualResultat.votsTotals == null || viewmodelR.ActualResultat.votsTotals == 0)
@@ -55,6 +54,8 @@ namespace ResultadosEleccionesM
             //        viewmodelR.ActualResultat.votsTotals = formVotsTotals.ResultatTaula.votsTotals;
             //    }
             //}
+            textBoxCensTaula.DataBindings.Clear();
+            textBoxCensTaula.DataBindings.Add("Text", viewmodelR.ActualTaula, "censTaula");
             textBoxVotsTotals.DataBindings.Clear();
             textBoxVotsTotals.DataBindings.Add("Text", viewmodelR.ActualResultat, "votsTotals");
             textBoxVotsBlanc.DataBindings.Clear();
@@ -62,8 +63,8 @@ namespace ResultadosEleccionesM
             textBoxVotsNuls.DataBindings.Clear();
             textBoxVotsNuls.DataBindings.Add("Text", viewmodelR.ActualResultat, "votsNul");
 
-            dataGridViewVotsPartit.Refresh();
-            viewmodelR.grabar();
+            //dataGridViewVotsPartit.Refresh();
+            await viewmodelR.grabar();
         }
         public async Task mostrarTaula()
         {
@@ -98,7 +99,7 @@ namespace ResultadosEleccionesM
         private async void buttonDesarResultats_Click(object sender, EventArgs e)
         {
             await viewmodelR.grabarResultadosPartits();
-           await viewmodelR.grabar();
+            await viewmodelR.grabar();
         }
     }
 

@@ -26,6 +26,7 @@ conta la data anterior pq no sha guardat...
 Error de resultats quan he afegit noous partits a un municipi ja existent s ha rallat amb el segon, el pirmer l ha acceptat be.Crec que lerror
 el tinc a resultatsviewmodel.....Afegir mes candidats per saber si els escons es reparteixen be
 ERROR-SelectedTaula FUNCTION. & maybe ListaVotsPerLlista get and set mal???
+-Afegir mes candidats per cada partit i testear si funca lo de diaeleccions grids pel tema escons
 
 
 

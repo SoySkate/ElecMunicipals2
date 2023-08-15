@@ -37,6 +37,8 @@
             label3 = new Label();
             label4 = new Label();
             panel1 = new Panel();
+            textBoxCensTaula = new TextBox();
+            label5 = new Label();
             panelCheckingVots = new Panel();
             buttonAviso = new Button();
             labelAviso = new Label();
@@ -122,6 +124,8 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(textBoxCensTaula);
+            panel1.Controls.Add(label5);
             panel1.Controls.Add(panelCheckingVots);
             panel1.Controls.Add(textBoxVotsTotals);
             panel1.Controls.Add(labelVotsTotals);
@@ -135,6 +139,24 @@
             panel1.Size = new Size(564, 417);
             panel1.TabIndex = 8;
             panel1.Visible = false;
+            // 
+            // textBoxCensTaula
+            // 
+            textBoxCensTaula.BorderStyle = BorderStyle.None;
+            textBoxCensTaula.Location = new Point(496, 0);
+            textBoxCensTaula.Name = "textBoxCensTaula";
+            textBoxCensTaula.ReadOnly = true;
+            textBoxCensTaula.Size = new Size(65, 16);
+            textBoxCensTaula.TabIndex = 12;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(430, 0);
+            label5.Name = "label5";
+            label5.Size = new Size(69, 15);
+            label5.TabIndex = 11;
+            label5.Text = "Cens Taula: ";
             // 
             // panelCheckingVots
             // 
@@ -255,5 +277,7 @@
         private Button buttonAviso;
         private Label labelDesarResultats;
         private Button buttonDesarResultats;
+        private TextBox textBoxCensTaula;
+        private Label label5;
     }
 }

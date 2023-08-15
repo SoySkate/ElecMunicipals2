@@ -53,20 +53,20 @@ namespace EleccionsM2.ViewModel
             ListaVisualVotsPerPartit.Clear();
            foreach (PartitMunicipi partit in ListaPartitsMunicipi)
            {
-                     ActualPartit = partit;
-                     VotsPerLlista vots = new();
-                     //VotsPerLlistaViewModel votsVM = new();
-                //Pensava que creant lobjecte aquest que si esta a la database es posaria un id xd i podria copiarlo al altre
+                ActualPartit = partit;
+                VotsPerLlista vots = new();
+                //VotsPerLlistaViewModel votsVM = new();
+                //crear vots ho he ficat dins del if
                 if (ListaVotsPerLlista.Exists(x => x.Partit.nomPartit == partit.nomPartit) == false)
-                {   
-                        vots.ID = ActualPartit.ID;
+                {
+                        //vots.ID = ActualPartit.ID;
                         vots.Partit = ActualPartit;
                         vots.numeroVotsLlista = 0;
-                        ListaVotsPerLlista.Add(vots);
-                        await grabar();
+                        ListaVotsPerLlista.Add(vots);                
                 }
-           }
-            foreach(VotsPerLlista vot in ListaVotsPerLlista)
+            }
+            await grabar();
+            foreach (VotsPerLlista vot in ListaVotsPerLlista)
             {
                 if (ListaVisualVotsPerPartit.Exists(m => m.ID == vot.ID) == false)
                 {
@@ -77,6 +77,7 @@ namespace EleccionsM2.ViewModel
                     nuevoitem.ID = vot.ID;
                     nuevoitem.nomPartit = vot.Partit.nomPartit;
                     nuevoitem.numeroVotsPartit = vot.numeroVotsLlista;
+                    //El if es ignorable:
                     if (ListaVisualVotsPerPartit.Exists(i => i == nuevoitem) == false)
                     {
                         ListaVisualVotsPerPartit.Add(nuevoitem);
@@ -92,10 +93,10 @@ namespace EleccionsM2.ViewModel
                 var vot = ListaVotsPerLlista.SingleOrDefault(v => v.ID == votVM.ID);
                 if (vot != null)
                 {
-                    vot.numeroVotsLlista = votVM.numeroVotsPartit;
-                    await grabar();
+                    vot.numeroVotsLlista = votVM.numeroVotsPartit;             
                 }
             }
+            await grabar();
         }
         public bool checkVots()
         {
