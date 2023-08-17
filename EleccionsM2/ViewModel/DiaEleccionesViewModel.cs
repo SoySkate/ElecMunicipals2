@@ -126,7 +126,7 @@ namespace EleccionsM2.ViewModel
         }
         public void AsignarEscons()
         {
-            //potser per fer aixo era necesari crear una nova class?  maybe si pq           
+            //hauria de recollir les dades del ResultatsViewModel list: ListaVisualVotsPerPartit        
             List<List<double>> listaTest = new();
             foreach(EsconsPartitViewModel e in ListaEsconsPartit)
             {
@@ -153,6 +153,7 @@ namespace EleccionsM2.ViewModel
                 foreach (List<double> list in listaTest)
                 {
                     //millorable la forma de seleccionar MOLT MILLORABLE (NECESSARI)
+                    //TODO: (NECESSARI)(NECESSARI)(NECESSARI)(NECESSARI)(NECESSARI)(NECESSARI)
                     var partitEsco = ListaEsconsPartit.SingleOrDefault(p=>p.numeroVots == list[0]);
                     lastIteration++;
                     if (posi < list.Count)
@@ -170,7 +171,57 @@ namespace EleccionsM2.ViewModel
                     }
                 }              
                     posi++;             
-            }          
+            }
+
+            ////________________________________
+            ///// List<ListaCalculEsconsViewModel> listaTest = new();
+            //foreach (EsconsPartitViewModel e in ListaEsconsPartit)
+            //{
+            //    ListaCalculEsconsViewModel listaP = new();
+            //    listaP.ID = e.ID;
+            //    for (int i = 1; i < ActualMunicipi.numeroRegidors + 1; i++)
+            //    {
+            //        double result = e.numeroVots / i;
+            //        listaP.escoDividit.Add(result);
+            //    }
+            //    listaTest.Add(listaP);
+            //}
+            //int lastIteration = 0;
+            //int posi = 0;
+            //int listmesgran = 0;
+            //foreach (ListaCalculEsconsViewModel list in listaTest)
+            //{
+            //    if (list.escoDividit.Count > listmesgran)
+            //    {
+            //        listmesgran = list.escoDividit.Count;
+            //    }
+            //}
+            //for (int i = 0; i < listmesgran; i++)
+            //{
+            //    foreach (ListaCalculEsconsViewModel list in listaTest)
+            //    {
+            //        //millorable la forma de seleccionar MOLT MILLORABLE (NECESSARI)
+            //        //TODO: (NECESSARI)(NECESSARI)(NECESSARI)(NECESSARI)(NECESSARI)(NECESSARI)
+            //        var partitEsco = ListaEsconsPartit.SingleOrDefault(p => p.ID == list.ID);
+            //        lastIteration++;
+            //        if (posi < list.escoDividit.Count)
+            //        {
+            //            if (list.escoDividit[posi] != null)
+            //            {
+
+            //                if (list.escoDividit[posi] > minimVots)
+            //                {
+            //                    if (EsconsRepartir != 0)
+            //                    {
+            //                        partitEsco.escons++;
+            //                        EsconsRepartir--;
+            //                    }
+            //                }
+            //            }
+            //        }
+            //    }
+            //    posi++;
+            //}
         }
         public void seleccionarCandidats()           
         {

@@ -20,7 +20,7 @@
 //        PartitMunicipi varPartit = new PartitMunicipi();
 //        Candidat varCandidat = new Candidat();
 //        TaulaElectoral varTaula = new TaulaElectoral();
-//        //TODO:Butons and textBox:________________________________________________________________________________
+//        //Butons and textBox:________________________________________________________________________________
 //        private void btnCarregarDades_Click(object sender, EventArgs e)
 //        {
 //            panelMunicipis.Show();
@@ -178,7 +178,7 @@
 //            //eleccionsViewModel.Grabar();
 //        }
 
-//        //TODO:Functions:________________________________________________________________________________________
+//        //  Functions:________________________________________________________________________________________
 
 //        public void carregarMunicipis() //button CarregarDades
 //        {

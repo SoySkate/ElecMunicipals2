@@ -12,21 +12,26 @@ DONE:___________________________________________________________________________
 -repasar funcio: passarPartitsVotsViewModel() done
 _____________________________________________________________________________________________
 RUBEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEN:
-La funcio eliminar municipis no em funciona be del tot hi han dos candidats que no saaben deliminar nose perque y es posa en null
-en la database.
-ELIMINARTAULES I PARTITS FUNCIONA PERO EL CANDIDATS NO FUNCIONA EM PETA LOKO  <--------
-TAMBE ELS RESULTATS ES CREA UN DE MÉS  <--------
-{{{Al eliminar el candidat, i al voler eliminar els resultats taula peta el grid i tot nose. tal i com ho tinc ara funciona una mica xd}}}
+-La funcio eliminar municipis no em funciona be del tot hi han dos candidats que no saaben deliminar nose perque
+y es posa en null en la database. ESBORRAR CANDIDAT ES POSA NULL -->NO SESBORRA<--.
+-TAMBE ELS RESULTATS ES CREA UN DE MÉS  <--------
+-COM fer la Lista2. per el tema de que hi ha una list dins duna altre i vull veureho tot en una.
+-He fet lo de calcular els escons duna manera molt mal fet hahaha pq selecciono segons el vots totals de 
+cada partit i ho hauria de seleccionar segons el ID de cada (EsconsPartitViewModel)(cadaitem de la list).
+funcio AsignarEscons()---Sewguir per la part comentada de la funcio
+-COMENTAR LAPARTAR CONDICIONS.TAMBE
+
 
 NEW TODO:____________________________________________________________________________
--El mini aviso que me sale no funciona be pq nomes funciona quan sha guardat al dbset i al sortir despres de posar la data encara
-conta la data anterior pq no sha guardat...
--Seleccionar el ListaEsconsPartit nomes per el numero de vots es una mica random que pot portar fallos heavys xd.
--lista 2 o lista 3 fer. Tambe chequear amb mes datos si la lista 1 funciona correctamente<---------
-Error de resultats quan he afegit noous partits a un municipi ja existent s ha rallat amb el segon, el pirmer l ha acceptat be.Crec que lerror
-el tinc a resultatsviewmodel.....Afegir mes candidats per saber si els escons es reparteixen be
-ERROR-SelectedTaula FUNCTION. & maybe ListaVotsPerLlista get and set mal???
--Afegir mes candidats per cada partit i testear si funca lo de diaeleccions grids pel tema escons
+-EleccionsContext->mirar de fer el delete on cascade de ferlo correctament el modelbuildingç
+-Asignar Escons mitjançant un diccionari? O com?
+
+_________
+-Aviso amarillo si no estan be la suma de vots con los vots totals.
+-Seleccionar Escons mediante Partit ID no mediante votsTotals xddd! funcio AsignarEscons()
+-Chequear amb mes datos si la lista 1 funciona correctamente--EM SEMBLA QUE VA<---------
+-LISTA 2--->Viewmodel:TAULA: nomTaula, List<votsperpartit>(pp/ psoe/ vox/sumar),votsNulls, votsBlancs, %Escrotat, 
+NºVotsEscrotats, Participació.
 
 
 
@@ -41,87 +46,7 @@ DEMOMENTO HE TOCAT:_____________________________________________________________
 
 -Recordar Cridar la funcio de Grabar();
 
-
-
 _____________________________________________________________________________________________
 -MILLORAR LA APP INOTIFYPROPERYCHANGED, POSARDIRECTE ELS CANSIS SIMPLEMENT ACTUALITZANT DIRECTE EN EL ATRIBUTS, ASYNCAWAIT, 
 -buscador per trobar el municipi?xd
 -quesitos pels percentatges dels partits.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-DONE:____________________________________________________________________________
--estructura clases
--interfaz de entrada datos
--keypress eventos hasta el nombreCandidat.
--boton CarregarDades y CrearMunicipi los unicos que estan.
--Al afegir el partit politic nomes safegeix un els altres no safegeixen xd nose (no guardava bé els changes)
--Crear el objeto muncipio y poder ponerle data no consigo hacerlo. (debo acceder al objeto que he creado...)
--Per al boto de afegir partit un cop s hagin introduit el numero de candidats segons el numero de regidors el proxim enter
-pot apretar el boto de afegirPartit en contes dapretarlo amb el click.
--Tambe restringir lletres als llocs o nomes han danar numeros.
--Seguir con los eventos de keypress para ir avanzando segun se mete data en los textbox.
--permetre eliminar en qualsevol moment a l hora de crear i carregar dades(MUNICIPI) i la del partit eliminar tambe 
-els candidats que te el partit..etc
-HEAVY: per eliminar el municipi he hagut de fer include de tota la merda que te dins a l hora de carregarlo xd claro.
-mi autismo avanza por momentos ;)))))))))) ajajaja crzaymotosierra. 
--buton close panel azuldata
--buton carregardata .show panel data azul i mirar com es veura la data. xd
--fer funcio per borrar tot en la memoria+(crear funcions en les clases per borrar les dades del objecte)
-
-TODO:____________________________________________________________________________
-
-
--Ara falta comprobar que funcioni i fer la pantalla ce carregar on pugui veure totes les dades i editarles i eliminarles
-desde allà.
-
--CREC QUE ES MILLOR FERHO AL PANEL NORMAL EN COMPTES DEL BLAU..dios niideaMostrar les dades al panel blau i poder editarles eliminarles i una opcio que sigui posar vots o algo aixi xd
--¡pensar la millor forma de veure els datos i editarlos o eliminarlos!
-
-
----RESTRINGIR TAB el tabulador para no hacer lo mismo que el Enter. pq sino hace lo mismo visualmente pero
-no hace la misma logica. por ejemplo si pongo valor en cens taula y no en nom taula y le doy enter se peta creo xd
-MAYBE RESTINGINT L'ACCES ALS TEXTBOX EXCEPTE AL QUE TOCA PER ORDRE i manejarho amb el focus?
-POTSER RESTRINGINT EL RATOLI NOMES PER ELS TEXT AIXI NOMES PUC ANAR FENT ENTER PER PASAR DE TEXTBOXS
----IMPORTANT-> SI FAIG CLICK A UN ALTRE TEXTBOX EN COMPTES DE PASAR AMB EL ENTER OBLIDO FUNCIONS PEL MIG...!!!!!!!!!!!!!!!
-
-
-
-----Interfaz un panel por encima que muestre todos los municipios que hay en el dbset(
-en la database y con todos los datos necesarios para que se vea bien).
-
-----FER UN ALTRE FORM? PER INTRODUIR RESULTATS I FER LES OPERACIONS AQUELLES
-
---FINAL	millorar amb el tema async await i tota la pesca que encara nose com va
-

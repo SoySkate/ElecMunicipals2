@@ -26,11 +26,6 @@ namespace ResultadosEleccionesM.ViewsResultats
             dataGridViewEscons.DataSource = null;
             dataGridViewEscons.DataSource = viewModel.ListaEsconsPartit;
             dataGridViewEscons.Columns[0].Visible = false;
-            dataGridViewRegidors.DataSource = null;
-            dataGridViewRegidors.DataSource = viewModel.ListaRegidors;
-            dataGridViewRegidors.Columns[0].Visible = false;
-
-
         }
 
         private void comboBoxMunicipisDiaE_SelectedIndexChanged(object sender, EventArgs e)
@@ -44,8 +39,11 @@ namespace ResultadosEleccionesM.ViewsResultats
             viewModel.visualitzarEscons();
             viewModel.AsignarEscons();
             viewModel.seleccionarCandidats();
+            dataGridViewRegidors.DataSource = null;
+            dataGridViewRegidors.DataSource = viewModel.ListaRegidors;
+            dataGridViewRegidors.Columns[0].Visible = false;
             dataGridViewEscons.Refresh();
-            dataGridViewRegidors.Refresh();
+            //dataGridViewRegidors.Refresh();
             viewModel.grabar();
          
         }

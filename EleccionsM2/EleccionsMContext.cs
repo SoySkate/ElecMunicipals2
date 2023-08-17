@@ -29,9 +29,21 @@ namespace EleccionsM2
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
+            //base.OnModelCreating(modelBuilder);
             //modelBuilder.Entity<Municipi>()
-            //     .HasMany(m => m.llistaPartits)
+            //     .HasOne(m => m.llistaPartits)
+            //     .WithMany()
+            //     .OnDelete(DeleteBehavior.Cascade);
+            //modelBuilder.Entity<Municipi>()
+            //     .HasOne(m => m.taulesElectorals)
+            //     .WithMany()
+            //     .OnDelete(DeleteBehavior.Cascade);
+            //modelBuilder.Entity<PartitMunicipi>()
+            //     .HasOne(m => m.candidats)
+            //     .WithMany()
+            //     .OnDelete(DeleteBehavior.Cascade);
+            //modelBuilder.Entity<TaulaElectoral>()
+            //     .HasMany(m => m.resultatsTaula.votsLlist)
             //     .WithMany()
             //     .OnDelete(DeleteBehavior.Cascade);
         }
