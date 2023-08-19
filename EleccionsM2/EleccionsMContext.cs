@@ -29,23 +29,27 @@ namespace EleccionsM2
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //base.OnModelCreating(modelBuilder);
-            //modelBuilder.Entity<Municipi>()
-            //     .HasOne(m => m.llistaPartits)
-            //     .WithMany()
-            //     .OnDelete(DeleteBehavior.Cascade);
-            //modelBuilder.Entity<Municipi>()
-            //     .HasOne(m => m.taulesElectorals)
-            //     .WithMany()
-            //     .OnDelete(DeleteBehavior.Cascade);
-            //modelBuilder.Entity<PartitMunicipi>()
-            //     .HasOne(m => m.candidats)
-            //     .WithMany()
-            //     .OnDelete(DeleteBehavior.Cascade);
-            //modelBuilder.Entity<TaulaElectoral>()
-            //     .HasMany(m => m.resultatsTaula.votsLlist)
-            //     .WithMany()
-            //     .OnDelete(DeleteBehavior.Cascade);
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Municipi>()
+                 .HasOne(m => m.llistaPartits)
+                 .WithMany()
+                 .OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<Municipi>()
+                 .HasOne(m => m.taulesElectorals)
+                 .WithMany()
+                 .OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<PartitMunicipi>()
+                 .HasOne(m => m.candidats)
+                 .WithMany()
+                 .OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<TaulaElectoral>()
+                 .HasOne(m => m.resultatsTaula)
+                 .WithMany()
+                 .OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<ResultatsTaula>()
+                .HasOne(m=>m.votsLlista)
+                .WithMany()
+                .OnDelete(DeleteBehavior.Cascade);
         }
         //Comandos para inicializar la Migracion una vez se ha creado o modificado las clases y por lo tanto
         //Se habran modificado las tablas(incluso cambiando de PC)Se modifica parte de las tablas pq la conexion ha cambiado: Comando:::

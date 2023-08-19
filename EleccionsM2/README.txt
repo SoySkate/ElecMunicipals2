@@ -25,6 +25,8 @@ funcio AsignarEscons()---Sewguir per la part comentada de la funcio
 NEW TODO:____________________________________________________________________________
 -EleccionsContext->mirar de fer el delete on cascade de ferlo correctament el modelbuildingç
 -Asignar Escons mitjançant un diccionari? O com?
+-La List2 ferla amb un selected taula Una list de taules y quina selecciones et surt el grid amb 
+les dades de la taula especifica
 
 _________
 -Aviso amarillo si no estan be la suma de vots con los vots totals.
