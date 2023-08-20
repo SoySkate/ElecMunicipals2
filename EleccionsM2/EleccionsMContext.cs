@@ -19,9 +19,9 @@ namespace EleccionsM2
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //PCnutria
-            //optionsBuilder.UseSqlServer(@"Data Source=PcNurs\SQLEXPRESS;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False; Database=ElecMunicipalsDB");
+            optionsBuilder.UseSqlServer(@"Data Source=PcNurs\SQLEXPRESS;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False; Database=ElecMunicipalsDB");
             //pcAndrew:
-            optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-14D02GT\SQLEXPRESS01;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False; Database=ElecMunicipalsDB");
+            //optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-14D02GT\SQLEXPRESS01;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False; Database=ElecMunicipalsDB");
             //pcPractiques:
             //optionsBuilder.UseSqlServer(@"Data Source=FORMACIO1\SQLEXPRESS03;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False; Database=ElecMunicipalsDB");
             //OtradatabasePracticas
@@ -30,26 +30,26 @@ namespace EleccionsM2
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<Municipi>()
-                 .HasOne(m => m.llistaPartits)
-                 .WithMany()
-                 .OnDelete(DeleteBehavior.Cascade);
-            modelBuilder.Entity<Municipi>()
-                 .HasOne(m => m.taulesElectorals)
-                 .WithMany()
-                 .OnDelete(DeleteBehavior.Cascade);
-            modelBuilder.Entity<PartitMunicipi>()
-                 .HasOne(m => m.candidats)
-                 .WithMany()
-                 .OnDelete(DeleteBehavior.Cascade);
-            modelBuilder.Entity<TaulaElectoral>()
-                 .HasOne(m => m.resultatsTaula)
-                 .WithMany()
-                 .OnDelete(DeleteBehavior.Cascade);
-            modelBuilder.Entity<ResultatsTaula>()
-                .HasOne(m=>m.votsLlista)
-                .WithMany()
-                .OnDelete(DeleteBehavior.Cascade);
+            //modelBuilder.Entity<Municipi>()
+            //     .HasOne(m => m.llistaPartits)
+            //     .WithMany()
+            //     .OnDelete(DeleteBehavior.Cascade);
+            //modelBuilder.Entity<Municipi>()
+            //     .HasOne(m => m.taulesElectorals)
+            //     .WithMany()
+            //     .OnDelete(DeleteBehavior.Cascade);
+            //modelBuilder.Entity<PartitMunicipi>()
+            //     .HasOne(m => m.candidats)
+            //     .WithMany()
+            //     .OnDelete(DeleteBehavior.Cascade);
+            //modelBuilder.Entity<TaulaElectoral>()
+            //     .HasOne(m => m.resultatsTaula)
+            //     .WithMany()
+            //     .OnDelete(DeleteBehavior.Cascade);
+            //modelBuilder.Entity<ResultatsTaula>()
+            //    .HasOne(m=>m.votsLlista)
+            //    .WithMany()
+            //    .OnDelete(DeleteBehavior.Cascade);
         }
         //Comandos para inicializar la Migracion una vez se ha creado o modificado las clases y por lo tanto
         //Se habran modificado las tablas(incluso cambiando de PC)Se modifica parte de las tablas pq la conexion ha cambiado: Comando:::

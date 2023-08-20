@@ -16,9 +16,6 @@ RUBEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEN
 y es posa en null en la database. ESBORRAR CANDIDAT ES POSA NULL -->NO SESBORRA<--.
 -TAMBE ELS RESULTATS ES CREA UN DE MÉS  <--------
 -COM fer la Lista2. per el tema de que hi ha una list dins duna altre i vull veureho tot en una.
--He fet lo de calcular els escons duna manera molt mal fet hahaha pq selecciono segons el vots totals de 
-cada partit i ho hauria de seleccionar segons el ID de cada (EsconsPartitViewModel)(cadaitem de la list).
-funcio AsignarEscons()---Sewguir per la part comentada de la funcio
 -COMENTAR LAPARTAR CONDICIONS.TAMBE
 
 
@@ -27,6 +24,7 @@ NEW TODO:_______________________________________________________________________
 -Asignar Escons mitjançant un diccionari? O com?
 -La List2 ferla amb un selected taula Una list de taules y quina selecciones et surt el grid amb 
 les dades de la taula especifica
+-PROBLEM EN EL GRID PER CANVIAR DADES diaeleccions
 
 _________
 -Aviso amarillo si no estan be la suma de vots con los vots totals.

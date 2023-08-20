@@ -23,9 +23,7 @@ namespace ResultadosEleccionesM.ViewsResultats
             comboBoxMunicipisDiaE.Enabled = true;
             comboBoxMunicipisDiaE.DataSource = viewModel.ListaMunicipis;
             this.AutoScroll = true;
-            dataGridViewEscons.DataSource = null;
-            dataGridViewEscons.DataSource = viewModel.ListaEsconsPartit;
-            dataGridViewEscons.Columns[0].Visible = false;
+          
         }
 
         private void comboBoxMunicipisDiaE_SelectedIndexChanged(object sender, EventArgs e)
@@ -42,6 +40,9 @@ namespace ResultadosEleccionesM.ViewsResultats
             dataGridViewRegidors.DataSource = null;
             dataGridViewRegidors.DataSource = viewModel.ListaRegidors;
             dataGridViewRegidors.Columns[0].Visible = false;
+            dataGridViewEscons.DataSource = null;
+            dataGridViewEscons.DataSource = viewModel.ListaEsconsPartit;
+            dataGridViewEscons.Columns[0].Visible = false;
             dataGridViewEscons.Refresh();
             //dataGridViewRegidors.Refresh();
             viewModel.grabar();
