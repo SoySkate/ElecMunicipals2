@@ -14,7 +14,7 @@ namespace EleccionsM2.ViewModel
 
         public ListaCalculEsconsViewModel()
         {
-
+            escoDividit = new List<double>();
         }
     }
 }

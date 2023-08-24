@@ -16,9 +16,6 @@ RUBEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEN
 y es posa en null en la database. ESBORRAR CANDIDAT ES POSA NULL -->NO SESBORRA<--.
 -TAMBE ELS RESULTATS ES CREA UN DE MÉS  <--------
 -COM fer la Lista2. per el tema de que hi ha una list dins duna altre i vull veureho tot en una.
--He fet lo de calcular els escons duna manera molt mal fet hahaha pq selecciono segons el vots totals de 
-cada partit i ho hauria de seleccionar segons el ID de cada (EsconsPartitViewModel)(cadaitem de la list).
-funcio AsignarEscons()---Sewguir per la part comentada de la funcio
 -COMENTAR LAPARTAR CONDICIONS.TAMBE
 
 
@@ -26,7 +23,11 @@ NEW TODO:_______________________________________________________________________
 -EleccionsContext->mirar de fer el delete on cascade de ferlo correctament el modelbuildingXDPQ NO VA
 -La List2 ferla amb un selected taula Una list de taules y quina selecciones et surt el grid amb 
 les dades de la taula especifica
+<<<<<<< HEAD
 -fer un model per pasarli els resultatstaula.votsllista+ els resultatstaula(vnul,vblanv, totals...)
+=======
+-PROBLEM EN EL GRID PER CANVIAR DADES diaeleccions
+>>>>>>> 67ca19b4c74019e8d0a8f9ca2b89c4a72686fc7c
 
 _________
 -Aviso amarillo si no estan be la suma de vots con los vots totals.

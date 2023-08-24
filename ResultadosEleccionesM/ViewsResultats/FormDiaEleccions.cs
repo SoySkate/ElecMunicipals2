@@ -26,13 +26,13 @@ namespace ResultadosEleccionesM.ViewsResultats
             comboBoxTaules.Enabled = true;
             comboBoxTaules.DataSource = viewModel.ListaTaulesMunicipi;
             this.AutoScroll = true;
-            
+
         }
         public void clean()
         {
+            dataGridViewEscons.DataSource = null;
             textBoxNumRegidors.Text = string.Empty;
             textBoxParticipacio.Text = string.Empty;
-            dataGridViewEscons.DataSource = null;
             dataGridViewRegidors.DataSource = null;
             dataGridViewTaula1.DataSource = null;
             dataGridViewTaula3.DataSource = null;
@@ -42,6 +42,7 @@ namespace ResultadosEleccionesM.ViewsResultats
             textBoxPercentEscrotat.Text = string.Empty;
             textBoxParticipacioTaula.Text = string.Empty;
             textBoxVotsTotals.Text = string.Empty;
+
         }
         private void comboBoxMunicipisDiaE_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -59,7 +60,6 @@ namespace ResultadosEleccionesM.ViewsResultats
             dataGridViewRegidors.DataSource = null;
             dataGridViewRegidors.DataSource = viewModel.ListaRegidors;
             dataGridViewRegidors.Columns[0].Visible = false;
-            dataGridViewEscons.Refresh();
                 dataGridViewEscons.DataSource = null;
                 dataGridViewEscons.DataSource = viewModel.ListaEsconsPartit;
                 dataGridViewEscons.Columns[0].Visible = false;
@@ -81,22 +81,26 @@ namespace ResultadosEleccionesM.ViewsResultats
         {
             var taula = (TaulaElectoral)comboBoxTaules.SelectedItem;
             viewModel.selectedTaula(taula);
-            viewModel.dadesTaula();
-            dataGridViewTaula3.DataSource = null;
-            dataGridViewTaula3.DataSource = viewModel.ActualTaula.resultatsTaula.votsLlista;
-            dataGridViewTaula3.Columns[0].Visible = false;
-            textBoxVBlan.DataBindings.Clear();
-            textBoxVBlan.Text = viewModel.ActualDadesTaula.VotsBlancs.ToString();
-            textBoxVotsEscrotats.DataBindings.Clear();
-            textBoxVotsEscrotats.Text = viewModel.ActualDadesTaula.VotsEscrotats.ToString();
-            textBoxVotsNuls.DataBindings.Clear();
-            textBoxVotsNuls.Text = viewModel.ActualDadesTaula.VotsNuls.ToString();
-            textBoxPercentEscrotat.DataBindings.Clear();
-            textBoxPercentEscrotat.Text = viewModel.ActualDadesTaula.Escrotat.ToString() + " %";
-            textBoxParticipacioTaula.DataBindings.Clear();
-            textBoxParticipacioTaula.Text = viewModel.ActualDadesTaula.Participació.ToString() + " %";
-            textBoxVotsTotals.DataBindings.Clear();
-            textBoxVotsTotals.Text = viewModel.ActualDadesTaula.VotsTotals.ToString();           
+
+            if (viewModel.ListaPartitsMunicipi.Count > 0 && viewModel.ListaTaulesMunicipi.Count > 0)
+            {
+                viewModel.dadesTaula();
+                dataGridViewTaula3.DataSource = null;
+                dataGridViewTaula3.DataSource = viewModel.ActualTaula.resultatsTaula.votsLlista;
+                dataGridViewTaula3.Columns[0].Visible = false;
+                textBoxVBlan.DataBindings.Clear();
+                textBoxVBlan.Text = viewModel.ActualDadesTaula.VotsBlancs.ToString();
+                textBoxVotsEscrotats.DataBindings.Clear();
+                textBoxVotsEscrotats.Text = viewModel.ActualDadesTaula.VotsEscrotats.ToString();
+                textBoxVotsNuls.DataBindings.Clear();
+                textBoxVotsNuls.Text = viewModel.ActualDadesTaula.VotsNuls.ToString();
+                textBoxPercentEscrotat.DataBindings.Clear();
+                textBoxPercentEscrotat.Text = viewModel.ActualDadesTaula.Escrotat.ToString() + " %";
+                textBoxParticipacioTaula.DataBindings.Clear();
+                textBoxParticipacioTaula.Text = viewModel.ActualDadesTaula.Participació.ToString() + " %";
+                textBoxVotsTotals.DataBindings.Clear();
+                textBoxVotsTotals.Text = viewModel.ActualDadesTaula.VotsTotals.ToString();
+            }
         }
     }
 }

@@ -134,67 +134,120 @@ namespace EleccionsM2.ViewModel
         public void AsignarEscons()
         {
             //hauria de recollir les dades del ResultatsViewModel list: ListaVisualVotsPerPartit        
-            List<List<double>> listaTest = new();
-            foreach(EsconsPartitViewModel e in ListaEsconsPartit)
-            {
-                List<double> listaP = new();
-                for(int i=1; i < ActualMunicipi.numeroRegidors +1; i++)
-                {
-                   var result= e.numeroVots / i;
-                    listaP.Add(result);
-                }
-                listaTest.Add(listaP);
-            }
-            int lastIteration = 0;
-            int posi = 0;
-            int listmesgran = 0;
-            foreach(List<double> list in listaTest)
-            {
-                if (list.Count > listmesgran)
-                {
-                    listmesgran = list.Count;
-                }
-            }
-            for(int i = 0; i < listmesgran; i++)
-            {
-                foreach (List<double> list in listaTest)
-                {
-                    //millorable la forma de seleccionar MOLT MILLORABLE (NECESSARI)
-                    //TODO: (NECESSARI)(NECESSARI)(NECESSARI)(NECESSARI)(NECESSARI)(NECESSARI)
-                    var partitEsco = ListaEsconsPartit.SingleOrDefault(p=>p.numeroVots == list[0]);
-                    lastIteration++;
-                    if (posi < list.Count)
-                    {
-                        if(list[posi] != null) {
 
-                            if (list[posi] > minimVots)
-                            {
-                                if (EsconsRepartir != 0) {
-                                    partitEsco.escons++;
-                                    EsconsRepartir--;
-                                }                               
-                            }
-                        }                       
-                    }
-                }              
-                    posi++;             
-            }
-                        ////________________________________
-            ///// List<ListaCalculEsconsViewModel> listaTest = new();
-            //foreach (EsconsPartitViewModel e in ListaEsconsPartit)
+            //List<List<double>> listaTest = new();
+            //foreach(EsconsPartitViewModel e in ListaEsconsPartit)
             //{
-            //    ListaCalculEsconsViewModel listaP = new();
-            //    listaP.ID = e.ID;
-            //    for (int i = 1; i < ActualMunicipi.numeroRegidors + 1; i++)
+            //    List<double> listaP = new();
+            //    for(int i=1; i < ActualMunicipi.numeroRegidors +1; i++)
             //    {
-            //        double result = e.numeroVots / i;
-            //        listaP.escoDividit.Add(result);
+            //       var result= e.numeroVots / i;
+            //        listaP.Add(result);
             //    }
             //    listaTest.Add(listaP);
             //}
             //int lastIteration = 0;
             //int posi = 0;
             //int listmesgran = 0;
+            //foreach(List<double> list in listaTest)
+            //{
+            //    if (list.Count > listmesgran)
+            //    {
+            //        listmesgran = list.Count;
+            //    }
+            //}
+            //for(int i = 0; i < listmesgran; i++)
+            //{
+            //    foreach (List<double> list in listaTest)
+            //    {
+            //        //millorable la forma de seleccionar MOLT MILLORABLE (NECESSARI)
+            //        //TODO: (NECESSARI)(NECESSARI)(NECESSARI)(NECESSARI)(NECESSARI)(NECESSARI)
+            //        var partitEsco = ListaEsconsPartit.SingleOrDefault(p=>p.numeroVots == list[0]);
+            //        lastIteration++;
+            //        if (posi < list.Count)
+            //        {
+            //            if(list[posi] != null) {
+
+            //                if (list[posi] > minimVots)
+            //                {
+            //                    if (EsconsRepartir != 0) {
+            //                        partitEsco.escons++;
+            //                        EsconsRepartir--;
+            //                    }                               
+            //                }
+            //            }                       
+            //        }
+            //    }              
+            //        posi++;             
+            //}
+                        ////________________________________
+            ///// List<ListaCalculEsconsViewModel> listaTest = new();
+            //foreach (EsconsPartitViewModel e in ListaEsconsPartit)
+
+            //List<List<double>> listaTest = new();
+            //foreach(EsconsPartitViewModel e in ListaEsconsPartit)
+
+            //{
+            //    List<double> listaP = new();
+            //    for(int i=1; i < ActualMunicipi.numeroRegidors +1; i++)
+            //    {
+            //       var result= e.numeroVots / i;
+            //        listaP.Add(result);
+            //    }
+            //    listaTest.Add(listaP);
+            //}
+            //int lastIteration = 0;
+            //int posi = 0;
+            //int listmesgran = 0;
+            //foreach(List<double> list in listaTest)
+            //{
+            //    if (list.Count > listmesgran)
+            //    {
+            //        listmesgran = list.Count;
+            //    }
+            //}
+            //for(int i = 0; i < listmesgran; i++)
+            //{
+            //    foreach (List<double> list in listaTest)
+            //    {
+            //        //millorable la forma de seleccionar MOLT MILLORABLE (NECESSARI)
+            //        //TODO: (NECESSARI)(NECESSARI)(NECESSARI)(NECESSARI)(NECESSARI)(NECESSARI)
+            //        var partitEsco = ListaEsconsPartit.SingleOrDefault(p=>p.numeroVots == list[0]);
+            //        lastIteration++;
+            //        if (posi < list.Count)
+            //        {
+            //            if(list[posi] != null) {
+
+            //                if (list[posi] > minimVots)
+            //                {
+            //                    if (EsconsRepartir != 0) {
+            //                        partitEsco.escons++;
+            //                        EsconsRepartir--;
+            //                    }                               
+            //                }
+            //            }                       
+            //        }
+            //    }              
+            //        posi++;
+            //}
+
+            ////________________________________
+            List<ListaCalculEsconsViewModel> listaTest = new();
+            foreach (EsconsPartitViewModel e in ListaEsconsPartit)
+            {
+                ListaCalculEsconsViewModel listaP = new();
+                listaP.ID = e.ID;
+                for (int i = 1; i < ActualMunicipi.numeroRegidors + 1; i++)
+                {
+                    double result = e.numeroVots / i;
+                    listaP.escoDividit.Add(result);
+                }
+                listaTest.Add(listaP);
+            }
+            int lastIteration = 0;
+            int posi = 0;
+            int listmesgran = 0;
+            listaTest.Sort((e1, e2) => e2.escoDividit[0].CompareTo(e1.escoDividit[0]));
             //foreach (ListaCalculEsconsViewModel list in listaTest)
             //{
             //    if (list.escoDividit.Count > listmesgran)
@@ -202,32 +255,32 @@ namespace EleccionsM2.ViewModel
             //        listmesgran = list.escoDividit.Count;
             //    }
             //}
-            //for (int i = 0; i < listmesgran; i++)
-            //{
-            //    foreach (ListaCalculEsconsViewModel list in listaTest)
-            //    {
-            //        //millorable la forma de seleccionar MOLT MILLORABLE (NECESSARI)
-            //        //TODO: (NECESSARI)(NECESSARI)(NECESSARI)(NECESSARI)(NECESSARI)(NECESSARI)
-            //        var partitEsco = ListaEsconsPartit.SingleOrDefault(p => p.ID == list.ID);
-            //        lastIteration++;
-            //        if (posi < list.escoDividit.Count)
-            //        {
-            //            if (list.escoDividit[posi] != null)
-            //            {
+            for (int i = 0; i < ActualMunicipi.numeroRegidors; i++)
+            {
+                foreach (ListaCalculEsconsViewModel list in listaTest)
+                {
+                    //millorable la forma de seleccionar MOLT MILLORABLE (NECESSARI)
+                    //TODO: (NECESSARI)(NECESSARI)(NECESSARI)(NECESSARI)(NECESSARI)(NECESSARI)
+                    var partitEsco = ListaEsconsPartit.SingleOrDefault(p => p.ID == list.ID);
+                    lastIteration++;
+                    if (posi < list.escoDividit.Count)
+                    {
+                        if (list.escoDividit[posi] != null)
+                        {
 
-            //                if (list.escoDividit[posi] > minimVots)
-            //                {
-            //                    if (EsconsRepartir != 0)
-            //                    {
-            //                        partitEsco.escons++;
-            //                        EsconsRepartir--;
-            //                    }
-            //                }
-            //            }
-            //        }
-            //    }
-            //    posi++;
-            //}
+                            if (list.escoDividit[posi] > minimVots)
+                            {
+                                if (EsconsRepartir != 0)
+                                {
+                                    partitEsco.escons++;
+                                    EsconsRepartir--;
+                                }
+                            }
+                        }
+                    }
+                }
+                posi++;
+            }
         }
         public void seleccionarCandidats()           
         {
