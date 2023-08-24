@@ -15,13 +15,14 @@ RUBEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEN
 -La funcio eliminar municipis no em funciona be del tot hi han dos candidats que no saaben deliminar nose perque
 y es posa en null en la database. ESBORRAR CANDIDAT ES POSA NULL -->NO SESBORRA<--.
 -TAMBE ELS RESULTATS ES CREA UN DE MÉS  <--------
--COM fer la Lista2. per el tema de que hi ha una list dins duna altre i vull veureho tot en una.
--COMENTAR LAPARTAR CONDICIONS.TAMBE
+
 
 
 NEW TODO:____________________________________________________________________________
 -EleccionsContext->mirar de fer el delete on cascade de ferlo correctament el modelbuildingXDPQ NO VA
 -PROBLEM EN EL GRID PER CANVIAR DADES diaeleccions que sactualitzi be
+-chequear si els escons a repartir que no es repeteixi (que jo ho faig per ordre ignorant laltre pero s ha 
+de tenir en compte que potser hi ha un esco a reparir entre 2 partits pq ha coincidit "mirar-me això")
 
 
 _________
