@@ -17,9 +17,10 @@ namespace EleccionsM2.ViewModel
         public List<PartitMunicipi> ListaPartitsMunicipi { get => ActualMunicipi.llistaPartits; }
         public List<Candidat> ListaCandidats { get => ActualPartit.candidats; }
         public List<TaulaElectoral> ListaTaulesMunicipi { get => ActualMunicipi.taulesElectorals; }
+        public List<VotsPerLlista> VotsPartitPerTaula { get => ActualTaula.resultatsTaula.votsLlista; }
         //_________________________________________
         public List<EsconsPartitViewModel> ListaEsconsPartit { get; set; } = new();
-        public List<TaulaDadesViewModel> ListaTaulaDades { get; set; } = new();
+        public List<ResultatsTaula> ListaResultatsDades { get; set; } = new();
         public List<RegidorsViewModel> ListaRegidors { get; set; } = new();
         //_________________________________________
 
@@ -27,6 +28,7 @@ namespace EleccionsM2.ViewModel
         public Municipi ActualMunicipi { get; set; }
         public PartitMunicipi ActualPartit { get; set; }
         public TaulaElectoral ActualTaula { get; set; }
+        public TaulaDadesViewModel ActualDadesTaula { get; set; }
         //_________________________________________
         public double Participacio=0;
         public double Escrotat = 0;
@@ -58,6 +60,12 @@ namespace EleccionsM2.ViewModel
         public void selectedMunicipi(Municipi muni)
         {
             ActualMunicipi = muni;
+        }
+        public void selectedTaula(TaulaElectoral taula)
+        {
+            ActualTaula = taula;
+            ListaResultatsDades.Clear();
+            ListaResultatsDades.Add(ActualTaula.resultatsTaula);
         }
         public void calcularDades()
         {
@@ -120,7 +128,6 @@ namespace EleccionsM2.ViewModel
                     //ordenar la list per qui tingui mes votacions
                     ListaEsconsPartit.Sort((p1, p2) => p2.numeroVots.CompareTo(p1.numeroVots));                   
                     await grabar();
-
                 }
             }
         }
@@ -172,8 +179,7 @@ namespace EleccionsM2.ViewModel
                 }              
                     posi++;             
             }
-
-            ////________________________________
+                        ////________________________________
             ///// List<ListaCalculEsconsViewModel> listaTest = new();
             //foreach (EsconsPartitViewModel e in ListaEsconsPartit)
             //{
@@ -243,6 +249,30 @@ namespace EleccionsM2.ViewModel
                     }
                 }
             }
+        }
+        public void dadesTaula()
+        {
+            TaulaDadesViewModel TaulaDades = new();
+            TaulaDades.ID = ActualTaula.ID;
+            int sumavots = 0;
+            double percent = ((double)ActualTaula.resultatsTaula.votsTotals / (double)ActualTaula.censTaula) * 100;
+           
+            TaulaDades.VotsNuls = ActualTaula.resultatsTaula.votsNul;
+            TaulaDades.VotsBlancs = ActualTaula.resultatsTaula.votsBlanc;
+            TaulaDades.VotsTotals = ActualTaula.resultatsTaula.votsTotals;
+            foreach(VotsPerLlista v in ActualTaula.resultatsTaula.votsLlista)
+            {
+                sumavots += v.numeroVotsLlista;
+            }
+            int vescrotat = sumavots + ActualTaula.resultatsTaula.votsNul + ActualTaula.resultatsTaula.votsBlanc;
+            //potser s ha de fer una var pel mig el tem percentatges
+            TaulaDades.VotsEscrotats = vescrotat ;
+            TaulaDades.Escrotat = (vescrotat / ActualTaula.resultatsTaula.votsTotals) * 100;
+            //la participacio i el escrotat% es lo mismo no?
+            TaulaDades.Participació = Math.Round(percent, 2);
+
+            ActualDadesTaula = TaulaDades;
+            
         }
     }
 }

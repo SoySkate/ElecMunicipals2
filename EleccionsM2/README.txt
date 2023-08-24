@@ -23,10 +23,10 @@ funcio AsignarEscons()---Sewguir per la part comentada de la funcio
 
 
 NEW TODO:____________________________________________________________________________
--EleccionsContext->mirar de fer el delete on cascade de ferlo correctament el modelbuildingç
--Asignar Escons mitjançant un diccionari? O com?
+-EleccionsContext->mirar de fer el delete on cascade de ferlo correctament el modelbuildingXDPQ NO VA
 -La List2 ferla amb un selected taula Una list de taules y quina selecciones et surt el grid amb 
 les dades de la taula especifica
+-fer un model per pasarli els resultatstaula.votsllista+ els resultatstaula(vnul,vblanv, totals...)
 
 _________
 -Aviso amarillo si no estan be la suma de vots con los vots totals.
