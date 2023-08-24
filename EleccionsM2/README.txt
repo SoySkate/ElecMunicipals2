@@ -21,13 +21,8 @@ y es posa en null en la database. ESBORRAR CANDIDAT ES POSA NULL -->NO SESBORRA<
 
 NEW TODO:____________________________________________________________________________
 -EleccionsContext->mirar de fer el delete on cascade de ferlo correctament el modelbuildingXDPQ NO VA
--La List2 ferla amb un selected taula Una list de taules y quina selecciones et surt el grid amb 
-les dades de la taula especifica
-<<<<<<< HEAD
--fer un model per pasarli els resultatstaula.votsllista+ els resultatstaula(vnul,vblanv, totals...)
-=======
--PROBLEM EN EL GRID PER CANVIAR DADES diaeleccions
->>>>>>> 67ca19b4c74019e8d0a8f9ca2b89c4a72686fc7c
+-PROBLEM EN EL GRID PER CANVIAR DADES diaeleccions que sactualitzi be
+
 
 _________
 -Aviso amarillo si no estan be la suma de vots con los vots totals.
