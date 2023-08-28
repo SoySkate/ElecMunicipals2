@@ -111,7 +111,11 @@ namespace EleccionsM2.ViewModel
                         int numV = v.numeroVotsLlista;
                         nouItemEscons.nomPartit = nom;
                         nouItemEscons.numeroVots = numV;
-                        //nouItemEscons.pVots = s;
+                    //nouItemEscons.pVots = s;
+                    //______________________
+                    percentatgeV = ((double)v.numeroVotsLlista / (double)VotsPartitsTotals) * 100;
+                    double firstPercent = Math.Round(percentatgeV, 2);
+                    nouItemEscons.pVots = firstPercent;
 
                     var partit = ListaPartitsMunicipi.SingleOrDefault(p=>p.nomPartit == nom);
                         nouItemEscons.ID = partit.ID;

@@ -20,7 +20,6 @@ y es posa en null en la database. ESBORRAR CANDIDAT ES POSA NULL -->NO SESBORRA<
 
 NEW TODO:____________________________________________________________________________
 -EleccionsContext->mirar de fer el delete on cascade de ferlo correctament el modelbuildingXDPQ NO VA
--PROBLEM EN EL GRID PER CANVIAR DADES diaeleccions que sactualitzi be
 -chequear si els escons a repartir que no es repeteixi (que jo ho faig per ordre ignorant laltre pero s ha 
 de tenir en compte que potser hi ha un esco a reparir entre 2 partits pq ha coincidit "mirar-me això")
 

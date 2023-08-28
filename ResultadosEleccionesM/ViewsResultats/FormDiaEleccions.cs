@@ -22,9 +22,6 @@ namespace ResultadosEleccionesM.ViewsResultats
             comboBoxMunicipisDiaE.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxMunicipisDiaE.Enabled = true;
             comboBoxMunicipisDiaE.DataSource = viewModel.ListaMunicipis;
-            comboBoxTaules.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBoxTaules.Enabled = true;
-            comboBoxTaules.DataSource = viewModel.ListaTaulesMunicipi;
             this.AutoScroll = true;
 
         }
@@ -41,7 +38,7 @@ namespace ResultadosEleccionesM.ViewsResultats
             textBoxVotsNuls.Text = string.Empty;
             textBoxPercentEscrotat.Text = string.Empty;
             textBoxParticipacioTaula.Text = string.Empty;
-            textBoxVotsTotals.Text = string.Empty;
+            textBoxVotsTotals.Text = string.Empty;          
 
         }
         private void comboBoxMunicipisDiaE_SelectedIndexChanged(object sender, EventArgs e)
@@ -68,6 +65,9 @@ namespace ResultadosEleccionesM.ViewsResultats
             dataGridViewTaula1.DataSource = viewModel.ListaTaulesMunicipi;
             dataGridViewTaula1.Columns[0].Visible = false;
             dataGridViewTaula1.Columns[3].Visible = false;
+                comboBoxTaules.DropDownStyle = ComboBoxStyle.DropDownList;
+                comboBoxTaules.Enabled = true;
+                comboBoxTaules.DataSource = viewModel.ListaTaulesMunicipi;
 
             }
             else
