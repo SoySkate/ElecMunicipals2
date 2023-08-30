@@ -22,6 +22,7 @@ NEW TODO:_______________________________________________________________________
 -EleccionsContext->mirar de fer el delete on cascade de ferlo correctament el modelbuildingXDPQ NO VA
 -chequear si els escons a repartir que no es repeteixi (que jo ho faig per ordre ignorant laltre pero s ha 
 de tenir en compte que potser hi ha un esco a reparir entre 2 partits pq ha coincidit "mirar-me això")
+-Solve el tema del grid
 
 
 _________

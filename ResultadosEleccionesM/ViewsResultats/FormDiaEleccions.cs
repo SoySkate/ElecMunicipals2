@@ -46,25 +46,25 @@ namespace ResultadosEleccionesM.ViewsResultats
             var muni = (Municipi)comboBoxMunicipisDiaE.SelectedItem;
             viewModel.selectedMunicipi(muni);
 
-            if(viewModel.ListaPartitsMunicipi.Count>0 && viewModel.ListaTaulesMunicipi.Count>0) {
-            textBoxNumRegidors.DataBindings.Clear();
-            textBoxNumRegidors.Text = viewModel.ActualMunicipi.numeroRegidors.ToString();
-            viewModel.calcularDades();
-            textBoxParticipacio.Text = viewModel.Participacio.ToString() + " %";
-            viewModel.visualitzarEscons();
-            viewModel.AsignarEscons();
-            viewModel.seleccionarCandidats();
-            dataGridViewRegidors.DataSource = null;
-            dataGridViewRegidors.DataSource = viewModel.ListaRegidors;
-            dataGridViewRegidors.Columns[0].Visible = false;
+            if(viewModel.ListaPartitsMunicipi.Count>0 && viewModel.ListaTaulesMunicipi.Count>0 ) {
+                textBoxNumRegidors.DataBindings.Clear();
+                textBoxNumRegidors.Text = viewModel.ActualMunicipi.numeroRegidors.ToString();
+                viewModel.calcularDades();
+                textBoxParticipacio.Text = viewModel.Participacio.ToString() + " %";
+                viewModel.visualitzarEscons();
+                viewModel.AsignarEscons();
+                viewModel.seleccionarCandidats();
+                dataGridViewRegidors.DataSource = null;
+                dataGridViewRegidors.DataSource = viewModel.ListaRegidors;
+                dataGridViewRegidors.Columns[0].Visible = false;
                 dataGridViewEscons.DataSource = null;
                 dataGridViewEscons.DataSource = viewModel.ListaEsconsPartit;
                 dataGridViewEscons.Columns[0].Visible = false;
                 //dataGridViewRegidors.Refresh();
                 dataGridViewTaula1.DataSource = null;
-            dataGridViewTaula1.DataSource = viewModel.ListaTaulesMunicipi;
-            dataGridViewTaula1.Columns[0].Visible = false;
-            dataGridViewTaula1.Columns[3].Visible = false;
+                dataGridViewTaula1.DataSource = viewModel.ListaTaulesMunicipi;
+                dataGridViewTaula1.Columns[0].Visible = false;
+                dataGridViewTaula1.Columns[3].Visible = false;
                 comboBoxTaules.DropDownStyle = ComboBoxStyle.DropDownList;
                 comboBoxTaules.Enabled = true;
                 comboBoxTaules.DataSource = viewModel.ListaTaulesMunicipi;
