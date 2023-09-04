@@ -133,23 +133,26 @@ namespace EleccionsM2.ViewModel
         {
         //El problema crec que es als candiats
             //________________________
-            //LO DE LES TAULES FUNCIONA.
+            //LO DE LES TAULES FUNCIONA.      
             foreach (TaulaElectoral taula in ListaTaulesMunicipi)
             {
                 //context.ResultatsTaules.Remove(taula.resultatsTaula);
+                //if (taula.resultatsTaula != null)
+                //{
+                //    context.ResultatsTaules.Remove(taula.resultatsTaula);
+                //}                
                 context.TaulesElectorals.Remove(taula);
-                               
             }
-            ListaTaulesMunicipi.Clear();
+            ListaTaulesMunicipi.Clear();            
             //________________________
             //El partido solo creo que tambien funciona. Se lia en los candidatos
             foreach (PartitMunicipi partit in ListaPartitsMunicipi)
             {
-            ////    //foreach(Candidat candi in ListaCandidats)//potser ha de ser partit.candiats
-            ////    //{
-            ////    //    context.Candidats.Remove(candi);
-            ////    //}
-            ////    //ListaCandidats.Clear();
+                foreach (Candidat candi in partit.candidats)//potser ha de ser partit.candiats
+                {
+                    context.Candidats.Remove(candi);
+                }
+                ListaCandidats.Clear();
                 context.PartitsPolitics.Remove(partit);
             }
             ListaPartitsMunicipi.Clear();
@@ -184,10 +187,9 @@ namespace EleccionsM2.ViewModel
         //falta per fer la delete on cascade xd
         public async Task eliminarTaula()
         {
-
-            ListaTaulesMunicipi.Remove(ActualTaula);
+            ListaTaulesMunicipi.Remove(ActualTaula);            
             context.TaulesElectorals.Remove(ActualTaula);
-            context.ResultatsTaules.Remove(ActualResultat);
+            //context.ResultatsTaules.Remove(ActualResultat);
             //ActualMunicipi.taulesElectorals.Remove(ActualTaula);
             await Grabar();
         }

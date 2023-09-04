@@ -223,7 +223,7 @@ namespace EleccionsM2.ViewModel
             if (ActualTaula.resultatsTaula.votsTotals != 0) { 
             TaulaDades.Escrotat = (vescrotat / ActualTaula.resultatsTaula.votsTotals) * 100;
             }
-            //la participacio i el escrotat% es lo mismo no?
+            //la participacio i el escrotat% es lo mismo no? no lo es
             TaulaDades.Participació = Math.Round(percent, 2);
 
             ActualDadesTaula = TaulaDades;

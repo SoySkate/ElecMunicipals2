@@ -12,17 +12,15 @@ DONE:___________________________________________________________________________
 -repasar funcio: passarPartitsVotsViewModel() done
 _____________________________________________________________________________________________
 RUBEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEN:
--La funcio eliminar municipis no em funciona be del tot hi han dos candidats que no saaben deliminar nose perque
-y es posa en null en la database. ESBORRAR CANDIDAT ES POSA NULL -->NO SESBORRA<--.
--TAMBE ELS RESULTATS ES CREA UN DE MÉS  <--------
 
 
 
 NEW TODO:____________________________________________________________________________
 -EleccionsContext->mirar de fer el delete on cascade de ferlo correctament el modelbuildingXDPQ NO VA
+PROBELMA REAL: RESULTATSTAULA TANT ELIMINAR MUNICIPI COM ELIMINARTAULA NO VA
 -chequear si els escons a repartir que no es repeteixi (que jo ho faig per ordre ignorant laltre pero s ha 
 de tenir en compte que potser hi ha un esco a reparir entre 2 partits pq ha coincidit "mirar-me això")
--Solve el tema del grid
+
 
 
 _________

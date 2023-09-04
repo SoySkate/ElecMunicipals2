@@ -55,9 +55,10 @@
             // comboBoxTaules
             // 
             comboBoxTaules.FormattingEnabled = true;
-            comboBoxTaules.Location = new Point(48, 166);
+            comboBoxTaules.Location = new Point(55, 221);
+            comboBoxTaules.Margin = new Padding(3, 4, 3, 4);
             comboBoxTaules.Name = "comboBoxTaules";
-            comboBoxTaules.Size = new Size(121, 23);
+            comboBoxTaules.Size = new Size(138, 28);
             comboBoxTaules.TabIndex = 0;
             comboBoxTaules.SelectedIndexChanged += comboBoxTaules_SelectedIndexChanged;
             comboBoxTaules.MouseClick += comboBoxTaules_MouseClick;
@@ -65,9 +66,10 @@
             // comboBoxMunicipis
             // 
             comboBoxMunicipis.FormattingEnabled = true;
-            comboBoxMunicipis.Location = new Point(48, 49);
+            comboBoxMunicipis.Location = new Point(55, 65);
+            comboBoxMunicipis.Margin = new Padding(3, 4, 3, 4);
             comboBoxMunicipis.Name = "comboBoxMunicipis";
-            comboBoxMunicipis.Size = new Size(121, 23);
+            comboBoxMunicipis.Size = new Size(138, 28);
             comboBoxMunicipis.TabIndex = 1;
             comboBoxMunicipis.SelectedIndexChanged += comboBoxMunicipis_SelectedIndexChanged;
             comboBoxMunicipis.MouseClick += comboBoxMunicipis_MouseClick;
@@ -75,50 +77,52 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(82, 21);
+            label1.Location = new Point(94, 28);
             label1.Name = "label1";
-            label1.Size = new Size(59, 15);
+            label1.Size = new Size(72, 20);
             label1.TabIndex = 2;
             label1.Text = "Municipis";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(91, 139);
+            label2.Location = new Point(104, 185);
             label2.Name = "label2";
-            label2.Size = new Size(39, 15);
+            label2.Size = new Size(49, 20);
             label2.TabIndex = 3;
             label2.Text = "Taules";
             // 
             // textBoxVotsBlanc
             // 
-            textBoxVotsBlanc.Location = new Point(435, 195);
+            textBoxVotsBlanc.Location = new Point(497, 260);
+            textBoxVotsBlanc.Margin = new Padding(3, 4, 3, 4);
             textBoxVotsBlanc.Name = "textBoxVotsBlanc";
-            textBoxVotsBlanc.Size = new Size(100, 23);
+            textBoxVotsBlanc.Size = new Size(114, 27);
             textBoxVotsBlanc.TabIndex = 4;
             // 
             // textBoxVotsNuls
             // 
-            textBoxVotsNuls.Location = new Point(435, 312);
+            textBoxVotsNuls.Location = new Point(497, 416);
+            textBoxVotsNuls.Margin = new Padding(3, 4, 3, 4);
             textBoxVotsNuls.Name = "textBoxVotsNuls";
-            textBoxVotsNuls.Size = new Size(100, 23);
+            textBoxVotsNuls.Size = new Size(114, 27);
             textBoxVotsNuls.TabIndex = 5;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(453, 167);
+            label3.Location = new Point(518, 223);
             label3.Name = "label3";
-            label3.Size = new Size(61, 15);
+            label3.Size = new Size(77, 20);
             label3.TabIndex = 6;
             label3.Text = "Vots Blanc";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(453, 285);
+            label4.Location = new Point(518, 380);
             label4.Name = "label4";
-            label4.Size = new Size(56, 15);
+            label4.Size = new Size(70, 20);
             label4.TabIndex = 7;
             label4.Text = "Vots Nuls";
             // 
@@ -134,27 +138,29 @@
             panel1.Controls.Add(label4);
             panel1.Controls.Add(textBoxVotsNuls);
             panel1.Controls.Add(label3);
-            panel1.Location = new Point(201, 21);
+            panel1.Location = new Point(230, 28);
+            panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(564, 417);
+            panel1.Size = new Size(645, 556);
             panel1.TabIndex = 8;
             panel1.Visible = false;
             // 
             // textBoxCensTaula
             // 
             textBoxCensTaula.BorderStyle = BorderStyle.None;
-            textBoxCensTaula.Location = new Point(496, 0);
+            textBoxCensTaula.Location = new Point(567, 0);
+            textBoxCensTaula.Margin = new Padding(3, 4, 3, 4);
             textBoxCensTaula.Name = "textBoxCensTaula";
             textBoxCensTaula.ReadOnly = true;
-            textBoxCensTaula.Size = new Size(65, 16);
+            textBoxCensTaula.Size = new Size(74, 20);
             textBoxCensTaula.TabIndex = 12;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(430, 0);
+            label5.Location = new Point(491, 0);
             label5.Name = "label5";
-            label5.Size = new Size(69, 15);
+            label5.Size = new Size(85, 20);
             label5.TabIndex = 11;
             label5.Text = "Cens Taula: ";
             // 
@@ -163,17 +169,19 @@
             panelCheckingVots.BackColor = Color.Yellow;
             panelCheckingVots.Controls.Add(buttonAviso);
             panelCheckingVots.Controls.Add(labelAviso);
-            panelCheckingVots.Location = new Point(82, 118);
+            panelCheckingVots.Location = new Point(94, 157);
+            panelCheckingVots.Margin = new Padding(3, 4, 3, 4);
             panelCheckingVots.Name = "panelCheckingVots";
-            panelCheckingVots.Size = new Size(294, 161);
+            panelCheckingVots.Size = new Size(336, 215);
             panelCheckingVots.TabIndex = 9;
             panelCheckingVots.Visible = false;
             // 
             // buttonAviso
             // 
-            buttonAviso.Location = new Point(191, 116);
+            buttonAviso.Location = new Point(218, 155);
+            buttonAviso.Margin = new Padding(3, 4, 3, 4);
             buttonAviso.Name = "buttonAviso";
-            buttonAviso.Size = new Size(53, 23);
+            buttonAviso.Size = new Size(61, 31);
             buttonAviso.TabIndex = 1;
             buttonAviso.Text = "OK";
             buttonAviso.UseVisualStyleBackColor = true;
@@ -183,53 +191,56 @@
             // 
             labelAviso.Font = new Font("Arial Black", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             labelAviso.ForeColor = Color.Red;
-            labelAviso.Location = new Point(27, 27);
+            labelAviso.Location = new Point(31, 36);
             labelAviso.Name = "labelAviso";
-            labelAviso.Size = new Size(252, 112);
+            labelAviso.Size = new Size(288, 149);
             labelAviso.TabIndex = 0;
-            labelAviso.Text = "La suma dels vots totals ha de coincidir amb el resultat Vots Totals!";
+            labelAviso.Text = "La suma dels vots totals ha de coincidir amb els Vots Totals!";
             // 
             // textBoxVotsTotals
             // 
-            textBoxVotsTotals.Location = new Point(430, 64);
+            textBoxVotsTotals.Location = new Point(491, 85);
+            textBoxVotsTotals.Margin = new Padding(3, 4, 3, 4);
             textBoxVotsTotals.Name = "textBoxVotsTotals";
-            textBoxVotsTotals.Size = new Size(100, 23);
+            textBoxVotsTotals.Size = new Size(114, 27);
             textBoxVotsTotals.TabIndex = 9;
             // 
             // labelVotsTotals
             // 
             labelVotsTotals.AutoSize = true;
-            labelVotsTotals.Location = new Point(448, 36);
+            labelVotsTotals.Location = new Point(512, 48);
             labelVotsTotals.Name = "labelVotsTotals";
-            labelVotsTotals.Size = new Size(62, 15);
+            labelVotsTotals.Size = new Size(80, 20);
             labelVotsTotals.TabIndex = 10;
             labelVotsTotals.Text = "Vots Totals";
             // 
             // dataGridViewVotsPartit
             // 
             dataGridViewVotsPartit.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewVotsPartit.Location = new Point(45, 28);
+            dataGridViewVotsPartit.Location = new Point(51, 37);
+            dataGridViewVotsPartit.Margin = new Padding(3, 4, 3, 4);
             dataGridViewVotsPartit.Name = "dataGridViewVotsPartit";
             dataGridViewVotsPartit.RowHeadersWidth = 51;
             dataGridViewVotsPartit.RowTemplate.Height = 25;
-            dataGridViewVotsPartit.Size = new Size(363, 339);
+            dataGridViewVotsPartit.Size = new Size(415, 452);
             dataGridViewVotsPartit.TabIndex = 8;
             // 
             // labelDesarResultats
             // 
             labelDesarResultats.AutoSize = true;
             labelDesarResultats.Font = new Font("Segoe UI", 11.25F, FontStyle.Underline, GraphicsUnit.Point);
-            labelDesarResultats.Location = new Point(12, 336);
+            labelDesarResultats.Location = new Point(14, 448);
             labelDesarResultats.Name = "labelDesarResultats";
-            labelDesarResultats.Size = new Size(197, 20);
+            labelDesarResultats.Size = new Size(250, 25);
             labelDesarResultats.TabIndex = 9;
             labelDesarResultats.Text = "Desar Resultats Actual Taula:";
             // 
             // buttonDesarResultats
             // 
-            buttonDesarResultats.Location = new Point(66, 365);
+            buttonDesarResultats.Location = new Point(75, 487);
+            buttonDesarResultats.Margin = new Padding(3, 4, 3, 4);
             buttonDesarResultats.Name = "buttonDesarResultats";
-            buttonDesarResultats.Size = new Size(75, 23);
+            buttonDesarResultats.Size = new Size(86, 31);
             buttonDesarResultats.TabIndex = 10;
             buttonDesarResultats.Text = "Desar";
             buttonDesarResultats.UseVisualStyleBackColor = true;
@@ -237,9 +248,9 @@
             // 
             // FormResultados
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(914, 600);
             Controls.Add(buttonDesarResultats);
             Controls.Add(labelDesarResultats);
             Controls.Add(panel1);
@@ -247,6 +258,7 @@
             Controls.Add(label1);
             Controls.Add(comboBoxMunicipis);
             Controls.Add(comboBoxTaules);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "FormResultados";
             Text = "FormResultados";
             FormClosing += FormResultados_FormClosing;
