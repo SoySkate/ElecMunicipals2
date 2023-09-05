@@ -138,9 +138,9 @@ namespace EleccionsM2.ViewModel
             {
                 //context.ResultatsTaules.Remove(taula.resultatsTaula);
                 //if (taula.resultatsTaula != null)
-                //{
-                //    context.ResultatsTaules.Remove(taula.resultatsTaula);
-                //}                
+                //{                    
+                   //context.ResultatsTaules.Remove(ActualResultat);
+                //}                              
                 context.TaulesElectorals.Remove(taula);
             }
             ListaTaulesMunicipi.Clear();            
@@ -159,7 +159,6 @@ namespace EleccionsM2.ViewModel
 
             ListaMunicipis.Remove(ActualMunicipi);
             context.Municipis.Remove(ActualMunicipi);
-           
 
             await Grabar();            
         }
