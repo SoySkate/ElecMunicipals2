@@ -2,6 +2,7 @@
 using EleccionsM2.Views;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -131,6 +132,7 @@ namespace EleccionsM2.ViewModel
         //delete functions
         public async Task eliminarMunicipi()
         {
+          
         //El problema crec que es als candiats
             //________________________
             //LO DE LES TAULES FUNCIONA.      
@@ -139,8 +141,15 @@ namespace EleccionsM2.ViewModel
                 //context.ResultatsTaules.Remove(taula.resultatsTaula);
                 //if (taula.resultatsTaula != null)
                 //{                    
-                   //context.ResultatsTaules.Remove(ActualResultat);
-                //}                              
+                //context.ResultatsTaules.Remove(ActualResultat);
+                //}
+                foreach (ResultatsTaula result in context.ResultatsTaules)
+                {
+                    if (result == taula.resultatsTaula)
+                    {
+                        context.ResultatsTaules.Remove(result);
+                    }
+                }
                 context.TaulesElectorals.Remove(taula);
             }
             ListaTaulesMunicipi.Clear();            
@@ -186,11 +195,24 @@ namespace EleccionsM2.ViewModel
         //falta per fer la delete on cascade xd
         public async Task eliminarTaula()
         {
-            ListaTaulesMunicipi.Remove(ActualTaula);            
+            /*if(ActualTaula != null) {*/
+              
+
+              foreach (ResultatsTaula result in context.ResultatsTaules)
+              {
+                    if (result == ActualTaula.resultatsTaula)
+                    {
+                        context.ResultatsTaules.Remove(result);
+                    }
+              }  
+          /*  ListaTaulesMunicipi.Remove(ActualTaula);*/
             context.TaulesElectorals.Remove(ActualTaula);
+
+            await Grabar();
+            /*}*/
             //context.ResultatsTaules.Remove(ActualResultat);
             //ActualMunicipi.taulesElectorals.Remove(ActualTaula);
-            await Grabar();
+         
         }
     }
 }

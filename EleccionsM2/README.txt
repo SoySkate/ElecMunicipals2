@@ -17,8 +17,10 @@ RUBEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEN
 
 NEW TODO:____________________________________________________________________________
 
--PROBELMA REAL: RESULTATSTAULA TANT ELIMINAR MUNICIPI COM ELIMINARTAULA NO VA
+-PROBELMA REAL: RESULTATSTAULA-> ELIMINARTAULA INDIVIDUAL NO VA (el problema em sembla qeu es dels vots per llista aqui)
+form añadir taula (tornar al main-> Cancel·lar)
 ((taula.resultados o ActualResultado no hi ha res xddd why???))
+
 -chequear si els escons a repartir que no es repeteixi (que jo ho faig per ordre ignorant laltre pero s ha 
 de tenir en compte que potser hi ha un esco a reparir entre 2 partits pq ha coincidit "mirar-me això")
 
