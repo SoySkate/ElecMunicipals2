@@ -41,7 +41,7 @@ namespace EleccionsM2.Views
             {
                 e.Handled = true;
             }
-            if(textBoxNomCandidat.Text != string.Empty && e.KeyChar==(char)Keys.Enter)
+            if (textBoxNomCandidat.Text != string.Empty && e.KeyChar == (char)Keys.Enter)
             {
                 buttonCrearCandidat.Focus();
             }

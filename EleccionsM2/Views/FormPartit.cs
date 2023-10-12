@@ -41,7 +41,7 @@ namespace EleccionsM2.Views
             {
                 e.Handled = true;
             }
-            if( (e.KeyChar ==(char)Keys.Enter || e.KeyChar == (char)Keys.Tab) && textBoxNomPartit.Text!=string.Empty)
+            if ((e.KeyChar == (char)Keys.Enter || e.KeyChar == (char)Keys.Tab) && textBoxNomPartit.Text != string.Empty)
             {
                 buttonCrearPartit.Focus();
             }

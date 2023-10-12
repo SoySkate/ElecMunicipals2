@@ -15,6 +15,7 @@ namespace EleccionsM2
         public DbSet<Candidat> Candidats { get; set; }
         public DbSet<TaulaElectoral> TaulesElectorals { get; set; }
         public DbSet<ResultatsTaula> ResultatsTaules { get; set; }
+        public DbSet<VotsPerLlista>  VotsPerLlista { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

@@ -38,30 +38,28 @@
             // 
             // buttonVolver
             // 
-            buttonVolver.Location = new Point(512, 381);
-            buttonVolver.Margin = new Padding(3, 4, 3, 4);
+            buttonVolver.Location = new Point(448, 286);
             buttonVolver.Name = "buttonVolver";
-            buttonVolver.Size = new Size(141, 31);
+            buttonVolver.Size = new Size(123, 23);
             buttonVolver.TabIndex = 11;
-            buttonVolver.Text = "Tornar al Main";
+            buttonVolver.Text = "Cancel·lar";
             buttonVolver.UseVisualStyleBackColor = true;
             buttonVolver.Click += buttonVolver_Click;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(96, 163);
+            label2.Location = new Point(84, 122);
             label2.Name = "label2";
-            label2.Size = new Size(78, 20);
+            label2.Size = new Size(63, 15);
             label2.TabIndex = 10;
             label2.Text = "Cens Taula";
             // 
             // textBoxCensTaula
             // 
-            textBoxCensTaula.Location = new Point(233, 159);
-            textBoxCensTaula.Margin = new Padding(3, 4, 3, 4);
+            textBoxCensTaula.Location = new Point(204, 119);
             textBoxCensTaula.Name = "textBoxCensTaula";
-            textBoxCensTaula.Size = new Size(83, 27);
+            textBoxCensTaula.Size = new Size(73, 23);
             textBoxCensTaula.TabIndex = 9;
             textBoxCensTaula.TextChanged += textBoxCensTaula_TextChanged;
             textBoxCensTaula.KeyPress += textBoxCensTaula_KeyPress;
@@ -69,18 +67,17 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(96, 69);
+            label1.Location = new Point(84, 52);
             label1.Name = "label1";
-            label1.Size = new Size(80, 20);
+            label1.Size = new Size(64, 15);
             label1.TabIndex = 8;
             label1.Text = "Nom Taula";
             // 
             // buttonCrearTaula
             // 
-            buttonCrearTaula.Location = new Point(147, 281);
-            buttonCrearTaula.Margin = new Padding(3, 4, 3, 4);
+            buttonCrearTaula.Location = new Point(129, 211);
             buttonCrearTaula.Name = "buttonCrearTaula";
-            buttonCrearTaula.Size = new Size(141, 31);
+            buttonCrearTaula.Size = new Size(123, 23);
             buttonCrearTaula.TabIndex = 7;
             buttonCrearTaula.Text = "Crear Taula";
             buttonCrearTaula.UseVisualStyleBackColor = true;
@@ -88,26 +85,24 @@
             // 
             // textBoxNomTaula
             // 
-            textBoxNomTaula.Location = new Point(233, 65);
-            textBoxNomTaula.Margin = new Padding(3, 4, 3, 4);
+            textBoxNomTaula.Location = new Point(204, 49);
             textBoxNomTaula.Name = "textBoxNomTaula";
-            textBoxNomTaula.Size = new Size(132, 27);
+            textBoxNomTaula.Size = new Size(116, 23);
             textBoxNomTaula.TabIndex = 6;
             textBoxNomTaula.TextChanged += textBoxNomTaula_TextChanged;
             textBoxNomTaula.KeyPress += textBoxNomTaula_KeyPress;
             // 
             // FormTaula
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(685, 433);
+            ClientSize = new Size(599, 325);
             Controls.Add(buttonVolver);
             Controls.Add(label2);
             Controls.Add(textBoxCensTaula);
             Controls.Add(label1);
             Controls.Add(buttonCrearTaula);
             Controls.Add(textBoxNomTaula);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "FormTaula";
             Text = "FormTaula";
             ResumeLayout(false);

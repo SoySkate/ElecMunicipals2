@@ -195,21 +195,40 @@ namespace EleccionsM2.ViewModel
         //falta per fer la delete on cascade xd
         public async Task eliminarTaula()
         {
-            /*if(ActualTaula != null) {*/
-              
+            if(ActualTaula != null) {
 
-              foreach (ResultatsTaula result in context.ResultatsTaules)
-              {
-                    if (result == ActualTaula.resultatsTaula)
+            foreach (ResultatsTaula result in context.ResultatsTaules)
+            {
+                if (result == ActualTaula.resultatsTaula)
+                {                       
+                        //VotsPerLlista S'elimina quan s'elimina el partit crec loko xd vaya liada
+                        //CONFIRMO XD LIAAAOOOO Bueno hay que cambiarlo simplemente la forma de hacerlo no?
+                        //per votsper llista que coincideixi amb el id del partit eliminarlo¿ nono es que
+                        //no va vinculat
+                        //amb la taula((((va vinculat amb el partit xd nose com fer ho)
+                        foreach (VotsPerLlista vots in context.VotsPerLlista)
                     {
-                        context.ResultatsTaules.Remove(result);
-                    }
-              }  
-          /*  ListaTaulesMunicipi.Remove(ActualTaula);*/
-            context.TaulesElectorals.Remove(ActualTaula);
+                         
+                        /*foreach (VotsPerLlista v in context.VotsPerLlista)
+                        {
+                            if (vots == v)
+                            {
+                                context.VotsPerLlista.Remove(v);
+                                result.votsLlista.Remove(vots);
+                            }
+                        }*/
 
+                    }
+
+                    context.ResultatsTaules.Remove(result);
+                }                            
+            }
+
+            context.TaulesElectorals.Remove(ActualTaula);
+           
+            ListaTaulesMunicipi.Remove(ActualTaula);
             await Grabar();
-            /*}*/
+            }
             //context.ResultatsTaules.Remove(ActualResultat);
             //ActualMunicipi.taulesElectorals.Remove(ActualTaula);
          

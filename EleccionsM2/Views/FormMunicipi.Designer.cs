@@ -88,7 +88,7 @@
             buttonVolver.Name = "buttonVolver";
             buttonVolver.Size = new Size(123, 23);
             buttonVolver.TabIndex = 5;
-            buttonVolver.Text = "Tornar al Main";
+            buttonVolver.Text = "Cancel·lar";
             buttonVolver.UseVisualStyleBackColor = true;
             buttonVolver.Click += buttonVolver_Click;
             // 

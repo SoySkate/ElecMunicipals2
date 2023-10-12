@@ -58,11 +58,10 @@ namespace EleccionsM2.ViewModel
                 //VotsPerLlistaViewModel votsVM = new();
                 //crear vots ho he ficat dins del if
                 if (ListaVotsPerLlista.Exists(x => x.Partit.nomPartit == partit.nomPartit) == false)
-                {
-                        //vots.ID = ActualPartit.ID;
+                {                  
                         vots.Partit = ActualPartit;
                         vots.numeroVotsLlista = 0;
-                        ListaVotsPerLlista.Add(vots);                
+                        ListaVotsPerLlista.Add(vots);                   
                 }
             }
             await grabar();

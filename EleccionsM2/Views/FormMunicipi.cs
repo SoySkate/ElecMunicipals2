@@ -40,7 +40,7 @@ namespace EleccionsM2.Views
             {
                 e.Handled = true;
             }
-            if (e.KeyChar == (char)Keys.Enter || e.KeyChar ==(char)Keys.Tab)
+            if (e.KeyChar == (char)Keys.Enter || e.KeyChar == (char)Keys.Tab)
             {
                 textBoxNumRegidors.Focus();
             }
@@ -51,7 +51,7 @@ namespace EleccionsM2.Views
             {
                 e.Handled = true;
             }
-            if ((e.KeyChar == (char)Keys.Enter || e.KeyChar == (char)Keys.Tab) && textBoxNomMunicipi.Text!=string.Empty && int.Parse(textBoxNumRegidors.Text)!=0)
+            if ((e.KeyChar == (char)Keys.Enter || e.KeyChar == (char)Keys.Tab) && textBoxNomMunicipi.Text != string.Empty && int.Parse(textBoxNumRegidors.Text) != 0)
             {
                 buttonCrearMunicipi.Focus();
             }

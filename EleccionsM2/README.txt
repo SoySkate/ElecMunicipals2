@@ -16,9 +16,9 @@ RUBEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEN
 
 
 NEW TODO:____________________________________________________________________________
-
+si definitivament el votsperllista esta vinculat al partit nose pq i no al resultatsTaula Mirar ResultatsViewModel
+(aqui es on es crea)
 -PROBELMA REAL: RESULTATSTAULA-> ELIMINARTAULA INDIVIDUAL NO VA (el problema em sembla qeu es dels vots per llista aqui)
-form añadir taula (tornar al main-> Cancel·lar)
 ((taula.resultados o ActualResultado no hi ha res xddd why???))
 
 -chequear si els escons a repartir que no es repeteixi (que jo ho faig per ordre ignorant laltre pero s ha 

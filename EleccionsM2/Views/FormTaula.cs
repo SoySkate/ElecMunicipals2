@@ -61,7 +61,7 @@ namespace EleccionsM2.Views
 
         private void textBoxNomTaula_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(e.KeyChar == (char)Keys.Enter || e.KeyChar == (char)Keys.Tab)
+            if (e.KeyChar == (char)Keys.Enter || e.KeyChar == (char)Keys.Tab)
             {
                 textBoxCensTaula.Focus();
             }

@@ -66,8 +66,7 @@ namespace ResultadosEleccionesM
             textBoxVotsNuls.DataBindings.Add("Text", viewmodelR.ActualResultat, "votsNul");
         
             //dataGridViewVotsPartit.Refresh();
-            await viewmodelR.grabar();
-            
+            await viewmodelR.grabar();            
         }
         public async Task mostrarTaula()
         {
