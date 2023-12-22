@@ -32,7 +32,10 @@ namespace EleccionsM2
         {
 
             base.OnModelCreating(modelBuilder);
-
+            modelBuilder.Entity<TaulaElectoral>()
+                .HasOne(x => x.resultatsTaula)
+                .WithOne();
+                
             //base.OnModelCreating(modelBuilder);
             //modelBuilder.Entity<Municipi>()
             //     .HasOne(m => m.llistaPartits)

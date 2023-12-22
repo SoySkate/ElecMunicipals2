@@ -13,6 +13,7 @@ namespace EleccionsM2.Models
         public int votsNul { get; set; }
         public int votsTotals { get; set; }
         public List<VotsPerLlista> votsLlista { get; set; }
+        public long? taulaElectoralId { get; set; }
         public ResultatsTaula() { votsLlista = new List<VotsPerLlista>(); }
         //public ResultatsTaula(int votsBlanc, int votsNul, List<VotsPerLlista> votsLlista)
         //{
@@ -23,7 +24,7 @@ namespace EleccionsM2.Models
         public string ImprimirResultatsTaula()
         {
             //imprimir la llista dels votsPartits i despres els blanc i els nul
-            return "";
+            return "votsblanc:"+votsBlanc +"votsNuls:"+votsNul +"votsTotals:"+ votsTotals;
         }
     }
 }

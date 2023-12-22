@@ -12,6 +12,9 @@ DONE:___________________________________________________________________________
 -repasar funcio: passarPartitsVotsViewModel() done
 _____________________________________________________________________________________________
 RUBEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEN:
+La forma de eliminar individual es bastant bona excepte la de eliminar la Taula, pero la de eliminar tot de cop no funciona
+y la de eliminar els partits directament nose si elimina els candidats. CHECK IT
+
 
 
 

@@ -94,6 +94,9 @@ namespace EleccionsM2.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("ID"));
 
+                    b.Property<long?>("taulaElectoralId")
+                        .HasColumnType("bigint");
+
                     b.Property<int>("votsBlanc")
                         .HasColumnType("int");
 
@@ -104,6 +107,10 @@ namespace EleccionsM2.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("taulaElectoralId")
+                        .IsUnique()
+                        .HasFilter("[taulaElectoralId] IS NOT NULL");
 
                     b.ToTable("ResultatsTaules");
                 });
@@ -126,14 +133,9 @@ namespace EleccionsM2.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long?>("resultatsTaulaID")
-                        .HasColumnType("bigint");
-
                     b.HasKey("ID");
 
                     b.HasIndex("MunicipiID");
-
-                    b.HasIndex("resultatsTaulaID");
 
                     b.ToTable("TaulesElectorals");
                 });
@@ -178,17 +180,18 @@ namespace EleccionsM2.Migrations
                         .HasForeignKey("MunicipiID");
                 });
 
+            modelBuilder.Entity("EleccionsM2.Models.ResultatsTaula", b =>
+                {
+                    b.HasOne("EleccionsM2.Models.TaulaElectoral", null)
+                        .WithOne("resultatsTaula")
+                        .HasForeignKey("EleccionsM2.Models.ResultatsTaula", "taulaElectoralId");
+                });
+
             modelBuilder.Entity("EleccionsM2.Models.TaulaElectoral", b =>
                 {
                     b.HasOne("EleccionsM2.Models.Municipi", null)
                         .WithMany("taulesElectorals")
                         .HasForeignKey("MunicipiID");
-
-                    b.HasOne("EleccionsM2.Models.ResultatsTaula", "resultatsTaula")
-                        .WithMany()
-                        .HasForeignKey("resultatsTaulaID");
-
-                    b.Navigation("resultatsTaula");
                 });
 
             modelBuilder.Entity("EleccionsM2.Models.VotsPerLlista", b =>
@@ -221,6 +224,12 @@ namespace EleccionsM2.Migrations
             modelBuilder.Entity("EleccionsM2.Models.ResultatsTaula", b =>
                 {
                     b.Navigation("votsLlista");
+                });
+
+            modelBuilder.Entity("EleccionsM2.Models.TaulaElectoral", b =>
+                {
+                    b.Navigation("resultatsTaula")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

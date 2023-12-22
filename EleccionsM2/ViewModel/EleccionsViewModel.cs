@@ -196,38 +196,49 @@ namespace EleccionsM2.ViewModel
         public async Task eliminarTaula()
         {
             if(ActualTaula != null) {
+                MessageBox.Show("ActualTaula:"+ ActualTaula);
 
-            foreach (ResultatsTaula result in context.ResultatsTaules)
-            {
-                if (result == ActualTaula.resultatsTaula)
-                {                       
+           /* foreach (ResultatsTaula result in context.ResultatsTaules)
+            {*/
+              /*  if (result == ActualTaula.resultatsTaula)
+                {       */                
                         //VotsPerLlista S'elimina quan s'elimina el partit crec loko xd vaya liada
                         //CONFIRMO XD LIAAAOOOO Bueno hay que cambiarlo simplemente la forma de hacerlo no?
                         //per votsper llista que coincideixi amb el id del partit eliminarlo¿ nono es que
                         //no va vinculat
                         //amb la taula((((va vinculat amb el partit xd nose com fer ho)
-                        foreach (VotsPerLlista vots in context.VotsPerLlista)
-                    {
+         /*               foreach (VotsPerLlista vots in ActualTaula.resultatsTaula)*/
+             /*       {
                          
-                        /*foreach (VotsPerLlista v in context.VotsPerLlista)
+                        *//*foreach (VotsPerLlista v in context.VotsPerLlista)
                         {
                             if (vots == v)
                             {
                                 context.VotsPerLlista.Remove(v);
                                 result.votsLlista.Remove(vots);
                             }
-                        }*/
+                        }*//*
 
-                    }
+                    }*/
+                        if(ActualTaula.resultatsTaula!= null)
+                        {
+                                 MessageBox.Show("Holaa"+ActualResultat.ImprimirResultatsTaula());
+                            //foreach (VotsPerLlista v in ActualTaula.resultatsTaula.votsLlista)
+                            //{
+                            //    context.VotsPerLlista.Remove(v);
+                            //    ActualTaula.resultatsTaula.votsLlista.Remove(v);
+                            //}
 
-                    context.ResultatsTaules.Remove(result);
-                }                            
-            }
+                            //context.ResultatsTaules.Remove(ActualTaula.resultatsTaula);
+                            //context.ResultatsTaules.RemoveRange(ActualTaula.resultatsTaula);                   
+                        }
 
-            context.TaulesElectorals.Remove(ActualTaula);
-           
-            ListaTaulesMunicipi.Remove(ActualTaula);
-            await Grabar();
+                
+                context.TaulesElectorals.Remove(ActualTaula); 
+                ListaTaulesMunicipi.Remove(ActualTaula);
+                
+
+                await Grabar();
             }
             //context.ResultatsTaules.Remove(ActualResultat);
             //ActualMunicipi.taulesElectorals.Remove(ActualTaula);
